@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<defs>
+  <linearGradient id="g_illus-outreach" x1="28.869086912965027%" y1="4.6846106481675065%" x2="71.13091308703497%" y2="95.3153893518325%">
+    <stop offset="0%" stop-color="#0B5FA5"/>
+    <stop offset="100%" stop-color="#7C4DBB"/>
+  </linearGradient>
+</defs>
+<rect width="400" height="300" fill="url(#g_illus-outreach)"/>
+<circle cx="111" cy="71" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="7" cy="195" r="2.2" fill="#FFFFFF" opacity="0.15"/><circle cx="303" cy="19" r="3.0" fill="#FFFFFF" opacity="0.20"/><circle cx="199" cy="143" r="1.4" fill="#FFFFFF" opacity="0.25"/><circle cx="95" cy="267" r="2.2" fill="#FFFFFF" opacity="0.10"/><circle cx="391" cy="91" r="3.0" fill="#FFFFFF" opacity="0.15"/><circle cx="287" cy="215" r="1.4" fill="#FFFFFF" opacity="0.20"/><circle cx="183" cy="39" r="2.2" fill="#FFFFFF" opacity="0.25"/><circle cx="79" cy="163" r="3.0" fill="#FFFFFF" opacity="0.10"/><circle cx="375" cy="287" r="1.4" fill="#FFFFFF" opacity="0.15"/><circle cx="271" cy="111" r="2.2" fill="#FFFFFF" opacity="0.20"/><circle cx="167" cy="235" r="3.0" fill="#FFFFFF" opacity="0.25"/><circle cx="63" cy="59" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="359" cy="183" r="2.2" fill="#FFFFFF" opacity="0.15"/>
+<g transform="translate(144.0,94.0) scale(1.1)">
+  <path d="M70 10 A50 50 0 1 0 70 110 A38 38 0 1 1 70 10 Z" fill="#FFFFFF" opacity="0.92"/>
+  <path d="M20 30 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4 Z" fill="#FFFFFF" opacity="0.8"/>
+  <path d="M105 60 l3 6 6 3 -6 3 -3 6 -3 -6 -6 -3 6 -3 Z" fill="#FFFFFF" opacity="0.7"/>
+</g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<defs>
+  <linearGradient id="g_illus-hiv" x1="17.86061951567303%" y1="11.697777844051096%" x2="82.13938048432698%" y2="88.3022221559489%">
+    <stop offset="0%" stop-color="#5BCEFA"/>
+    <stop offset="100%" stop-color="#7C4DBB"/>
+  </linearGradient>
+</defs>
+<rect width="400" height="300" fill="url(#g_illus-hiv)"/>
+<circle cx="111" cy="71" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="222" cy="230" r="2.2" fill="#FFFFFF" opacity="0.15"/><circle cx="333" cy="89" r="3.0" fill="#FFFFFF" opacity="0.20"/><circle cx="44" cy="248" r="1.4" fill="#FFFFFF" opacity="0.25"/><circle cx="155" cy="107" r="2.2" fill="#FFFFFF" opacity="0.10"/><circle cx="266" cy="266" r="3.0" fill="#FFFFFF" opacity="0.15"/><circle cx="377" cy="125" r="1.4" fill="#FFFFFF" opacity="0.20"/><circle cx="88" cy="284" r="2.2" fill="#FFFFFF" opacity="0.25"/><circle cx="199" cy="143" r="3.0" fill="#FFFFFF" opacity="0.10"/><circle cx="310" cy="2" r="1.4" fill="#FFFFFF" opacity="0.15"/><circle cx="21" cy="161" r="2.2" fill="#FFFFFF" opacity="0.20"/><circle cx="132" cy="20" r="3.0" fill="#FFFFFF" opacity="0.25"/><circle cx="243" cy="179" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="354" cy="38" r="2.2" fill="#FFFFFF" opacity="0.15"/>
+<g transform="translate(145.0,88.0) scale(1.15)">
+  <path d="M55 8 L100 24 V60 C100 92 78 110 55 118 C32 110 10 92 10 60 V24 Z" fill="#FFFFFF" opacity="0.22"/>
+  <path d="M55 78 C40 62 24 54 24 40 C24 30 32 24 40 24 C47 24 52 28 55 34 C58 28 63 24 70 24 C78 24 86 30 86 40 C86 54 70 62 55 78 Z" fill="#FFFFFF"/>
+</g>
+</svg>
