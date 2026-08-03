@@ -1,0 +1,254 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String    @unique
+  password    String
+  /// owner = full access including users and site settings
+  /// editor = content only (news, projects, events, products, inbox)
+  role        String    @default("editor")
+  createdAt   DateTime  @default(now())
+  /// Suspended accounts keep their history but cannot sign in.
+  active      Boolean   @default(true)
+  lastLoginAt DateTime?
+}
+
+model Setting {
+  id      Int     @id @default(autoincrement())
+  key     String  @unique
+  valueEn String?
+  valueSi String?
+  valueTa String?
+}
+
+model Project {
+  id              Int       @id @default(autoincrement())
+  slug            String?   @unique
+  titleEn         String
+  titleSi         String?
+  titleTa         String?
+  descriptionEn   String
+  descriptionSi   String?
+  descriptionTa   String?
+  image           String?
+  contentEn       String?
+  contentSi       String?
+  contentTa       String?
+  objectivesEn    String?
+  objectivesSi    String?
+  objectivesTa    String?
+  outcomesEn      String?
+  outcomesSi      String?
+  outcomesTa      String?
+  beneficiariesEn String?
+  beneficiariesSi String?
+  beneficiariesTa String?
+  location        String?
+  image2          String?
+  image3          String?
+  status          String    @default("ongoing")
+  startDate       DateTime?
+  endDate         DateTime?
+  order           Int       @default(0)
+  published       Boolean   @default(true)
+  createdAt       DateTime  @default(now())
+}
+
+model Service {
+  id            Int     @id @default(autoincrement())
+  slug          String? @unique
+  titleEn       String
+  titleSi       String?
+  titleTa       String?
+  descriptionEn String
+  descriptionSi String?
+  descriptionTa String?
+  icon          String?
+  image         String?
+  contentEn     String?
+  contentSi     String?
+  contentTa     String?
+  featuresEn    String?
+  featuresSi    String?
+  featuresTa    String?
+  benefitsEn    String?
+  benefitsSi    String?
+  benefitsTa    String?
+  faqsEn        String?
+  faqsSi        String?
+  faqsTa        String?
+  image2        String?
+  image3        String?
+  order         Int     @default(0)
+  published     Boolean @default(true)
+}
+
+model Publication {
+  id            Int      @id @default(autoincrement())
+  titleEn       String
+  titleSi       String?
+  titleTa       String?
+  descriptionEn String?
+  descriptionSi String?
+  descriptionTa String?
+  category      String   @default("research")
+  fileUrl       String?
+  coverImage    String?
+  publishedAt   DateTime @default(now())
+  published     Boolean  @default(true)
+}
+
+model News {
+  id           Int      @id @default(autoincrement())
+  slug         String?  @unique
+  titleEn      String
+  titleSi      String?
+  titleTa      String?
+  excerptEn    String?
+  excerptSi    String?
+  excerptTa    String?
+  contentEn    String
+  contentSi    String?
+  contentTa    String?
+  image        String?
+  highlightsEn String?
+  highlightsSi String?
+  highlightsTa String?
+  quoteEn      String?
+  quoteSi      String?
+  quoteTa      String?
+  image2       String?
+  image3       String?
+  publishedAt  DateTime @default(now())
+  published    Boolean  @default(true)
+}
+
+model Event {
+  id            Int       @id @default(autoincrement())
+  slug          String?   @unique
+  titleEn       String
+  titleSi       String?
+  titleTa       String?
+  descriptionEn String
+  descriptionSi String?
+  descriptionTa String?
+  location      String?
+  image         String?
+  contentEn     String?
+  contentSi     String?
+  contentTa     String?
+  highlightsEn  String?
+  highlightsSi  String?
+  highlightsTa  String?
+  agendaEn      String?
+  agendaSi      String?
+  agendaTa      String?
+  image2        String?
+  image3        String?
+  startDate     DateTime
+  endDate       DateTime?
+  published     Boolean   @default(true)
+}
+
+model GalleryImage {
+  id        Int      @id @default(autoincrement())
+  captionEn String?
+  captionSi String?
+  captionTa String?
+  image     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  nameEn        String
+  nameSi        String?
+  nameTa        String?
+  descriptionEn String
+  descriptionSi String?
+  descriptionTa String?
+  price         Decimal? @db.Decimal(10, 2)
+  image         String?
+  inStock       Boolean  @default(true)
+  order         Int      @default(0)
+  published     Boolean  @default(true)
+}
+
+model Testimonial {
+  id        Int     @id @default(autoincrement())
+  quoteEn   String
+  quoteSi   String?
+  quoteTa   String?
+  authorEn  String
+  authorSi  String?
+  authorTa  String?
+  order     Int     @default(0)
+  published Boolean @default(true)
+}
+
+model Partner {
+  id    Int     @id @default(autoincrement())
+  name  String
+  logo  String?
+  url   String?
+  order Int     @default(0)
+}
+
+model Stat {
+  id      Int     @id @default(autoincrement())
+  labelEn String
+  labelSi String?
+  labelTa String?
+  value   String
+  order   Int     @default(0)
+}
+
+model Donation {
+  id               Int      @id @default(autoincrement())
+  orderId          String   @unique
+  name             String
+  email            String
+  phone            String?
+  amount           Decimal  @db.Decimal(10, 2)
+  currency         String   @default("LKR")
+  message          String?
+  status           String   @default("pending")
+  payherePaymentId String?
+  createdAt        DateTime @default(now())
+}
+
+model Suggestion {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Subscriber {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
