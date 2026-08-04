@@ -484,6 +484,39 @@ export const entities: EntityDef[] = [
       { name: "email", label: "Email" },
     ],
   },
+  {
+    slug: "volunteers",
+    model: "volunteerApplication",
+    title: "Volunteer Applications",
+    titleSingular: "Application",
+    description: "Volunteer sign-ups submitted from the public site.",
+    readOnly: true,
+    orderBy: { createdAt: "desc" },
+    fields: [],
+    listFields: [
+      { name: "createdAt", label: "Date", type: "date" },
+      { name: "name", label: "Name" },
+      { name: "email", label: "Email" },
+      { name: "interestArea", label: "Interest" },
+    ],
+  },
+  {
+    slug: "hall-bookings",
+    model: "hallBookingRequest",
+    title: "Hall Booking Requests",
+    titleSingular: "Booking Request",
+    description: "Community hall booking requests submitted from the public site.",
+    readOnly: true,
+    orderBy: { createdAt: "desc" },
+    fields: [],
+    listFields: [
+      { name: "createdAt", label: "Submitted", type: "date" },
+      { name: "name", label: "Name" },
+      { name: "phone", label: "Phone" },
+      { name: "eventDate", label: "Date wanted", type: "date" },
+      { name: "purpose", label: "Purpose" },
+    ],
+  },
 ];
 
 export function getEntity(slug: string): EntityDef | undefined {

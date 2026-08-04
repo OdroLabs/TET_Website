@@ -96,6 +96,7 @@ const content: Record<string, Val> = {
   announce_link: BLANK,
   show_header_topbar: ON,
   show_header_langs: ON,
+  show_access_toolbar: ON,
   nav_show_about: ON,
   nav_show_projects: ON,
   nav_show_services: ON,
@@ -103,6 +104,8 @@ const content: Record<string, Val> = {
   nav_show_news: ON,
   nav_show_events: ON,
   nav_show_business: ON,
+  nav_show_volunteer: ON,
+  nav_show_hall_booking: ON,
   nav_show_suggestions: ON,
   nav_show_contact: ON,
   show_header_donate: ON,
@@ -337,6 +340,20 @@ const content: Record<string, Val> = {
   },
   about_history_image: BLANK,
 
+  about_timeline_title: { en: "Milestones", si: "සන්ධිස්ථාන", ta: "மைல்கற்கள்" },
+  about_timeline: {
+    en: "2002 :: CSDF founded in Kolonnawa by a small group of community members to support marginalised women.\n2008 :: Expanded outreach into HIV prevention, testing and health navigation services.\n2015 :: Launched community-based livelihood and small business support programmes.\n2024 :: Serving women across 10 districts with health, legal and economic empowerment services.",
+    si: "2002 :: CSDF ප්‍රජා සාමාජිකයන් කුඩා පිරිසක් විසින් කොළොන්නාවේදී කොන් වූ කාන්තාවන්ට සහාය වීම සඳහා ආරම්භ කරන ලදී.\n2008 :: HIV වැළැක්වීම, පරීක්ෂාව සහ සෞඛ්‍ය මාර්ගෝපදේශන සේවා දක්වා ප්‍රවේශය පුළුල් කරන ලදී.\n2015 :: ප්‍රජා පදනම් කරගත් ජීවනෝපාය සහ කුඩා ව්‍යාපාර සහාය වැඩසටහන් ආරම්භ කරන ලදී.\n2024 :: දිස්ත්‍රික්ක 10ක් පුරා කාන්තාවන්ට සෞඛ්‍ය, නීති සහ ආර්ථික සවිබල ගැන්වීමේ සේවා සපයයි.",
+    ta: "2002 :: கொலன்னாவையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு ஆதரவளிக்க சிறு சமூகக் குழுவினரால் CSDF நிறுவப்பட்டது.\n2008 :: HIV தடுப்பு, பரிசோதனை மற்றும் சுகாதார வழிகாட்டல் சேவைகளுக்கு அணுகலை விரிவுபடுத்தியது.\n2015 :: சமூகம் சார்ந்த வாழ்வாதார மற்றும் சிறு வணிக ஆதரவு திட்டங்களைத் தொடங்கியது.\n2024 :: 10 மாவட்டங்களில் பெண்களுக்கு சுகாதாரம், சட்டம் மற்றும் பொருளாதார அதிகாரமளித்தல் சேவைகளை வழங்குகிறது.",
+  },
+
+  about_team_title: { en: "Our Team", si: "අපගේ කණ්ඩායම", ta: "எங்கள் குழு" },
+  about_team: {
+    en: "Programme Coordinator :: Oversees outreach, partnerships and day-to-day operations.\nHealth Outreach Lead :: Coordinates referrals, testing and health navigation support.\nCommunity Liaison :: Builds trust and relationships with the women we serve.\nPeer Support Team :: Community members providing accompaniment and peer counselling.",
+    si: "වැඩසටහන් සම්බන්ධීකාරක :: ප්‍රවේශ, හවුල්කාරිත්ව සහ දෛනික මෙහෙයුම් අධීක්ෂණය කරයි.\nසෞඛ්‍ය ප්‍රවේශ ප්‍රධානියා :: යොමු කිරීම්, පරීක්ෂාව සහ සෞඛ්‍ය මාර්ගෝපදේශන සහාය සම්බන්ධීකරණය කරයි.\nප්‍රජා සම්බන්ධීකාරක :: අප සේවය කරන කාන්තාවන් සමඟ විශ්වාසය සහ සම්බන්ධතා ගොඩනඟයි.\nසම-සහායක කණ්ඩායම :: සහාය සහ සම-උපදේශනය සපයන ප්‍රජා සාමාජිකයෝ.",
+    ta: "திட்ட ஒருங்கிணைப்பாளர் :: வெளிச்செல் பணி, கூட்டாண்மைகள் மற்றும் அன்றாட செயல்பாடுகளை மேற்பார்வையிடுகிறார்.\nசுகாதார வெளிச்செல் தலைவர் :: பரிந்துரைகள், பரிசோதனை மற்றும் சுகாதார வழிகாட்டல் ஆதரவை ஒருங்கிணைக்கிறார்.\nசமூக தொடர்பாளர் :: நாங்கள் சேவை செய்யும் பெண்களுடன் நம்பிக்கை மற்றும் உறவுகளை உருவாக்குகிறார்.\nசக ஆதரவு குழு :: துணை மற்றும் சக ஆலோசனை வழங்கும் சமூக உறுப்பினர்கள்.",
+  },
+
   about_extra_title: BLANK,
   about_extra_text: BLANK,
 
@@ -401,6 +418,68 @@ const content: Record<string, Val> = {
     en: "Where it's needed most :: Flexible funding lets us respond to the most urgent needs first.\nHealth services :: Clinics, testing, treatment linkage and peer accompaniment.\nEducation & awareness :: Peer-led health education and rights training in the community.\nCommunity programs :: Safe spaces, peer leadership and economic opportunity.",
     si: "වඩාත්ම අවශ්‍ය තැනට :: නම්‍යශීලී අරමුදල් මගින් වඩාත් හදිසි අවශ්‍යතාවලට මුලින්ම ප්‍රතිචාර දැක්විය හැක.\nසෞඛ්‍ය සේවා :: සායන, පරීක්ෂණ, ප්‍රතිකාර සම්බන්ධ කිරීම සහ සම සහාය.\nඅධ්‍යාපනය සහ දැනුවත් කිරීම :: ප්‍රජාව තුළ සම-නායකත්ව සෞඛ්‍ය අධ්‍යාපනය සහ අයිතිවාසිකම් පුහුණුව.\nප්‍රජා වැඩසටහන් :: ආරක්ෂිත අවකාශ, සම නායකත්වය සහ ආර්ථික අවස්ථා.",
     ta: "மிகவும் தேவையான இடத்திற்கு :: நெகிழ்வான நிதி மிக அவசரமான தேவைகளுக்கு முதலில் பதிலளிக்க உதவுகிறது.\nசுகாதார சேவைகள் :: கிளினிக்குகள், பரிசோதனை, சிகிச்சை இணைப்பு மற்றும் சக ஆதரவு.\nகல்வி & விழிப்புணர்வு :: சமூகத்தில் சக தலைமையிலான சுகாதாரக் கல்வி மற்றும் உரிமைப் பயிற்சி.\nசமூக திட்டங்கள் :: பாதுகாப்பான இடங்கள், சக தலைமைத்துவம் மற்றும் பொருளாதார வாய்ப்பு.",
+  },
+
+  /* ================================================ Volunteer page ========= */
+  volunteer_hero_title: { en: "Volunteer with CSDF", si: "CSDF සමඟ ස්වේච්ඡා සේවය කරන්න", ta: "CSDF உடன் தன்னார்வமாக பணியாற்றுங்கள்" },
+  volunteer_hero_intro: {
+    en: "Whether you have a few hours a month or a professional skill to share, there is a place for you in our work supporting marginalised women in Kolonnawa.",
+    si: "ඔබට මසකට පැය කිහිපයක් හෝ බෙදාගැනීමට වෘත්තීය කුසලතාවක් තිබුණත්, කොළොන්නාවේ කොන් වූ කාන්තාවන්ට සහාය වන අපගේ කාර්යයේ ඔබටත් ස්ථානයක් ඇත.",
+    ta: "உங்களிடம் மாதத்திற்கு சில மணிநேரங்கள் அல்லது பகிர்ந்துகொள்ள ஒரு தொழில்முறை திறமை இருந்தாலும், கொலன்னாவையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு ஆதரவளிக்கும் எங்கள் பணியில் உங்களுக்கும் ஒரு இடம் உண்டு.",
+  },
+  volunteer_hero_image: BLANK,
+
+  volunteer_opportunities_title: { en: "Ways to Help", si: "සහාය වීමේ ක්‍රම", ta: "உதவும் வழிகள்" },
+  volunteer_opportunities: {
+    en: "Outreach Support :: Join community outreach visits sharing health information and support.\nPeer Support Volunteer :: Offer companionship and peer encouragement to women in our programmes.\nAdministrative Support :: Help with office tasks, records and event coordination.\nEvent & Programme Support :: Assist with workshops, health camps and community events.",
+    si: "ප්‍රවේශ සහාය :: සෞඛ්‍ය තොරතුරු සහ සහාය බෙදාගන්නා ප්‍රජා ප්‍රවේශ චාරිකාවලට එක්වන්න.\nසම-සහායක ස්වේච්ඡා සේවක :: අපගේ වැඩසටහන්වල කාන්තාවන්ට සහයෝගය සහ දිරිගැන්වීම ලබා දෙන්න.\nපරිපාලන සහාය :: කාර්යාල කටයුතු, වාර්තා සහ උත්සව සම්බන්ධීකරණයට උදව් කරන්න.\nවැඩසටහන් සහාය :: වැඩමුළු, සෞඛ්‍ය කඳවුරු සහ ප්‍රජා අවස්ථාවලට සහාය වන්න.",
+    ta: "வெளிச்செல் ஆதரவு :: சுகாதார தகவல் மற்றும் ஆதரவைப் பகிரும் சமூக வெளிச்செல் வருகைகளில் இணையுங்கள்.\nசக ஆதரவு தன்னார்வலர் :: எங்கள் திட்டங்களில் உள்ள பெண்களுக்கு துணை மற்றும் ஊக்கத்தை வழங்குங்கள்.\nநிர்வாக ஆதரவு :: அலுவலக பணிகள், பதிவுகள் மற்றும் நிகழ்வு ஒருங்கிணைப்பில் உதவுங்கள்.\nநிகழ்ச்சி ஆதரவு :: பயிலரங்குகள், சுகாதார முகாம்கள் மற்றும் சமூக நிகழ்வுகளுக்கு உதவுங்கள்.",
+  },
+
+  volunteer_form_title: { en: "Sign Up to Volunteer", si: "ස්වේච්ඡා සේවයට ලියාපදිංචි වන්න", ta: "தன்னார்வலராக பதிவு செய்யுங்கள்" },
+  volunteer_form_note: {
+    en: "Tell us a little about yourself and how you'd like to help — our team will get in touch to arrange orientation.",
+    si: "ඔබ ගැන සහ ඔබ සහාය වීමට කැමති ආකාරය ගැන අපට කරුණාකර දන්වන්න — අභිමුඛකරණය සැලසුම් කිරීමට අපගේ කණ්ඩායම ඔබ හා සම්බන්ධ වනු ඇත.",
+    ta: "உங்களைப் பற்றியும் நீங்கள் எவ்வாறு உதவ விரும்புகிறீர்கள் என்பதையும் எங்களிடம் கூறுங்கள் — நோக்குநிலைப் பயிற்சியை ஏற்பாடு செய்ய எங்கள் குழு உங்களைத் தொடர்பு கொள்ளும்.",
+  },
+  volunteer_success_message: {
+    en: "Thank you for applying! Our team will contact you soon about next steps.",
+    si: "අයදුම් කිරීම ගැන ස්තුතියි! ඊළඟ පියවර ගැන අපගේ කණ්ඩායම ඉක්මනින් ඔබ හා සම්බන්ධ වනු ඇත.",
+    ta: "விண்ணப்பித்தமைக்கு நன்றி! அடுத்த கட்டங்கள் குறித்து எங்கள் குழு விரைவில் உங்களைத் தொடர்பு கொள்ளும்.",
+  },
+
+  /* ============================================= Hall booking page ========= */
+  hall_hero_title: { en: "Community Hall Booking", si: "ප්‍රජා ශාලා වෙන්කිරීම", ta: "சமூக மண்டப முன்பதிவு" },
+  hall_hero_intro: {
+    en: "Book our community hall in Kolonnawa for meetings, workshops and community events — submit a request and our team will confirm availability.",
+    si: "රැස්වීම්, වැඩමුළු සහ ප්‍රජා අවස්ථා සඳහා කොළොන්නාවේ අපගේ ප්‍රජා ශාලාව වෙන් කරගන්න — ඉල්ලීමක් යොමු කරන්න, අපගේ කණ්ඩායම ලබා ගැනීමේ හැකියාව තහවුරු කරනු ඇත.",
+    ta: "கூட்டங்கள், பயிலரங்குகள் மற்றும் சமூக நிகழ்வுகளுக்காக கொலன்னாவையில் உள்ள எங்கள் சமூக மண்டபத்தை முன்பதிவு செய்யுங்கள் — ஒரு கோரிக்கையை சமர்ப்பிக்கவும், எங்கள் குழு கிடைக்கும் தன்மையை உறுதிப்படுத்தும்.",
+  },
+  hall_hero_image: BLANK,
+
+  hall_details_title: { en: "About the Hall", si: "ශාලාව ගැන", ta: "மண்டபத்தைப் பற்றி" },
+  hall_details_text: {
+    en: "Our community hall in Kolonnawa is available for meetings, training sessions and small community events. Submit a request below with your preferred date and we will get back to you to confirm availability and rates.",
+    si: "කොළොන්නාවේ අපගේ ප්‍රජා ශාලාව රැස්වීම්, පුහුණු සැසි සහ කුඩා ප්‍රජා අවස්ථා සඳහා ලබා ගත හැක. ඔබ කැමති දිනය සමඟ පහත ඉල්ලීමක් යොමු කරන්න, ලබා ගැනීමේ හැකියාව සහ ගාස්තු තහවුරු කිරීමට අපි ඔබ හා සම්බන්ධ වන්නෙමු.",
+    ta: "கொலன்னாவையில் உள்ள எங்கள் சமூக மண்டபம் கூட்டங்கள், பயிற்சி அமர்வுகள் மற்றும் சிறிய சமூக நிகழ்வுகளுக்கு கிடைக்கிறது. உங்கள் விருப்பமான தேதியுடன் கீழே ஒரு கோரிக்கையை சமர்ப்பிக்கவும், கிடைக்கும் தன்மை மற்றும் கட்டணங்களை உறுதிப்படுத்த நாங்கள் உங்களைத் தொடர்பு கொள்வோம்.",
+  },
+  hall_rates: {
+    en: "Half day (up to 4 hours): Rs. 5,000\nFull day (up to 8 hours): Rs. 9,000\nCommunity groups & partner organisations: rates negotiable — ask us.",
+  },
+  hall_image1: BLANK,
+  hall_image2: BLANK,
+  hall_image3: BLANK,
+
+  hall_form_title: { en: "Request a Booking", si: "වෙන්කිරීමක් ඉල්ලන්න", ta: "முன்பதிவைக் கோருங்கள்" },
+  hall_form_note: {
+    en: "Submit your request and our team will respond within 2 business days to confirm availability and rates.",
+    si: "ඔබගේ ඉල්ලීම යොමු කරන්න, ලබා ගැනීමේ හැකියාව සහ ගාස්තු තහවුරු කිරීමට අපගේ කණ්ඩායම වැඩකරන දින 2ක් තුළ ප්‍රතිචාර දක්වනු ඇත.",
+    ta: "உங்கள் கோரிக்கையை சமர்ப்பிக்கவும், கிடைக்கும் தன்மை மற்றும் கட்டணங்களை உறுதிப்படுத்த எங்கள் குழு 2 வேலை நாட்களுக்குள் பதிலளிக்கும்.",
+  },
+  hall_success_message: {
+    en: "Thank you! We've received your booking request and will be in touch soon.",
+    si: "ස්තුතියි! අපි ඔබගේ වෙන්කිරීමේ ඉල්ලීම ලබාගෙන ඇත, ඉක්මනින් ඔබ හා සම්බන්ධ වන්නෙමු.",
+    ta: "நன்றி! உங்கள் முன்பதிவு கோரிக்கையை நாங்கள் பெற்றுள்ளோம், விரைவில் தொடர்பு கொள்வோம்.",
   },
 
   /* =================================================== Other pages ======== */

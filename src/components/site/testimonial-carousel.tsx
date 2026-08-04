@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,6 +10,16 @@ export function TestimonialCarousel({
   items: { quote: string; author: string }[];
 }) {
   const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (items.length <= 1) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % items.length);
+    }, 6500);
+    return () => clearInterval(id);
+  }, [items.length]);
+
   if (items.length === 0) return null;
   const item = items[index];
 

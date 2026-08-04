@@ -82,6 +82,7 @@ export default async function LocaleLayout({
         showTopbar={sBool(settings, "show_header_topbar", true)}
         showLangs={sBool(settings, "show_header_langs", true)}
         showDonate={sBool(settings, "show_header_donate", true)}
+        showAccessToolbar={sBool(settings, "show_access_toolbar", true)}
       />
       <main className="flex-1">{children}</main>
       <SiteFooter locale={locale} dict={dict} settings={settings} />

@@ -407,6 +407,42 @@ export async function submitSuggestion(formData: FormData) {
   return { ok: true };
 }
 
+export async function submitVolunteerApplication(formData: FormData) {
+  const name = (formData.get("name") as string)?.trim();
+  const email = (formData.get("email") as string)?.trim();
+  if (!name || !email) return { ok: false };
+  await prisma.volunteerApplication.create({
+    data: {
+      name,
+      email,
+      phone: ((formData.get("phone") as string) || "").trim() || null,
+      interestArea: ((formData.get("interestArea") as string) || "").trim() || null,
+      availability: ((formData.get("availability") as string) || "").trim() || null,
+      message: ((formData.get("message") as string) || "").trim() || null,
+    },
+  });
+  return { ok: true };
+}
+
+export async function submitHallBooking(formData: FormData) {
+  const name = (formData.get("name") as string)?.trim();
+  const phone = (formData.get("phone") as string)?.trim();
+  if (!name || !phone) return { ok: false };
+  const rawDate = (formData.get("eventDate") as string) || "";
+  await prisma.hallBookingRequest.create({
+    data: {
+      name,
+      phone,
+      organization: ((formData.get("organization") as string) || "").trim() || null,
+      email: ((formData.get("email") as string) || "").trim() || null,
+      eventDate: rawDate ? new Date(rawDate) : null,
+      purpose: ((formData.get("purpose") as string) || "").trim() || null,
+      message: ((formData.get("message") as string) || "").trim() || null,
+    },
+  });
+  return { ok: true };
+}
+
 export async function subscribeNewsletter(formData: FormData) {
   const email = (formData.get("email") as string)?.trim();
   if (!email || !email.includes("@")) return { ok: false };

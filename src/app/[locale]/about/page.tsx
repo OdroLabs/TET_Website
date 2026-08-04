@@ -1,9 +1,16 @@
-import { Eye, Target, Users, BookOpen, Sparkles, History } from "lucide-react";
+import { Eye, Target, Users, BookOpen, Sparkles, History, Clock } from "lucide-react";
 import type { Locale } from "@/lib/i18n";
 import { getLabels } from "@/lib/labels";
 import { getSettings, s, sPairs } from "@/lib/settings";
 import { Card, CardContent } from "@/components/ui/card";
 import { PageHero } from "@/components/site/page-hero";
+
+const TEAM_AVATARS = [
+  "/illustrations/avatar-director.svg",
+  "/illustrations/avatar-health.svg",
+  "/illustrations/avatar-legal.svg",
+  "/illustrations/avatar-peer.svg",
+];
 
 export default async function AboutPage({ params }: { params: { locale: Locale } }) {
   const { locale } = params;
@@ -28,6 +35,12 @@ export default async function AboutPage({ params }: { params: { locale: Locale }
   const historyTitle = s(settings, "about_history_title", locale);
   const history = s(settings, "about_history", locale);
   const historyImage = s(settings, "about_history_image");
+
+  const timelineTitle = s(settings, "about_timeline_title", locale);
+  const timeline = sPairs(settings, "about_timeline", locale);
+
+  const teamTitle = s(settings, "about_team_title", locale);
+  const team = sPairs(settings, "about_team", locale);
 
   const extraTitle = s(settings, "about_extra_title", locale);
   const extraText = s(settings, "about_extra_text", locale);
@@ -152,6 +165,64 @@ export default async function AboutPage({ params }: { params: { locale: Locale }
           text={history}
           image={historyImage || undefined}
         />
+
+        {timeline.length > 0 && (
+          <section id="sec-timeline" data-animate>
+            {timelineTitle && (
+              <div className="mb-5 flex items-center gap-2 text-primary">
+                <Clock className="h-5 w-5" />
+                <h2 className="text-xl font-bold">{timelineTitle}</h2>
+              </div>
+            )}
+            <div data-stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {timeline.map((item, i) => (
+                <div
+                  key={i}
+                  className="rounded-3xl border border-border bg-white p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                >
+                  <span className="font-number text-2xl font-extrabold text-gradient">
+                    {item.left}
+                  </span>
+                  {item.right && (
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {item.right}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {team.length > 0 && (
+          <section id="sec-team" data-animate>
+            {teamTitle && (
+              <div className="mb-5 flex items-center gap-2 text-primary">
+                <Users className="h-5 w-5" />
+                <h2 className="text-xl font-bold">{teamTitle}</h2>
+              </div>
+            )}
+            <div data-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {team.map((member, i) => (
+                <div key={i} className="text-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={TEAM_AVATARS[i % TEAM_AVATARS.length]}
+                    alt=""
+                    aria-hidden
+                    className="mx-auto mb-4 h-20 w-20 rounded-full object-cover shadow-md"
+                  />
+                  {member.left && <h3 className="font-bold text-navy-900">{member.left}</h3>}
+                  {member.right && (
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                      {member.right}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {extraText && (
           <section

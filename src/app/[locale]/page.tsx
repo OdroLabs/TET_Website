@@ -151,34 +151,15 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* Hero                                                                */}
       {/* ------------------------------------------------------------------ */}
       {showHero && (
-        <section id="sec-hero" className="relative flex min-h-[82svh] items-center overflow-hidden bg-navy-950 pb-24 pt-16 text-white md:pb-32 md:pt-24">
-          {/* Photo with parallax, fading in from the right */}
-          {heroImage && (
-            <div className="absolute inset-y-0 right-0 w-full overflow-hidden lg:w-3/4">
-              <div
-                data-parallax="8"
-                className="absolute -inset-y-[12%] inset-x-0 scale-110 bg-cover bg-center opacity-30 lg:opacity-60"
-                style={{ backgroundImage: `url(${heroImage})` }}
-              />
-            </div>
-          )}
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/95 to-navy-900/35" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-navy-950/80 to-transparent" />
-          {/* Subtle grid pattern */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-[0.05]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-              backgroundSize: "56px 56px",
-            }}
-          />
-          {/* Cyan glow */}
-          <div className="pointer-events-none absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-accent/10 blur-3xl" />
+        <section id="sec-hero" className="relative overflow-hidden bg-bg-lavender pb-20 pt-16 text-navy-900 md:pb-28 md:pt-24">
+          {/* Soft animated blob shapes, template's lavender hero motif */}
+          <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 animate-[pulse_9s_ease-in-out_infinite] rounded-full bg-blue/25 blur-3xl" />
+          <div className="pointer-events-none absolute -right-20 top-1/3 h-80 w-80 animate-[pulse_11s_ease-in-out_infinite] rounded-full bg-pink/25 blur-3xl" />
+          <div className="pointer-events-none absolute bottom-0 left-1/3 h-72 w-72 animate-[pulse_13s_ease-in-out_infinite] rounded-full bg-brand-300/25 blur-3xl" />
 
           <div
             className={`container relative z-10 grid items-center gap-12 ${
-              heroPoints.length > 0 ? "lg:grid-cols-[1.1fr_0.9fr]" : ""
+              heroImage || heroPoints.length > 0 ? "lg:grid-cols-[1.1fr_0.9fr]" : ""
             }`}
           >
             <div>
@@ -202,18 +183,18 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               {heroSubtitle && (
                 <p
                   data-hero
-                  className="mb-9 max-w-xl whitespace-pre-line leading-relaxed text-white/75 md:text-lg"
+                  className="mb-8 max-w-xl whitespace-pre-line leading-relaxed text-muted-foreground md:text-lg"
                 >
                   {heroSubtitle}
                 </p>
               )}
               {(heroCta1 || heroCta2) && (
-                <div data-hero className="flex flex-wrap gap-4">
+                <div data-hero className="mb-9 flex flex-wrap gap-4">
                   {heroCta1 && (
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-full bg-accent px-8 font-bold text-navy-950 shadow-lg shadow-accent/25 hover:bg-accent/90 hover:shadow-xl hover:shadow-accent/30"
+                      className="rounded-full bg-gradient-brand-deep px-8 font-bold text-white shadow-lg shadow-brand-600/25 hover:opacity-90"
                     >
                       <Link href={link(locale, s(settings, "hero_cta1_link"))}>
                         {heroCta1} <ArrowRight className="h-4 w-4" />
@@ -225,7 +206,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                       asChild
                       size="lg"
                       variant="outline"
-                      className="rounded-full border-white/30 bg-white/5 px-8 font-semibold text-white backdrop-blur hover:border-white/50 hover:bg-white/15 hover:text-white"
+                      className="rounded-full border-navy-900/15 bg-white/60 px-8 font-semibold text-navy-900 backdrop-blur hover:bg-white"
                     >
                       <Link href={link(locale, s(settings, "hero_cta2_link"))}>
                         {heroCta2}
@@ -234,29 +215,51 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   )}
                 </div>
               )}
-            </div>
 
-            {/* Commitment card — hidden when no highlight points are set */}
-            {heroPoints.length > 0 && (
-              <div data-hero className="glass-dark rounded-3xl p-8 shadow-glow md:p-9">
-                <ul className="grid gap-5">
+              {/* Highlight points — small icon grid, template's hero-points row */}
+              {heroPoints.length > 0 && (
+                <div data-hero className="grid gap-4 sm:grid-cols-2">
                   {heroPoints.map((point, i) => {
                     const Icon = pointIcons[i % pointIcons.length];
                     return (
-                      <li key={i} className="flex items-center gap-4">
-                        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-500/30 to-accent/20 ring-1 ring-white/15">
-                          <Icon className="h-5 w-5 text-accent" />
+                      <div key={i} className="flex items-center gap-3">
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-primary shadow-sm ring-1 ring-border">
+                          <Icon className="h-4 w-4" />
                         </span>
-                        <span className="text-sm font-medium text-white md:text-base">{point}</span>
-                      </li>
+                        <span className="text-sm font-medium text-navy-900">{point}</span>
+                      </div>
                     );
                   })}
-                </ul>
-                {heroFootnote && (
-                  <p className="mt-7 border-t border-white/15 pt-5 text-center text-sm text-white/60">
-                    {heroFootnote}
-                  </p>
-                )}
+                </div>
+              )}
+              {heroFootnote && (
+                <p className="mt-6 max-w-md text-sm text-muted-foreground">{heroFootnote}</p>
+              )}
+            </div>
+
+            {/* Visual card — admin photo, falling back to the brand illustration */}
+            {(heroImage || heroPoints.length > 0) && (
+              <div data-hero data-delay="0.15" className="relative">
+                <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue/20 via-transparent to-pink/20" />
+                <div className="relative overflow-hidden rounded-[2rem] shadow-card-hover">
+                  {heroImage ? (
+                    <div className="aspect-[4/5] w-full overflow-hidden">
+                      <div
+                        data-parallax="8"
+                        className="h-full w-full scale-110 bg-cover bg-center"
+                        style={{ backgroundImage: `url(${heroImage})` }}
+                      />
+                    </div>
+                  ) : (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src="/illustrations/hero-community.svg"
+                      alt=""
+                      aria-hidden
+                      className="aspect-[4/5] w-full bg-white object-cover"
+                    />
+                  )}
+                </div>
               </div>
             )}
           </div>
@@ -532,7 +535,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
             <div className="container relative grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               <div data-animate>
-                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-br from-destructive to-red-700 p-10 text-center shadow-glow ring-1 ring-white/15">
+                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-br from-destructive to-pink-deep p-10 text-center shadow-glow ring-1 ring-white/15">
                   <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
                   <span className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-white/15 ring-2 ring-white/30">
                     <PhoneCall className="h-6 w-6" />
@@ -562,7 +565,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               </div>
               <div data-animate data-delay="0.15">
                 {s(settings, "home_contact_eyebrow", locale) && (
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-400">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-pink">
                     {s(settings, "home_contact_eyebrow", locale)}
                   </p>
                 )}

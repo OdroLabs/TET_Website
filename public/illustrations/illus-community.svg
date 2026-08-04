@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+<defs>
+  <linearGradient id="g_illus-community" x1="14.644660940672622%" y1="14.64466094067263%" x2="85.35533905932738%" y2="85.35533905932738%">
+    <stop offset="0%" stop-color="#7C4DBB"/>
+    <stop offset="100%" stop-color="#5BCEFA"/>
+  </linearGradient>
+</defs>
+<rect width="400" height="300" fill="url(#g_illus-community)"/>
+<circle cx="111" cy="71" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="370" cy="142" r="2.2" fill="#FFFFFF" opacity="0.15"/><circle cx="229" cy="213" r="3.0" fill="#FFFFFF" opacity="0.20"/><circle cx="88" cy="284" r="1.4" fill="#FFFFFF" opacity="0.25"/><circle cx="347" cy="55" r="2.2" fill="#FFFFFF" opacity="0.10"/><circle cx="206" cy="126" r="3.0" fill="#FFFFFF" opacity="0.15"/><circle cx="65" cy="197" r="1.4" fill="#FFFFFF" opacity="0.20"/><circle cx="324" cy="268" r="2.2" fill="#FFFFFF" opacity="0.25"/><circle cx="183" cy="39" r="3.0" fill="#FFFFFF" opacity="0.10"/><circle cx="42" cy="110" r="1.4" fill="#FFFFFF" opacity="0.15"/><circle cx="301" cy="181" r="2.2" fill="#FFFFFF" opacity="0.20"/><circle cx="160" cy="252" r="3.0" fill="#FFFFFF" opacity="0.25"/><circle cx="19" cy="23" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="278" cy="94" r="2.2" fill="#FFFFFF" opacity="0.15"/>
+<g transform="translate(130.0,104.0) scale(1.05)"><g transform="translate(30,50) scale(0.82)"><circle cx="0" cy="-14" r="13" fill="#FFFFFF" opacity="0.92"/><path d="M-22 26 C-22 4 -12 -4 0 -4 C12 -4 22 4 22 26 Z" fill="#FFFFFF" opacity="0.92"/></g><g transform="translate(70,50) scale(0.82)"><circle cx="0" cy="-14" r="13" fill="#FFFFFF" opacity="0.92"/><path d="M-22 26 C-22 4 -12 -4 0 -4 C12 -4 22 4 22 26 Z" fill="#FFFFFF" opacity="0.92"/></g><g transform="translate(50,20) scale(1.0)"><circle cx="0" cy="-14" r="13" fill="#FFFFFF" opacity="0.92"/><path d="M-22 26 C-22 4 -12 -4 0 -4 C12 -4 22 4 22 26 Z" fill="#FFFFFF" opacity="0.92"/></g></g>
+</svg>

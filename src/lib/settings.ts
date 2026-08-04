@@ -305,6 +305,7 @@ export const settingPages: SettingPage[] = [
         items: [
           SW("show_header_topbar", "Show the dark strip with phone, email and language switcher"),
           SW("show_header_langs", "Show the language switcher"),
+          SW("show_access_toolbar", "Show the accessibility strip (text size and high contrast)"),
         ],
       },
       {
@@ -319,6 +320,8 @@ export const settingPages: SettingPage[] = [
           SW("nav_show_news", "News"),
           SW("nav_show_events", "Events & Gallery"),
           SW("nav_show_business", "Community Business"),
+          SW("nav_show_volunteer", "Volunteer"),
+          SW("nav_show_hall_booking", "Hall Booking"),
           SW("nav_show_suggestions", "Suggestions"),
           SW("nav_show_contact", "Contact Us"),
         ],
@@ -597,6 +600,35 @@ export const settingPages: SettingPage[] = [
         ],
       },
       {
+        section: "Story timeline",
+        preview: { path: "/about", anchor: "sec-timeline" },
+        hideNote: AUTO_HIDE_LIST,
+        items: [
+          T("about_timeline_title", "Heading"),
+          PAIRS("about_timeline", "Timeline milestones", {
+            leftLabel: "Year",
+            rightLabel: "What happened",
+            itemLabel: "Milestone",
+            addLabel: "Add a milestone",
+            help: "Each becomes a numbered card, e.g. 2002 :: Founded to support women in Kolonnawa.",
+          }),
+        ],
+      },
+      {
+        section: "Our team",
+        preview: { path: "/about", anchor: "sec-team" },
+        hideNote: AUTO_HIDE_LIST,
+        items: [
+          T("about_team_title", "Heading"),
+          PAIRS("about_team", "Team members", {
+            leftLabel: "Name / role",
+            rightLabel: "Description",
+            itemLabel: "Member",
+            addLabel: "Add a team member",
+          }),
+        ],
+      },
+      {
         section: "Extra closing section",
         preview: { path: "/about", anchor: "sec-extra" },
         hideNote: AUTO_HIDE,
@@ -694,6 +726,87 @@ export const settingPages: SettingPage[] = [
             itemLabel: "Point",
             addLabel: "Add a point",
           }),
+        ],
+      },
+    ],
+  },
+
+  /* --------------------------------------------------------- Volunteer page */
+  {
+    slug: "volunteer",
+    title: "Volunteer Page",
+    description: "The Volunteer page: hero, opportunities and the sign-up form.",
+    sections: [
+      {
+        section: "Page header",
+        preview: { path: "/volunteer", anchor: "sec-page-header" },
+        items: [
+          T("volunteer_hero_title", "Page title"),
+          TA("volunteer_hero_intro", "Intro text"),
+          IMG("volunteer_hero_image", "Header background image"),
+        ],
+      },
+      {
+        section: "Opportunities",
+        preview: { path: "/volunteer", anchor: "sec-opportunities" },
+        hideNote: AUTO_HIDE_LIST,
+        items: [
+          T("volunteer_opportunities_title", "Heading"),
+          PAIRS("volunteer_opportunities", "Ways to help", {
+            leftLabel: "Role",
+            rightLabel: "Description",
+            itemLabel: "Opportunity",
+            addLabel: "Add an opportunity",
+          }),
+        ],
+      },
+      {
+        section: "Sign-up form",
+        preview: { path: "/volunteer", anchor: "sec-form" },
+        items: [
+          T("volunteer_form_title", "Form heading"),
+          TA("volunteer_form_note", "Note above the form"),
+          T("volunteer_success_message", "Message shown after applying"),
+        ],
+      },
+    ],
+  },
+
+  /* ------------------------------------------------------ Hall booking page */
+  {
+    slug: "hall-booking",
+    title: "Hall Booking Page",
+    description: "The Community Hall booking page: info, rates and the request form.",
+    sections: [
+      {
+        section: "Page header",
+        preview: { path: "/hall-booking", anchor: "sec-page-header" },
+        items: [
+          T("hall_hero_title", "Page title"),
+          TA("hall_hero_intro", "Intro text"),
+          IMG("hall_hero_image", "Header background image"),
+        ],
+      },
+      {
+        section: "Hall details",
+        preview: { path: "/hall-booking", anchor: "sec-details" },
+        hideNote: AUTO_HIDE,
+        items: [
+          T("hall_details_title", "Heading"),
+          TA("hall_details_text", "Description", "Capacity, facilities, general info."),
+          PA("hall_rates", "Rates", "Free text — e.g. one line per rate/package."),
+          IMG("hall_image1", "Photo 1"),
+          IMG("hall_image2", "Photo 2"),
+          IMG("hall_image3", "Photo 3"),
+        ],
+      },
+      {
+        section: "Booking form",
+        preview: { path: "/hall-booking", anchor: "sec-form" },
+        items: [
+          T("hall_form_title", "Form heading"),
+          TA("hall_form_note", "Note above the form", "e.g. response time, deposit policy."),
+          T("hall_success_message", "Message shown after a request is sent"),
         ],
       },
     ],

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<defs>
+  <linearGradient id="g_avatar-legal" x1="24.999999999999993%" y1="6.698729810778069%" x2="75.0%" y2="93.30127018922192%">
+    <stop offset="0%" stop-color="#7C4DBB"/>
+    <stop offset="100%" stop-color="#A61E4D"/>
+  </linearGradient>
+</defs>
+<rect width="200" height="200" fill="url(#g_avatar-legal)"/>
+<circle cx="111" cy="171" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="132" cy="120" r="2.2" fill="#FFFFFF" opacity="0.15"/><circle cx="153" cy="69" r="3.0" fill="#FFFFFF" opacity="0.20"/><circle cx="174" cy="18" r="1.4" fill="#FFFFFF" opacity="0.25"/><circle cx="195" cy="167" r="2.2" fill="#FFFFFF" opacity="0.10"/><circle cx="16" cy="116" r="3.0" fill="#FFFFFF" opacity="0.15"/><circle cx="37" cy="65" r="1.4" fill="#FFFFFF" opacity="0.20"/><circle cx="58" cy="14" r="2.2" fill="#FFFFFF" opacity="0.25"/><circle cx="79" cy="163" r="3.0" fill="#FFFFFF" opacity="0.10"/><circle cx="100" cy="112" r="1.4" fill="#FFFFFF" opacity="0.15"/><circle cx="121" cy="61" r="2.2" fill="#FFFFFF" opacity="0.20"/><circle cx="142" cy="10" r="3.0" fill="#FFFFFF" opacity="0.25"/><circle cx="163" cy="159" r="1.4" fill="#FFFFFF" opacity="0.10"/><circle cx="184" cy="108" r="2.2" fill="#FFFFFF" opacity="0.15"/>
+
+    <circle cx="100.0" cy="94.0" r="46" fill="#FFFFFF" opacity="0.95"/>
+    <circle cx="100.0" cy="76.0" r="19" fill="#7C4DBB"/>
+    <path d="M68.0 140.0 C68.0 102.0 84.0 90.0 100.0 90.0 C116.0 90.0 132.0 102.0 132.0 140.0 Z" fill="#7C4DBB"/>
+    
+</svg>

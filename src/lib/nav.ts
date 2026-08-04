@@ -48,6 +48,10 @@ export function buildNav(settings: SettingsMap, dict: Dictionary): NavConfig {
   const involvedItems: NavItem[] = [];
   if (on("nav_show_business"))
     involvedItems.push({ href: "/business", label: dict.nav.business });
+  if (on("nav_show_volunteer"))
+    involvedItems.push({ href: "/volunteer", label: dict.nav.volunteer });
+  if (on("nav_show_hall_booking"))
+    involvedItems.push({ href: "/hall-booking", label: dict.nav.hallBooking });
   if (on("nav_show_suggestions"))
     involvedItems.push({ href: "/suggestions", label: dict.nav.suggestions });
 
@@ -68,6 +72,9 @@ export function buildNav(settings: SettingsMap, dict: Dictionary): NavConfig {
   const involved: NavItem[] = [];
   if (on("nav_show_events")) involved.push({ href: "/events", label: dict.nav.events });
   if (on("nav_show_business")) involved.push({ href: "/business", label: dict.nav.business });
+  if (on("nav_show_volunteer")) involved.push({ href: "/volunteer", label: dict.nav.volunteer });
+  if (on("nav_show_hall_booking"))
+    involved.push({ href: "/hall-booking", label: dict.nav.hallBooking });
   involved.push({ href: "/donate", label: dict.nav.donate });
   if (on("nav_show_contact")) involved.push({ href: "/contact", label: dict.nav.contact });
 

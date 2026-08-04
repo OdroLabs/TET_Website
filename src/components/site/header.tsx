@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Heart, Phone, Mail, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LocaleSwitcher } from "./locale-switcher";
+import { AccessToolbar } from "./access-toolbar";
 import { cn } from "@/lib/utils";
 import type { Dictionary } from "@/lib/dictionaries";
 import type { NavConfig, NavGroup, NavItem } from "@/lib/nav";
@@ -28,6 +29,7 @@ export interface HeaderProps {
   showTopbar: boolean;
   showLangs: boolean;
   showDonate: boolean;
+  showAccessToolbar: boolean;
 }
 
 export function SiteHeader({
@@ -46,6 +48,7 @@ export function SiteHeader({
   showTopbar,
   showLangs,
   showDonate,
+  showAccessToolbar,
 }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -116,6 +119,8 @@ export function SiteHeader({
 
   return (
     <>
+      {showAccessToolbar && <AccessToolbar />}
+
       {/* Announcement bar — hidden when no text is set in the admin */}
       {announceText && (
         <div id="sec-announce" className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent text-white">

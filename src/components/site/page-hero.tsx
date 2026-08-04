@@ -17,7 +17,7 @@ export function PageHero({
 
   return (
     <section id="sec-page-header" className="relative overflow-hidden bg-navy-950 text-white">
-      {/* Optional photo, sitting under the gradient */}
+      {/* Optional admin photo, sitting under the gradient */}
       {image && (
         <div
           data-parallax="6"
@@ -25,10 +25,22 @@ export function PageHero({
           style={{ backgroundImage: `url(${image})` }}
         />
       )}
-      {/* Deep navy → brand gradient */}
+      {/* Brand illustration — always present, template's banner-community.svg motif */}
+      {!image && (
+        <div
+          aria-hidden
+          className="absolute inset-y-0 right-0 w-full opacity-25 md:w-2/3"
+          style={{
+            backgroundImage: "url(/illustrations/banner-community.svg)",
+            backgroundSize: "cover",
+            backgroundPosition: "right center",
+          }}
+        />
+      )}
+      {/* Deep blue → pink gradient */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900 to-brand-800 ${
-          image ? "opacity-80" : ""
+        className={`absolute inset-0 bg-gradient-brand-deep ${
+          image ? "opacity-80" : "opacity-90"
         }`}
       />
       {/* Subtle grid pattern */}

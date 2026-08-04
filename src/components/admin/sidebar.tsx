@@ -31,6 +31,8 @@ import {
   Languages,
   Files,
   UsersRound,
+  UserPlus,
+  Building2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -42,6 +44,8 @@ const settingsLinks = [
   { href: "/admin/settings/about", label: "About Page", icon: Info },
   { href: "/admin/settings/contact", label: "Contact Page", icon: Phone },
   { href: "/admin/settings/donate", label: "Donation Page", icon: Heart },
+  { href: "/admin/settings/volunteer", label: "Volunteer Page", icon: UserPlus },
+  { href: "/admin/settings/hall-booking", label: "Hall Booking Page", icon: Building2 },
   { href: "/admin/settings/pages", label: "Other Pages", icon: Files },
   { href: "/admin/settings/labels", label: "Labels & Translations", icon: Languages },
 ];
@@ -64,6 +68,8 @@ const inboxLinks = [
   { href: "/admin/content/suggestions", label: "Suggestions", icon: Lightbulb },
   { href: "/admin/content/messages", label: "Messages", icon: Mail },
   { href: "/admin/content/subscribers", label: "Subscribers", icon: Users },
+  { href: "/admin/content/volunteers", label: "Volunteer Applications", icon: UserPlus },
+  { href: "/admin/content/hall-bookings", label: "Hall Bookings", icon: Building2 },
 ];
 
 export function AdminSidebar({ role }: { role: string }) {
