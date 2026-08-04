@@ -27,12 +27,16 @@ function toMessage(error: unknown, fallback: string): string {
   if (error instanceof Error) {
     // Prisma errors carry a `code`; surface the common, actionable ones.
     const code = (error as { code?: string }).code;
-    if (code === "P2002") return "That value must be unique — something already uses it.";
-    if (code === "P2025") return "That record no longer exists. It may have been deleted already.";
-    if (error.message === "Unauthorized") return "Your session has expired. Please sign in again.";
+    if (code === "P2002")
+      return "That value must be unique — something already uses it.";
+    if (code === "P2025")
+      return "That record no longer exists. It may have been deleted already.";
+    if (error.message === "Unauthorized")
+      return "Your session has expired. Please sign in again.";
     if (error.message === "Forbidden")
       return "Only an owner can do that. Ask an owner to make the change.";
-    if (error.message.startsWith("Validation:")) return error.message.slice("Validation:".length).trim();
+    if (error.message.startsWith("Validation:"))
+      return error.message.slice("Validation:".length).trim();
     console.error(error);
     return fallback;
   }
@@ -79,10 +83,11 @@ function validateRequired(fields: FieldDef[], formData: FormData) {
     const key = field.i18n ? `${field.name}En` : field.name;
     const raw = formData.get(key);
     const value = typeof raw === "string" ? raw.trim() : "";
-    const empty = field.type === "richtext" ? sanitizeRichText(value) === "" : value === "";
+    const empty =
+      field.type === "richtext" ? sanitizeRichText(value) === "" : value === "";
     if (empty) {
       throw new Error(
-        `Validation: ${field.label} is required${field.i18n ? " (English)" : ""}.`
+        `Validation: ${field.label} is required${field.i18n ? " (English)" : ""}.`,
       );
     }
   }
@@ -111,7 +116,7 @@ function buildData(fields: FieldDef[], formData: FormData) {
 export async function saveEntity(
   slug: string,
   id: number | null,
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResult> {
   try {
     await requireAdmin();
@@ -122,8 +127,14 @@ export async function saveEntity(
 
     // Auto-generate a unique URL slug from the English title when left empty
     if ((SLUGGED_MODELS as readonly string[]).includes(entity.model)) {
-      const base = slugify((data.slug as string) || (data.titleEn as string) || "");
-      data.slug = await uniqueSlug(entity.model as (typeof SLUGGED_MODELS)[number], base, id);
+      const base = slugify(
+        (data.slug as string) || (data.titleEn as string) || "",
+      );
+      data.slug = await uniqueSlug(
+        entity.model as (typeof SLUGGED_MODELS)[number],
+        base,
+        id,
+      );
     }
 
     if (id) {
@@ -134,11 +145,17 @@ export async function saveEntity(
     revalidatePath("/", "layout");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not save. Please try again.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not save. Please try again."),
+    };
   }
 }
 
-export async function deleteEntity(slug: string, id: number): Promise<ActionResult> {
+export async function deleteEntity(
+  slug: string,
+  id: number,
+): Promise<ActionResult> {
   try {
     await requireAdmin();
     const entity = getEntity(slug);
@@ -148,7 +165,10 @@ export async function deleteEntity(slug: string, id: number): Promise<ActionResu
     revalidatePath(`/admin/content/${slug}`);
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not delete. Please try again.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not delete. Please try again."),
+    };
   }
 }
 
@@ -187,7 +207,7 @@ function settingUpsert(key: string, formData: FormData, translated: boolean) {
  */
 export async function saveSettingsPage(
   pageSlug: string,
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResult> {
   try {
     await requireOwner();
@@ -198,15 +218,19 @@ export async function saveSettingsPage(
     await prisma.$transaction(
       items.map((item) => {
         // Images and uploads have a single value, never a per-language one.
-        const translated = Boolean(item.i18n) && item.type !== "image" && item.type !== "file";
+        const translated =
+          Boolean(item.i18n) && item.type !== "image" && item.type !== "file";
         return settingUpsert(item.key, formData, translated);
-      })
+      }),
     );
 
     revalidatePath("/", "layout");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not save these settings.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not save these settings."),
+    };
   }
 }
 
@@ -214,7 +238,9 @@ export async function saveSettingsPage(
 export async function saveLabels(formData: FormData): Promise<ActionResult> {
   try {
     await requireOwner();
-    await prisma.$transaction(allLabelDefs.map((def) => settingUpsert(def.key, formData, true)));
+    await prisma.$transaction(
+      allLabelDefs.map((def) => settingUpsert(def.key, formData, true)),
+    );
     revalidatePath("/", "layout");
     return { ok: true };
   } catch (error) {
@@ -228,7 +254,9 @@ const MIN_PASSWORD = 8;
 
 function checkPassword(password: string | null, confirm?: string | null) {
   if (!password || password.length < MIN_PASSWORD)
-    throw new Error(`Validation: The password must be at least ${MIN_PASSWORD} characters.`);
+    throw new Error(
+      `Validation: The password must be at least ${MIN_PASSWORD} characters.`,
+    );
   if (confirm != null && confirm !== password)
     throw new Error("Validation: The two passwords do not match.");
 }
@@ -271,7 +299,8 @@ export async function createUser(formData: FormData): Promise<ActionResult> {
     checkPassword(password, formData.get("confirm") as string | null);
 
     const existing = await prisma.user.findUnique({ where: { email } });
-    if (existing) throw new Error("Validation: An account with that email already exists.");
+    if (existing)
+      throw new Error("Validation: An account with that email already exists.");
 
     await prisma.user.create({
       data: { name, email, role, password: await hash(password, 10) },
@@ -279,12 +308,18 @@ export async function createUser(formData: FormData): Promise<ActionResult> {
     revalidatePath("/admin/users");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not create that user.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not create that user."),
+    };
   }
 }
 
 /** Update someone's name, email or role. */
-export async function updateUser(id: number, formData: FormData): Promise<ActionResult> {
+export async function updateUser(
+  id: number,
+  formData: FormData,
+): Promise<ActionResult> {
   try {
     const admin = await requireOwner();
     const name = readName(formData);
@@ -295,9 +330,13 @@ export async function updateUser(id: number, formData: FormData): Promise<Action
     if (!target) throw new Error("Validation: That user no longer exists.");
 
     // Never allow the site to end up with no owner who can sign in.
-    if (target.role === "owner" && role !== "owner" && (await activeOwnerCount(id)) === 0) {
+    if (
+      target.role === "owner" &&
+      role !== "owner" &&
+      (await activeOwnerCount(id)) === 0
+    ) {
       throw new Error(
-        "Validation: This is the only owner. Promote someone else to owner first."
+        "Validation: This is the only owner. Promote someone else to owner first.",
       );
     }
     if (target.id === admin.id && role !== "owner") {
@@ -312,14 +351,17 @@ export async function updateUser(id: number, formData: FormData): Promise<Action
     revalidatePath("/admin/users");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not update that user.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not update that user."),
+    };
   }
 }
 
 /** Set a new password for someone else. */
 export async function resetUserPassword(
   id: number,
-  formData: FormData
+  formData: FormData,
 ): Promise<ActionResult> {
   try {
     await requireOwner();
@@ -332,46 +374,68 @@ export async function resetUserPassword(
     revalidatePath("/admin/users");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not reset that password.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not reset that password."),
+    };
   }
 }
 
 /** Suspend or restore an account. Suspended users cannot sign in. */
-export async function setUserActive(id: number, active: boolean): Promise<ActionResult> {
+export async function setUserActive(
+  id: number,
+  active: boolean,
+): Promise<ActionResult> {
   try {
     const admin = await requireOwner();
-    if (id === admin.id) throw new Error("Validation: You cannot deactivate your own account.");
+    if (id === admin.id)
+      throw new Error("Validation: You cannot deactivate your own account.");
 
     const target = await prisma.user.findUnique({ where: { id } });
     if (!target) throw new Error("Validation: That user no longer exists.");
-    if (!active && target.role === "owner" && (await activeOwnerCount(id)) === 0) {
-      throw new Error("Validation: This is the only active owner and cannot be deactivated.");
+    if (
+      !active &&
+      target.role === "owner" &&
+      (await activeOwnerCount(id)) === 0
+    ) {
+      throw new Error(
+        "Validation: This is the only active owner and cannot be deactivated.",
+      );
     }
 
     await prisma.user.update({ where: { id }, data: { active } });
     revalidatePath("/admin/users");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not change that account.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not change that account."),
+    };
   }
 }
 
 export async function deleteUser(id: number): Promise<ActionResult> {
   try {
     const admin = await requireOwner();
-    if (id === admin.id) throw new Error("Validation: You cannot delete your own account.");
+    if (id === admin.id)
+      throw new Error("Validation: You cannot delete your own account.");
 
     const target = await prisma.user.findUnique({ where: { id } });
     if (!target) throw new Error("Validation: That user no longer exists.");
     if (target.role === "owner" && (await activeOwnerCount(id)) === 0) {
-      throw new Error("Validation: This is the only owner and cannot be deleted.");
+      throw new Error(
+        "Validation: This is the only owner and cannot be deleted.",
+      );
     }
 
     await prisma.user.delete({ where: { id } });
     revalidatePath("/admin/users");
     return { ok: true };
   } catch (error) {
-    return { ok: false, error: toMessage(error, "Could not delete that user.") };
+    return {
+      ok: false,
+      error: toMessage(error, "Could not delete that user."),
+    };
   }
 }
 
@@ -416,8 +480,10 @@ export async function submitVolunteerApplication(formData: FormData) {
       name,
       email,
       phone: ((formData.get("phone") as string) || "").trim() || null,
-      interestArea: ((formData.get("interestArea") as string) || "").trim() || null,
-      availability: ((formData.get("availability") as string) || "").trim() || null,
+      interestArea:
+        ((formData.get("interestArea") as string) || "").trim() || null,
+      availability:
+        ((formData.get("availability") as string) || "").trim() || null,
       message: ((formData.get("message") as string) || "").trim() || null,
     },
   });
@@ -433,7 +499,8 @@ export async function submitHallBooking(formData: FormData) {
     data: {
       name,
       phone,
-      organization: ((formData.get("organization") as string) || "").trim() || null,
+      organization:
+        ((formData.get("organization") as string) || "").trim() || null,
       email: ((formData.get("email") as string) || "").trim() || null,
       eventDate: rawDate ? new Date(rawDate) : null,
       purpose: ((formData.get("purpose") as string) || "").trim() || null,

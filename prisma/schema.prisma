@@ -252,3 +252,26 @@ model Subscriber {
   email     String   @unique
   createdAt DateTime @default(now())
 }
+
+model VolunteerApplication {
+  id             String   @id @default(cuid())
+  name           String
+  email          String
+  phone          String?
+  interestArea   String?
+  availability   String?
+  message        String?
+  createdAt      DateTime @default(now())
+}
+
+model HallBookingRequest {
+  id            String   @id @default(cuid())
+  name          String
+  phone         String
+  organization  String?
+  email         String?
+  eventDate     DateTime?
+  purpose       String?
+  message       String?
+  createdAt     DateTime @default(now())
+}
