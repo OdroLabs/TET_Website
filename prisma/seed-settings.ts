@@ -25,10 +25,11 @@ const FORCE = process.argv.includes("--force");
 
 type Val = { en: string; si?: string; ta?: string };
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1707409066859-a90674383d19?auto=format&fit=crop&w=1800&q=80";
-const COMMUNITY_IMAGE =
-  "https://images.unsplash.com/photo-1593113598332-cd288d649433?auto=format&fit=crop&w=1200&q=80";
+const HERO_IMAGE = "/illustrations/hero-community.svg";
+const COMMUNITY_IMAGE = "/illustrations/illus-community.svg";
+const BANNER_IMAGE = "/illustrations/banner-community.svg";
+const OUTREACH_IMAGE = "/illustrations/illus-outreach.svg";
+const EVENT_IMAGE = "/illustrations/illus-event.svg";
 
 /** Shorthand for the many on/off switches. */
 const ON: Val = { en: "1" };
@@ -37,35 +38,35 @@ const BLANK: Val = { en: "" };
 
 const VIEW_ALL: Val = { en: "View All", si: "සියල්ල බලන්න", ta: "அனைத்தையும் காண்க" };
 const CONTACT_US: Val = { en: "Contact Us", si: "අප අමතන්න", ta: "தொடர்பு கொள்ள" };
-const SUPPORT_CSDF: Val = { en: "Support CSDF", si: "CSDF සඳහා සහාය වන්න", ta: "CSDF-க்கு ஆதரவு" };
+const SUPPORT_TET: Val = { en: "Support TET", si: "TET සඳහා සහාය වන්න", ta: "TET-க்கு ஆதரவு" };
 
 const content: Record<string, Val> = {
   /* ====================================================== General ========= */
   site_name: {
-    en: "Community Strength Development Foundation",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம்",
+    en: "Transgender Empowerment Trust",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை",
   },
-  site_short_name: { en: "CSDF" },
+  site_short_name: { en: "TET" },
   site_tagline: {
-    en: "Supporting marginalized women in Sri Lanka since 2002 — with dignity, respect, and equal opportunity.",
-    si: "2002 සිට ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන්ට ගෞරවය, ගරුත්වය සහ සම අවස්ථා සහිතව සහාය වෙමින්.",
-    ta: "2002 முதல் இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு கண்ணியம், மரியாதை மற்றும் சம வாய்ப்புடன் ஆதரவு.",
+    en: "Trans-led support for trans women in sex work — health, safety, and dignity in Sri Lanka, since 2016.",
+    si: "ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා ට්‍රාන්ස් නායකත්වයෙන් යුත් සහාය — 2016 සිට ශ්‍රී ලංකාවේ සෞඛ්‍යය, ආරක්ෂාව සහ ගෞරවය.",
+    ta: "பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான திருநங்கைகளால் வழிநடத்தப்படும் ஆதரவு — 2016 முதல் இலங்கையில் சுகாதாரம், பாதுகாப்பு மற்றும் கண்ணியம்.",
   },
   logo_image: BLANK,
-  logo_letter: { en: "C" },
+  logo_letter: { en: "T" },
   favicon: BLANK,
 
-  address: { en: "No. 68, Kolonnawa Road,\nKolonnawa, Colombo,\nSri Lanka" },
-  phone: { en: "0112 534 838" },
-  phone2: BLANK,
-  email: { en: "info@csdf.lk" },
+  address: { en: "42 Independence Avenue,\nColombo 05,\nSri Lanka" },
+  phone: { en: "+94 11 234 5678" },
+  phone2: { en: "+94 77 000 1234" },
+  email: { en: "support@tet-srilanka.org" },
   email2: BLANK,
-  whatsapp: { en: "94112534838" },
+  whatsapp: { en: "94770001234" },
   office_hours: {
-    en: "Mon – Fri, 8.30 am to 4.30 pm",
-    si: "සඳුදා – සිකුරාදා, පෙ.ව. 8.30 – ප.ව. 4.30",
-    ta: "திங்கள் – வெள்ளி, மு.ப 8.30 – பி.ப 4.30",
+    en: "Mon–Fri, 9am–5pm. Hotline available 24/7.",
+    si: "සඳුදා – සිකුරාදා, පෙ.ව. 9 – ප.ව. 5. හදිසි උපකාරක මාර්ගය 24/7 පවතී.",
+    ta: "திங்கள் – வெள்ளி, காலை 9 – மாலை 5. உதவி இணைப்பு எண் 24/7 கிடைக்கும்.",
   },
   map_embed: BLANK,
 
@@ -77,17 +78,17 @@ const content: Record<string, Val> = {
   tiktok: BLANK,
 
   seo_title: {
-    en: "Community Strength Development Foundation",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம்",
+    en: "Transgender Empowerment Trust (TET)",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය (TET)",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை (TET)",
   },
   seo_description: {
-    en: "CSDF improves health, safety, dignity, and rights for marginalized women in Sri Lanka through community-led support, advocacy, and education.",
-    si: "CSDF ප්‍රජා නායකත්වයෙන් යුත් සහාය, පෙනී සිටීම සහ අධ්‍යාපනය හරහා ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන්ගේ සෞඛ්‍යය, ආරක්ෂාව, ගෞරවය සහ අයිතිවාසිකම් වැඩිදියුණු කරයි.",
-    ta: "CSDF சமூகம் சார்ந்த ஆதரவு, வாதிடல் மற்றும் கல்வி மூலம் இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களின் சுகாதாரம், பாதுகாப்பு, கண்ணியம் மற்றும் உரிமைகளை மேம்படுத்துகிறது.",
+    en: "TET is a trans-led community organization providing free, confidential healthcare navigation, legal support, and peer solidarity for trans female sex workers across Sri Lanka.",
+    si: "TET යනු ශ්‍රී ලංකාව පුරා ට්‍රාන්ස් කාන්තා ලිංගික සේවා සපයන්නන් සඳහා නොමිලේ, රහස්‍ය සෞඛ්‍ය මාර්ගෝපදේශනය, නීති සහාය සහ සම සහයෝගීතාවය සපයන ට්‍රාන්ස් නායකත්වයෙන් යුත් ප්‍රජා සංවිධානයකි.",
+    ta: "TET என்பது இலங்கை முழுவதும் திருநங்கை பாலியல் தொழிலாளர்களுக்கு இலவச, இரகசிய சுகாதார வழிகாட்டல், சட்ட உதவி மற்றும் சக ஒற்றுமையை வழங்கும் திருநங்கைகளால் வழிநடத்தப்படும் சமூக அமைப்பு.",
   },
   seo_keywords: {
-    en: "CSDF, Sri Lanka, women's health, HIV support, community development, human rights, Colombo",
+    en: "TET, Sri Lanka, trans women, sex worker health, HIV prevention, harm reduction, legal aid, Colombo",
   },
   og_image: BLANK,
 
@@ -110,46 +111,46 @@ const content: Record<string, Val> = {
   nav_show_contact: ON,
   show_header_donate: ON,
   show_floating_donate: ON,
-  header_donate_label: { en: "Donation", si: "පරිත්‍යාග", ta: "நன்கொடை" },
+  header_donate_label: { en: "Donate", si: "පරිත්‍යාග කරන්න", ta: "நன்கொடை" },
 
   /* ======================================================== Footer ======== */
   footer_about: {
-    en: "Supporting marginalized women in Sri Lanka since 2002 — with dignity, respect, and equal opportunity.",
-    si: "2002 සිට ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන්ට ගෞරවය, ගරුත්වය සහ සම අවස්ථා සහිතව සහාය වෙමින්.",
-    ta: "2002 முதல் இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு கண்ணியம், மரியாதை மற்றும் சம வாய்ப்புடன் ஆதரவு.",
+    en: "Transgender Empowerment Trust is a trans-led community organization supporting trans female sex workers across Sri Lanka with healthcare, legal aid, and peer solidarity since 2016.",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය යනු 2016 සිට ශ්‍රී ලංකාව පුරා ට්‍රාන්ස් කාන්තා ලිංගික සේවා සපයන්නන්ට සෞඛ්‍ය සේවා, නීති සහාය සහ සම සහයෝගීතාවයෙන් සහාය දෙන ට්‍රාන්ස් නායකත්වයෙන් යුත් ප්‍රජා සංවිධානයකි.",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை என்பது 2016 முதல் இலங்கை முழுவதும் திருநங்கை பாலியல் தொழிலாளர்களுக்கு சுகாதாரம், சட்ட உதவி மற்றும் சக ஒற்றுமையுடன் ஆதரவளிக்கும் திருநங்கைகளால் வழிநடத்தப்படும் சமூக அமைப்பு.",
   },
   show_footer_explore: ON,
   show_footer_involved: ON,
   show_footer_social: ON,
   show_footer_newsletter: ON,
   footer_newsletter_title: {
-    en: "Stay informed about programs, events, and resources",
+    en: "Stay informed about programs, events & resources",
     si: "වැඩසටහන්, සිදුවීම් සහ සම්පත් පිළිබඳ දැනුවත් වන්න",
     ta: "நிகழ்ச்சிகள், நிகழ்வுகள் மற்றும் வளங்கள் பற்றி அறிந்திருங்கள்",
   },
   footer_newsletter_text: BLANK,
   footer_copyright: {
-    en: "CSDF. All rights reserved.",
-    si: "CSDF. සියලුම හිමිකම් ඇවිරිණි.",
-    ta: "CSDF. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+    en: "TET. All rights reserved. Trans-led. Confidential. Judgment-free.",
+    si: "TET. සියලුම හිමිකම් ඇවිරිණි. ට්‍රාන්ස් නායකත්වයෙන් යුතුයි. රහස්‍යයි. විනිශ්චයෙන් තොරයි.",
+    ta: "TET. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை. திருநங்கைகளால் வழிநடத்தப்படுகிறது. இரகசியம். தீர்ப்பற்றது.",
   },
   footer_credit: BLANK,
 
   /* ===================================================== Home page ======== */
   hero_badge: {
-    en: "Free · Confidential · Non-Judgmental",
-    si: "නොමිලේ · රහස්‍ය · විනිශ්චයෙන් තොර",
-    ta: "இலவசம் · இரகசியம் · தீர்ப்பற்றது",
+    en: "Free · Confidential · Trans-Led",
+    si: "නොමිලේ · රහස්‍ය · ට්‍රාන්ස් නායකත්වයෙන් යුතුයි",
+    ta: "இலவசம் · இரகசியம் · திருநங்கைகளால் வழிநடத்தப்படுகிறது",
   },
   hero_title: {
-    en: "Empowering Women Through Health, Support & Advocacy",
-    si: "සෞඛ්‍යය, සහාය සහ පෙනී සිටීම හරහා කාන්තාවන් සවිබල ගැන්වීම",
-    ta: "சுகாதாரம், ஆதரவு மற்றும் வாதிடல் மூலம் பெண்களை மேம்படுத்துதல்",
+    en: "Health, Safety & Dignity for Trans Women in Sex Work",
+    si: "ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා සෞඛ්‍යය, ආරක්ෂාව සහ ගෞරවය",
+    ta: "பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான சுகாதாரம், பாதுகாப்பு மற்றும் கண்ணியம்",
   },
   hero_subtitle: {
-    en: "CSDF works alongside marginalized women to improve access to healthcare, promote human rights, strengthen communities, and create healthier and safer lives.",
-    si: "CSDF කොන් වූ කාන්තාවන් සමඟ එක්ව සෞඛ්‍ය සේවා ලබාගැනීම වැඩිදියුණු කිරීමට, මානව හිමිකම් ප්‍රවර්ධනයට, ප්‍රජාවන් ශක්තිමත් කිරීමට සහ සෞඛ්‍ය සම්පන්න, ආරක්ෂිත ජීවිත ගොඩනැගීමට කටයුතු කරයි.",
-    ta: "CSDF ஓரங்கட்டப்பட்ட பெண்களுடன் இணைந்து சுகாதார அணுகலை மேம்படுத்தவும், மனித உரிமைகளை ஊக்குவிக்கவும், சமூகங்களை வலுப்படுத்தவும், ஆரோக்கியமான பாதுகாப்பான வாழ்க்கையை உருவாக்கவும் செயல்படுகிறது.",
+    en: "TET is a trans-led community organization providing free healthcare navigation, legal support, and peer solidarity for trans female sex workers across Sri Lanka.",
+    si: "TET යනු ශ්‍රී ලංකාව පුරා ට්‍රාන්ස් කාන්තා ලිංගික සේවා සපයන්නන් සඳහා නොමිලේ සෞඛ්‍ය මාර්ගෝපදේශනය, නීති සහාය සහ සම සහයෝගීතාවය සපයන ට්‍රාන්ස් නායකත්වයෙන් යුත් ප්‍රජා සංවිධානයකි.",
+    ta: "TET என்பது இலங்கை முழுவதும் திருநங்கை பாலியல் தொழிலாளர்களுக்கு இலவச சுகாதார வழிகாட்டல், சட்ட உதவி மற்றும் சக ஒற்றுமையை வழங்கும் திருநங்கைகளால் வழிநடத்தப்படும் சமூக அமைப்பு.",
   },
   hero_image: { en: HERO_IMAGE },
   hero_cta1_label: { en: "Get Support", si: "සහාය ලබාගන්න", ta: "உதவி பெற" },
@@ -157,44 +158,44 @@ const content: Record<string, Val> = {
   hero_cta2_label: { en: "Learn More", si: "තව දැනගන්න", ta: "மேலும் அறிய" },
   hero_cta2_link: { en: "/about" },
   hero_points: {
-    en: "All information kept strictly confidential\nNon-judgmental support for every person\nCommunity-led by people who understand\nFree services — no cost, no barriers",
-    si: "සියලුම තොරතුරු දැඩි රහස්‍යභාවයෙන් තබා ගැනේ\nසෑම කෙනෙකුටම විනිශ්චයෙන් තොර සහාය\nතේරුම් ගන්නා අය විසින් මෙහෙයවන ප්‍රජා නායකත්වය\nනොමිලේ සේවා — වියදමක් නැත, බාධක නැත",
-    ta: "அனைத்து தகவல்களும் முற்றிலும் இரகசியமாக பாதுகாக்கப்படும்\nஒவ்வொருவருக்கும் தீர்ப்பற்ற ஆதரவு\nபுரிந்துகொள்பவர்களால் வழிநடத்தப்படும் சமூகம்\nஇலவச சேவைகள் — செலவு இல்லை, தடைகள் இல்லை",
+    en: "Confidential & judgment-free, always\nLed by trans women, for trans women\nFree services — no cost, no barriers\nRooted in community trust",
+    si: "සැමවිටම රහස්‍ය සහ විනිශ්චයෙන් තොරයි\nට්‍රාන්ස් කාන්තාවන් විසින්, ට්‍රාන්ස් කාන්තාවන් වෙනුවෙන් මෙහෙයවනු ලැබේ\nනොමිලේ සේවා — වියදමක් නැත, බාධක නැත\nප්‍රජා විශ්වාසය මත පදනම් වේ",
+    ta: "எப்போதும் இரகசியமும் தீர்ப்பற்றதும்\nதிருநங்கைகளால், திருநங்கைகளுக்காக வழிநடத்தப்படுகிறது\nஇலவச சேவைகள் — செலவு இல்லை, தடைகள் இல்லை\nசமூக நம்பிக்கையில் வேரூன்றியது",
   },
   hero_footnote: {
-    en: "08+ partner organizations · 10 districts across Sri Lanka",
-    si: "හවුල්කාර ආයතන 08+ · ශ්‍රී ලංකාව පුරා දිස්ත්‍රික්ක 10ක්",
-    ta: "08+ பங்காளர் அமைப்புகள் · இலங்கை முழுவதும் 10 மாவட்டங்கள்",
+    en: "6 outreach sites · 9 partner clinics · 3 provinces served",
+    si: "ප්‍රවේශ ස්ථාන 6ක් · හවුල්කාර සායන 9ක් · පළාත් 3කට සේවා සපයයි",
+    ta: "6 அணுகல் தளங்கள் · 9 பங்காளர் மருத்துவமனைகள் · 3 மாகாணங்களுக்கு சேவை",
   },
 
   show_home_about: ON,
   home_about_eyebrow: { en: "Who We Are", si: "අපි කවුද", ta: "நாங்கள் யார்" },
   home_about_title: {
-    en: "Community Strength Development Foundation",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம்",
+    en: "Transgender Empowerment Trust",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை",
   },
   home_about_text: {
-    en: "Community Strength Development Foundation (CSDF) is a non-profit, voluntary organization registered with the Department of Social Services and inaugurated in 2002. Working independently — irrespective of race, religion, caste, and party politics — CSDF focuses on marginalized women in Sri Lanka, providing the support services needed to uplift their lives with dignity, respect, and equal opportunity.",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම (CSDF) සමාජ සේවා දෙපාර්තමේන්තුවේ ලියාපදිංචි, 2002 දී ආරම්භ කරන ලද ලාභ නොලබන ස්වේච්ඡා සංවිධානයකි. ජාති, ආගම්, කුල සහ පක්ෂ දේශපාලනයෙන් තොරව ස්වාධීනව කටයුතු කරමින්, CSDF ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන් කෙරෙහි අවධානය යොමු කරමින්, ගෞරවය, ගරුත්වය සහ සම අවස්ථා සහිතව ඔවුන්ගේ ජීවිත නංවාලීමට අවශ්‍ය සහාය සේවා සපයයි.",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம் (CSDF) சமூக சேவைகள் திணைக்களத்தில் பதிவுசெய்யப்பட்ட, 2002 இல் ஆரம்பிக்கப்பட்ட இலாப நோக்கற்ற தன்னார்வ அமைப்பாகும். இனம், மதம், சாதி மற்றும் கட்சி அரசியலுக்கு அப்பால் சுயாதீனமாக செயல்படும் CSDF, இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களில் கவனம் செலுத்தி, கண்ணியம், மரியாதை மற்றும் சம வாய்ப்புடன் அவர்களின் வாழ்க்கையை மேம்படுத்த தேவையான ஆதரவு சேவைகளை வழங்குகிறது.",
+    en: "Transgender Empowerment Trust (TET) is a trans-led, community-based organization founded by and for trans women engaged in sex work. Registered as a non-profit in 2016, we work at the intersection of gender identity and sex worker rights — providing healthcare navigation, harm reduction, legal aid, and peer support so every member of our community can access care without discrimination and build a life on her own terms.",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය (TET) යනු ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් විසින්, ඔවුන් වෙනුවෙන් ආරම්භ කරන ලද ට්‍රාන්ස් නායකත්වයෙන් යුත් ප්‍රජා පදනම් සංවිධානයකි. 2016 දී ලාභ නොලබන සංවිධානයක් ලෙස ලියාපදිංචි වූ අප, ස්ත්‍රී පුරුෂ භාවය සහ ලිංගික සේවා අයිතිවාසිකම් හරස් වන ස්ථානයේ කටයුතු කරමින්, සෞඛ්‍ය මාර්ගෝපදේශනය, හානි අවම කිරීම, නීති සහාය සහ සම සහාය සපයන අතර, අපගේ ප්‍රජාවේ සෑම සාමාජිකයෙකුටම වෙනස්කම් නොකර සත්කාරයට ප්‍රවේශ වී තමන්ගේම කොන්දේසි මත ජීවිතයක් ගොඩනගා ගැනීමට හැකි කරයි.",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை (TET) என்பது பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளால், அவர்களுக்காக நிறுவப்பட்ட திருநங்கைகளால் வழிநடத்தப்படும் சமூகம் சார்ந்த அமைப்பு. 2016 இல் இலாப நோக்கற்ற அமைப்பாக பதிவுசெய்யப்பட்ட நாங்கள், பாலின அடையாளம் மற்றும் பாலியல் தொழிலாளர் உரிமைகள் சந்திக்கும் இடத்தில் செயல்பட்டு, சுகாதார வழிகாட்டல், தீங்கு குறைப்பு, சட்ட உதவி மற்றும் சக ஆதரவை வழங்குகிறோம், இதனால் எங்கள் சமூகத்தின் ஒவ்வொரு உறுப்பினரும் பாகுபாடின்றி பராமரிப்பை அணுகி தங்கள் சொந்த விதிமுறைகளில் வாழ்க்கையை உருவாக்க முடியும்.",
   },
   home_about_image: { en: COMMUNITY_IMAGE },
   home_about_caption: {
-    en: "Community Strength Development Foundation",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம்",
+    en: "Transgender Empowerment Trust",
+    si: "ට්‍රාන්ස්ජෙන්ඩර් සවිබල ගැන්වීමේ භාරය",
+    ta: "திருநங்கை மேம்பாட்டு அறக்கட்டளை",
   },
   home_about_link_label: { en: "Learn More", si: "තව දැනගන්න", ta: "மேலும் அறிய" },
 
   show_home_stats: ON,
-  home_stats_eyebrow: { en: "Our Impact", si: "අපගේ බලපෑම", ta: "எங்கள் தாக்கம்" },
+  home_stats_eyebrow: { en: "Impact", si: "බලපෑම", ta: "தாக்கம்" },
   home_stats_title: {
-    en: "The difference we make together",
-    si: "අපි එකට කරන වෙනස",
-    ta: "நாம் ஒன்றாக ஏற்படுத்தும் மாற்றம்",
+    en: "Measured progress that reflects community priorities",
+    si: "ප්‍රජා ප්‍රමුඛතා පිළිබිඹු කරන මනිනු ලබන ප්‍රගතිය",
+    ta: "சமூக முன்னுரிமைகளை பிரதிபலிக்கும் அளவிடப்பட்ட முன்னேற்றம்",
   },
-  home_stats_image: { en: HERO_IMAGE },
+  home_stats_image: { en: BANNER_IMAGE },
 
   show_home_services: ON,
   home_services_eyebrow: { en: "Our Services", si: "අපගේ සේවාවන්", ta: "எங்கள் சேவைகள்" },
@@ -208,11 +209,11 @@ const content: Record<string, Val> = {
   home_services_link_label: VIEW_ALL,
 
   show_home_projects: ON,
-  home_projects_eyebrow: { en: "Projects", si: "ව්‍යාපෘති", ta: "திட்டங்கள்" },
+  home_projects_eyebrow: { en: "Our Initiatives", si: "අපගේ මුලපිරීම්", ta: "எங்கள் முயற்சிகள்" },
   home_projects_title: {
-    en: "Featured Projects",
-    si: "විශේෂ ව්‍යාපෘති",
-    ta: "சிறப்புத் திட்டங்கள்",
+    en: "Featured Programs",
+    si: "විශේෂ වැඩසටහන්",
+    ta: "சிறப்பு திட்டங்கள்",
   },
   home_projects_text: BLANK,
   home_projects_count: { en: "4" },
@@ -221,104 +222,104 @@ const content: Record<string, Val> = {
   show_home_contact: ON,
   home_contact_eyebrow: { en: "Get In Touch", si: "සම්බන්ධ වන්න", ta: "தொடர்பு கொள்ளுங்கள்" },
   home_contact_title: {
-    en: "Don't hesitate to contact us",
-    si: "පසුබට නොවී අප හා සම්බන්ධ වන්න",
-    ta: "தயங்காமல் எங்களை தொடர்பு கொள்ளுங்கள்",
+    en: "We're here — reach out anytime",
+    si: "අපි මෙහි සිටිමු — ඕනෑම වේලාවක සම්බන්ධ වන්න",
+    ta: "நாங்கள் இங்கே இருக்கிறோம் — எப்போது வேண்டுமானாலும் தொடர்பு கொள்ளுங்கள்",
   },
   home_contact_text: {
-    en: "Reach out to us — all inquiries are treated confidentially.",
-    si: "අප වෙත සම්බන්ධ වන්න — සියලුම විමසීම් රහස්‍යභාවයෙන් යුතුව සලකනු ලැබේ.",
-    ta: "எங்களை அணுகவும் — அனைத்து விசாரணைகளும் இரகசியமாக கையாளப்படும்.",
+    en: "Whether you need support, want to volunteer, or have a question, our team responds confidentially and without judgment.",
+    si: "ඔබට සහාය අවශ්‍ය වුවත්, ස්වේච්ඡා සේවය කිරීමට කැමති වුවත්, ප්‍රශ්නයක් තිබුණත්, අපගේ කණ්ඩායම රහස්‍යභාවයෙන් සහ විනිශ්චයෙන් තොරව ප්‍රතිචාර දක්වයි.",
+    ta: "உங்களுக்கு ஆதரவு தேவைப்பட்டாலும், தன்னார்வலராக இருக்க விரும்பினாலும், அல்லது கேள்வி இருந்தாலும், எங்கள் குழு இரகசியமாகவும் தீர்ப்பின்றியும் பதிலளிக்கும்.",
   },
   home_contact_card_title: { en: "Call Us", si: "අමතන්න", ta: "அழைக்கவும்" },
-  home_contact_image: { en: HERO_IMAGE },
+  home_contact_image: { en: OUTREACH_IMAGE },
   home_contact_button: CONTACT_US,
 
   show_home_testimonials: ON,
   home_testimonials_eyebrow: { en: "Community Voices", si: "ප්‍රජා හඬ", ta: "சமூகக் குரல்கள்" },
   home_testimonials_title: {
-    en: "Stories from the women we serve",
-    si: "අප සේවය කරන කාන්තාවන්ගේ කථා",
-    ta: "நாங்கள் சேவை செய்யும் பெண்களின் கதைகள்",
+    en: "Stories from the center of our work",
+    si: "අපගේ කාර්යයේ කේන්ද්‍රස්ථානයෙන් කථා",
+    ta: "எங்கள் பணியின் மையத்திலிருந்து கதைகள்",
   },
 
   show_home_news: ON,
   home_news_eyebrow: { en: "Latest News", si: "නවතම පුවත්", ta: "சமீபத்திய செய்திகள்" },
-  home_news_title: { en: "Latest News", si: "නවතම පුවත්", ta: "சமீபத்திய செய்திகள்" },
+  home_news_title: { en: "Updates from the Field", si: "ක්ෂේත්‍රයෙන් යාවත්කාලීන කිරීම්", ta: "களத்திலிருந்து புதுப்பிப்புகள்" },
   home_news_count: { en: "3" },
 
   show_home_events: ON,
   home_events_eyebrow: {
-    en: "Upcoming Events",
-    si: "ඉදිරි සිදුවීම්",
-    ta: "வரவிருக்கும் நிகழ்வுகள்",
+    en: "Events",
+    si: "සිදුවීම්",
+    ta: "நிகழ்வுகள்",
   },
   home_events_title: {
-    en: "Upcoming Events",
-    si: "ඉදිරි සිදුවීම්",
-    ta: "வரவிருக்கும் நிகழ்வுகள்",
+    en: "Upcoming Activities",
+    si: "ඉදිරි කටයුතු",
+    ta: "வரவிருக்கும் செயல்பாடுகள்",
   },
   home_events_count: { en: "2" },
   home_events_link_label: VIEW_ALL,
 
   show_home_partners: ON,
-  home_partners_eyebrow: { en: "Our Partners", si: "අපගේ හවුල්කරුවන්", ta: "எங்கள் பங்காளிகள்" },
+  home_partners_eyebrow: { en: "Partners", si: "හවුල්කරුවන්", ta: "பங்காளிகள்" },
   home_partners_title: {
-    en: "Working together",
-    si: "එකට වැඩ කරමින්",
-    ta: "ஒன்றாக செயல்படுகிறோம்",
+    en: "Working with health, legal, and community organizations",
+    si: "සෞඛ්‍ය, නීති සහ ප්‍රජා සංවිධාන සමඟ එක්ව කටයුතු කිරීම",
+    ta: "சுகாதார, சட்ட மற்றும் சமூக அமைப்புகளுடன் இணைந்து செயல்படுதல்",
   },
 
   show_home_donate: ON,
-  home_donate_eyebrow: SUPPORT_CSDF,
+  home_donate_eyebrow: SUPPORT_TET,
   home_donate_title: {
-    en: "Your gift keeps these services running",
-    si: "ඔබගේ දායකත්වය මෙම සේවා පවත්වාගෙන යයි",
-    ta: "உங்கள் நன்கொடை இந்த சேவைகளைத் தொடர வைக்கிறது",
+    en: "Help sustain healthcare, legal aid & outreach",
+    si: "සෞඛ්‍ය සේවා, නීති සහාය සහ ප්‍රජා ප්‍රවේශය පවත්වාගෙන යාමට උදව් කරන්න",
+    ta: "சுகாதாரம், சட்ட உதவி மற்றும் அணுகல் பணியை நிலைநிறுத்த உதவுங்கள்",
   },
   home_donate_text: {
-    en: "Your support funds direct services, peer leadership, health education, and safe community spaces.",
-    si: "ඔබගේ සහාය සෘජු සේවා, නායකත්ව පුහුණුව, සෞඛ්‍ය අධ්‍යාපනය සහ ආරක්ෂිත ප්‍රජා අවකාශයන් සඳහා යොදවනු ලැබේ.",
-    ta: "உங்கள் ஆதரவு நேரடி சேவைகள், தலைமைத்துவ பயிற்சி, சுகாதாரக் கல்வி மற்றும் பாதுகாப்பான சமூக இடங்களுக்கு பயன்படுகிறது.",
+    en: "Your support funds direct services, peer navigation, health education, and safe community spaces for trans women in sex work.",
+    si: "ඔබගේ සහාය ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා සෘජු සේවා, සම මාර්ගෝපදේශනය, සෞඛ්‍ය අධ්‍යාපනය සහ ආරක්ෂිත ප්‍රජා අවකාශ සඳහා යොදවනු ලැබේ.",
+    ta: "பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான நேரடி சேவைகள், சக வழிகாட்டல், சுகாதாரக் கல்வி மற்றும் பாதுகாப்பான சமூக இடங்களுக்கு உங்கள் ஆதரவு பயன்படுகிறது.",
   },
   home_donate_button: { en: "Make a Donation", si: "පරිත්‍යාගයක් කරන්න", ta: "நன்கொடை வழங்க" },
-  home_donate_button2: CONTACT_US,
+  home_donate_button2: { en: "Become a Volunteer", si: "ස්වේච්ඡා සේවකයෙක් වන්න", ta: "தன்னார்வலராகுங்கள்" },
 
   /* ==================================================== About page ======== */
   about_hero_title: { en: "About Us", si: "අප ගැන", ta: "எங்களைப் பற்றி" },
   about_hero_intro: {
-    en: "Supporting marginalized women in Sri Lanka since 2002 — with dignity, respect, and equal opportunity.",
-    si: "2002 සිට ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන්ට ගෞරවය, ගරුත්වය සහ සම අවස්ථා සහිතව සහාය වෙමින්.",
-    ta: "2002 முதல் இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு கண்ணியம், மரியாதை மற்றும் சம வாய்ப்புடன் ஆதரவு.",
+    en: "Built by the community we serve — trans-led support for trans women in sex work since 2016.",
+    si: "අප සේවය කරන ප්‍රජාව විසින්ම ගොඩනගන ලදී — 2016 සිට ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා ට්‍රාන්ස් නායකත්වයෙන් යුත් සහාය.",
+    ta: "நாங்கள் சேவை செய்யும் சமூகத்தால் கட்டப்பட்டது — 2016 முதல் பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான திருநங்கைகளால் வழிநடத்தப்படும் ஆதரவு.",
   },
-  about_hero_image: BLANK,
+  about_hero_image: { en: BANNER_IMAGE },
 
   about_overview_title: { en: "Overview", si: "දළ විශ්ලේෂණය", ta: "மேலோட்டம்" },
   about_overview: {
-    en: "Community Strength Development Foundation (CSDF) is a non-profit, voluntary organization registered with the Department of Social Services and inaugurated in 2002. Working independently — irrespective of race, religion, caste, and party politics — CSDF focuses on marginalized women in Sri Lanka, providing the support services needed to uplift their lives with dignity, respect, and equal opportunity.",
-    si: "ප්‍රජා ශක්ති සංවර්ධන පදනම (CSDF) සමාජ සේවා දෙපාර්තමේන්තුවේ ලියාපදිංචි, 2002 දී ආරම්භ කරන ලද ලාභ නොලබන ස්වේච්ඡා සංවිධානයකි. ජාති, ආගම්, කුල සහ පක්ෂ දේශපාලනයෙන් තොරව ස්වාධීනව කටයුතු කරමින්, CSDF ශ්‍රී ලංකාවේ කොන් වූ කාන්තාවන් කෙරෙහි අවධානය යොමු කරමින්, ගෞරවය, ගරුත්වය සහ සම අවස්ථා සහිතව ඔවුන්ගේ ජීවිත නංවාලීමට අවශ්‍ය සහාය සේවා සපයයි.",
-    ta: "சமூக வலிமை மேம்பாட்டு மன்றம் (CSDF) சமூக சேவைகள் திணைக்களத்தில் பதிவுசெய்யப்பட்ட, 2002 இல் ஆரம்பிக்கப்பட்ட இலாப நோக்கற்ற தன்னார்வ அமைப்பாகும். இனம், மதம், சாதி மற்றும் கட்சி அரசியலுக்கு அப்பால் சுயாதீனமாக செயல்படும் CSDF, இலங்கையில் ஓரங்கட்டப்பட்ட பெண்களில் கவனம் செலுத்தி, கண்ணியம், மரியாதை மற்றும் சம வாய்ப்புடன் அவர்களின் வாழ்க்கையை மேம்படுத்த தேவையான ஆதரவு சேவைகளை வழங்குகிறது.",
+    en: "TET was founded in 2016 by a small group of trans women in sex work who were tired of navigating hostile clinics, unresponsive police, and services that were never designed with them in mind. A decade later, we're a trans-led team of outreach workers, peer counsellors, legal advocates, and volunteers working across 3 provinces of Sri Lanka.",
+    si: "සතුරු සායන, ප්‍රතිචාර නොදක්වන පොලීසිය සහ ඔවුන් සිතට ගෙන කිසිදා නිර්මාණය නොකළ සේවා අතරින් ගමන් කිරීමට වෙහෙසට පත් ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන්ගේ කුඩා පිරිසක් විසින් TET 2016 දී ආරම්භ කරන ලදී. දශකයකට පසු, අපි ශ්‍රී ලංකාවේ පළාත් 3ක් පුරා කටයුතු කරන ප්‍රවේශ සේවකයින්, සම උපදේශකයින්, නීති පෙනී සිටින්නන් සහ ස්වේච්ඡා සේවකයින්ගෙන් සමන්විත ට්‍රාන්ස් නායකත්වයෙන් යුත් කණ්ඩායමකි.",
+    ta: "விரோதப் போக்குடைய கிளினிக்குகள், பதிலளிக்காத காவல்துறை, மற்றும் தங்களை மனதில் கொள்ளாமல் வடிவமைக்கப்பட்ட சேவைகளை எதிர்கொள்ள சோர்வடைந்த பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளின் ஒரு சிறு குழுவினரால் TET 2016 இல் நிறுவப்பட்டது. ஒரு தசாப்தத்திற்குப் பிறகு, நாங்கள் இலங்கையின் 3 மாகாணங்களில் செயல்படும் அணுகல் பணியாளர்கள், சக ஆலோசகர்கள், சட்ட வக்கீல்கள் மற்றும் தன்னார்வலர்களைக் கொண்ட திருநங்கைகளால் வழிநடத்தப்படும் குழு.",
   },
-  about_overview_image: BLANK,
+  about_overview_image: { en: COMMUNITY_IMAGE },
 
   about_vision_title: { en: "Our Vision", si: "අපගේ දැක්ම", ta: "எங்கள் தொலைநோக்கு" },
   about_vision: {
-    en: "A society where every marginalized woman in Sri Lanka lives with dignity, health, safety, and equal opportunity.",
-    si: "ශ්‍රී ලංකාවේ සෑම කොන් වූ කාන්තාවක්ම ගෞරවය, සෞඛ්‍යය, ආරක්ෂාව සහ සම අවස්ථා සහිතව ජීවත් වන සමාජයක්.",
-    ta: "இலங்கையில் ஓரங்கட்டப்பட்ட ஒவ்வொரு பெண்ணும் கண்ணியம், ஆரோக்கியம், பாதுகாப்பு மற்றும் சம வாய்ப்புடன் வாழும் சமூகம்.",
+    en: "A future where dignity isn't conditional — where trans women in sex work can access healthcare, justice, and opportunity without fear of discrimination, violence, or erasure, and where community-led organizations are trusted partners in public health and policy.",
+    si: "ගෞරවය කොන්දේසි සහිත නොවන අනාගතයක් — ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන්ට වෙනස්කම්, ප්‍රචණ්ඩත්වය හෝ මකා දැමීම ගැන බියෙන් තොරව සෞඛ්‍ය සේවා, යුක්තිය සහ අවස්ථා වෙත ප්‍රවේශ විය හැකි, සහ ප්‍රජා නායකත්වයෙන් යුත් සංවිධාන මහජන සෞඛ්‍යය සහ ප්‍රතිපත්තිවල විශ්වාසනීය හවුල්කරුවන් වන අනාගතයක්.",
+    ta: "கண்ணியம் நிபந்தனைக்குட்பட்டதாக இல்லாத ஒரு எதிர்காலம் — பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகள் பாகுபாடு, வன்முறை அல்லது அழிப்பு பற்றிய பயமின்றி சுகாதாரம், நீதி மற்றும் வாய்ப்புகளை அணுக முடியும், சமூகம் தலைமையிலான அமைப்புகள் பொது சுகாதாரம் மற்றும் கொள்கையில் நம்பகமான பங்காளர்களாக இருக்கும் எதிர்காலம்.",
   },
   about_mission_title: { en: "Our Mission", si: "අපගේ මෙහෙවර", ta: "எங்கள் பணி" },
   about_mission: {
-    en: "To provide community-led support, healthcare access, rights awareness, and economic opportunity to marginalized women — working with dignity, confidentiality, and respect, irrespective of race, religion, caste, or politics.",
-    si: "ජාති, ආගම්, කුල හෝ දේශපාලනයෙන් තොරව — ගෞරවය, රහස්‍යභාවය සහ ගරුත්වයෙන් යුතුව කොන් වූ කාන්තාවන්ට ප්‍රජා නායකත්වයෙන් යුත් සහාය, සෞඛ්‍ය ප්‍රවේශය, අයිතිවාසිකම් දැනුවත් කිරීම සහ ආර්ථික අවස්ථා ලබා දීම.",
-    ta: "இனம், மதம், சாதி அல்லது அரசியல் வேறுபாடின்றி — கண்ணியம், இரகசியம் மற்றும் மரியாதையுடன் ஓரங்கட்டப்பட்ட பெண்களுக்கு சமூகம் சார்ந்த ஆதரவு, சுகாதார அணுகல், உரிமை விழிப்புணர்வு மற்றும் பொருளாதார வாய்ப்புகளை வழங்குதல்.",
+    en: "To improve access to healthcare, defend human rights, and strengthen community for trans women engaged in sex work in Sri Lanka — through services that are confidential, free, and led by people who understand the work firsthand.",
+    si: "ශ්‍රී ලංකාවේ ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා සෞඛ්‍ය ප්‍රවේශය වැඩිදියුණු කිරීම, මානව හිමිකම් ආරක්ෂා කිරීම සහ ප්‍රජාව ශක්තිමත් කිරීම — රහස්‍ය, නොමිලේ සහ මෙම කාර්යය මුලින්ම තේරුම් ගන්නා අය විසින් මෙහෙයවනු ලබන සේවා හරහා.",
+    ta: "இலங்கையில் பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான சுகாதார அணுகலை மேம்படுத்துதல், மனித உரிமைகளை பாதுகாத்தல், சமூகத்தை வலுப்படுத்துதல் — இரகசியமான, இலவசமான, இப்பணியை நேரடியாக புரிந்துகொள்பவர்களால் வழிநடத்தப்படும் சேவைகள் மூலம்.",
   },
 
   about_values_title: { en: "Our Values", si: "අපගේ වටිනාකම්", ta: "எங்கள் மதிப்புகள்" },
   about_values: {
-    en: "Confidentiality :: Everything shared with us stays private. No names, no records passed on, no exceptions.\nNo judgement :: Every person is met with respect regardless of their circumstances, work, or health status.\nCommunity-led :: Our programs are designed and delivered by people with lived experience of the issues.\nEqual access :: Services are free and open to all — cost is never a barrier to support.\nDignity first :: We work with women, never on their behalf. Decisions always remain theirs.\nIndependence :: We operate free of race, religion, caste, and party politics.",
-    si: "රහස්‍යභාවය :: අප සමඟ බෙදාගන්නා සියල්ල පුද්ගලිකව තබා ගැනේ. නම් නැත, වාර්තා ලබා නොදේ, ව්‍යතිරේක නැත.\nවිනිශ්චයක් නැත :: තත්ත්වය, රැකියාව හෝ සෞඛ්‍ය තත්ත්වය නොසලකා සෑම කෙනෙකුටම ගරුත්වයෙන් සලකනු ලැබේ.\nප්‍රජා නායකත්වය :: අපගේ වැඩසටහන් එම ගැටලු අත්විඳි අය විසින් නිර්මාණය කර ක්‍රියාත්මක කරනු ලැබේ.\nසම ප්‍රවේශය :: සේවා නොමිලේ සහ සියල්ලන්ට විවෘතයි — වියදම කිසිදා බාධාවක් නොවේ.\nගෞරවය පළමුව :: අපි කාන්තාවන් සමඟ වැඩ කරමු, ඔවුන් වෙනුවෙන් නොවේ. තීරණ සැමවිටම ඔවුන්ගේය.\nස්වාධීනත්වය :: අපි ජාති, ආගම්, කුල සහ පක්ෂ දේශපාලනයෙන් තොරව කටයුතු කරමු.",
-    ta: "இரகசியம் :: எங்களுடன் பகிரப்படும் அனைத்தும் தனிப்பட்டதாக இருக்கும். பெயர்கள் இல்லை, பதிவுகள் பகிரப்படாது, விதிவிலக்கு இல்லை.\nதீர்ப்பு இல்லை :: சூழ்நிலை, தொழில் அல்லது சுகாதார நிலை எதுவாக இருந்தாலும் ஒவ்வொருவரும் மரியாதையுடன் நடத்தப்படுவார்.\nசமூகம் சார்ந்தது :: எங்கள் திட்டங்கள் அந்த பிரச்சினைகளை அனுபவித்தவர்களால் வடிவமைக்கப்பட்டு வழங்கப்படுகின்றன.\nசம அணுகல் :: சேவைகள் இலவசம், அனைவருக்கும் திறந்தவை — செலவு ஒருபோதும் தடையல்ல.\nகண்ணியம் முதலில் :: நாங்கள் பெண்களுடன் இணைந்து பணியாற்றுகிறோம், அவர்களுக்குப் பதிலாக அல்ல. முடிவுகள் எப்போதும் அவர்களுடையவை.\nசுயாதீனம் :: இனம், மதம், சாதி மற்றும் கட்சி அரசியலுக்கு அப்பால் செயல்படுகிறோம்.",
+    en: "Confidentiality :: Every interaction is private. No one accesses our services without control over their own information.\nTrans Leadership :: Our staff and peer educators are majority trans women — because lived experience is expertise.\nHarm Reduction :: We meet people where they are, without judgment, ultimatums, or conditions on care.\nRights-Based :: Health and safety are rights, not privileges — we advocate accordingly, publicly and firmly.\nSolidarity :: We build peer networks so no member of our community has to navigate crisis alone.\nAccountability :: We report transparently to our community and funders on how resources are used.",
+    si: "රහස්‍යභාවය :: සෑම අන්තර්ක්‍රියාවක්ම පුද්ගලිකයි. කිසිවෙකුට තමන්ගේ තොරතුරු පිළිබඳ පාලනයකින් තොරව අපගේ සේවා වෙත ප්‍රවේශ විය නොහැක.\nට්‍රාන්ස් නායකත්වය :: අපගේ කාර්ය මණ්ඩලය සහ සම අධ්‍යාපනඥයින්ගෙන් වැඩි ප්‍රමාණයක් ට්‍රාන්ස් කාන්තාවෝය — මන්ද ජීවන අත්දැකීම ප්‍රවීණත්වයක් නිසාය.\nහානි අවම කිරීම :: අපි විනිශ්චයකින්, අවසාන නියෝගයකින් හෝ සත්කාරයට කොන්දේසිවලින් තොරව මිනිසුන් සිටින ස්ථානයේදීම හමුවෙමු.\nඅයිතිවාසිකම් පදනම් :: සෞඛ්‍යය සහ ආරක්ෂාව අයිතිවාසිකම්ය, වරප්‍රසාද නොවේ — අපි ඒ අනුව ප්‍රසිද්ධියේ සහ ස්ථිරවම පෙනී සිටිමු.\nසහයෝගීතාවය :: අපගේ ප්‍රජාවේ කිසිදු සාමාජිකයෙකුට තනිවම අර්බුදයක් මුහුණ දීමට සිදු නොවන පරිදි අපි සම ජාල ගොඩනගමු.\nගණන්දීමේ හැකියාව :: සම්පත් භාවිතා කරන ආකාරය පිළිබඳ අපගේ ප්‍රජාවට සහ අරමුදල් සපයන්නන්ට විනිවිදභාවයෙන් වාර්තා කරමු.",
+    ta: "இரகசியம் :: ஒவ்வொரு தொடர்பும் தனிப்பட்டது. தங்கள் சொந்த தகவலின் மீதான கட்டுப்பாடு இல்லாமல் யாரும் எங்கள் சேவைகளை அணுக மாட்டார்கள்.\nதிருநங்கை தலைமைத்துவம் :: எங்கள் ஊழியர்கள் மற்றும் சக கல்வியாளர்களில் பெரும்பாலோர் திருநங்கைகள் — ஏனெனில் வாழ்க்கை அனுபவம் நிபுணத்துவம்.\nதீங்கு குறைப்பு :: தீர்ப்பு, இறுதி எச்சரிக்கை அல்லது பராமரிப்பு நிபந்தனைகள் இன்றி மக்கள் இருக்கும் இடத்திலேயே நாங்கள் அவர்களை சந்திக்கிறோம்.\nஉரிமை அடிப்படையிலானது :: சுகாதாரமும் பாதுகாப்பும் உரிமைகள், சலுகைகள் அல்ல — நாங்கள் அதற்கேற்ப பகிரங்கமாகவும் உறுதியாகவும் வாதிடுகிறோம்.\nஒற்றுமை :: எங்கள் சமூகத்தின் எந்த உறுப்பினரும் தனியாக நெருக்கடியை எதிர்கொள்ள வேண்டியதில்லை என்பதற்காக நாங்கள் சக வலையமைப்புகளை உருவாக்குகிறோம்.\nபொறுப்புக்கூறல் :: வளங்கள் எவ்வாறு பயன்படுத்தப்படுகின்றன என்பதை எங்கள் சமூகத்திற்கும் நிதியளிப்பவர்களுக்கும் வெளிப்படையாக அறிக்கை செய்கிறோம்.",
   },
 
   about_community_title: {
@@ -327,31 +328,31 @@ const content: Record<string, Val> = {
     ta: "நாங்கள் சேவை செய்யும் சமூகங்கள்",
   },
   about_community: {
-    en: "CSDF serves marginalized women across Sri Lanka, including female sex workers and women facing stigma, violence, or economic hardship. Our programs are community-led: designed and delivered by people who understand the lived experience of the women we serve, across 10 districts with 8+ partner organizations.",
-    si: "CSDF ශ්‍රී ලංකාව පුරා කොන් වූ කාන්තාවන්ට සේවය කරයි. අපගේ වැඩසටහන් ප්‍රජා නායකත්වයෙන් යුක්තයි: අප සේවය කරන කාන්තාවන්ගේ ජීවන අත්දැකීම් තේරුම් ගන්නා අය විසින් නිර්මාණය කර ක්‍රියාත්මක කරනු ලැබේ — දිස්ත්‍රික්ක 10ක්, හවුල්කාර ආයතන 8+ක් සමඟ.",
-    ta: "CSDF இலங்கை முழுவதும் ஓரங்கட்டப்பட்ட பெண்களுக்கு சேவை செய்கிறது. எங்கள் திட்டங்கள் சமூகத்தால் வழிநடத்தப்படுகின்றன: நாங்கள் சேவை செய்யும் பெண்களின் வாழ்க்கை அனுபவத்தைப் புரிந்துகொள்பவர்களால் வடிவமைக்கப்பட்டு வழங்கப்படுகின்றன — 10 மாவட்டங்களில், 8+ பங்காளர் அமைப்புகளுடன்.",
+    en: "TET serves trans women engaged in sex work across Sri Lanka, alongside the wider trans community facing stigma, violence, or economic hardship. Our programs are community-led: designed and delivered by people who understand the lived experience of the women we serve, across 6 outreach sites in 3 provinces with 9 partner clinics.",
+    si: "TET ශ්‍රී ලංකාව පුරා ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන්ට, අපකීර්තියට, ප්‍රචණ්ඩත්වයට හෝ ආර්ථික දුෂ්කරතාවලට මුහුණ දෙන පුළුල් ට්‍රාන්ස් ප්‍රජාව සමඟ සේවය කරයි. අපගේ වැඩසටහන් ප්‍රජා නායකත්වයෙන් යුක්තයි: අප සේවය කරන කාන්තාවන්ගේ ජීවන අත්දැකීම් තේරුම් ගන්නා අය විසින් නිර්මාණය කර ක්‍රියාත්මක කරනු ලැබේ — පළාත් 3ක ප්‍රවේශ ස්ථාන 6ක්, හවුල්කාර සායන 9ක් සමඟ.",
+    ta: "TET இலங்கை முழுவதும் பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கும், களங்கம், வன்முறை அல்லது பொருளாதார சிரமங்களை எதிர்கொள்ளும் பரந்த திருநங்கை சமூகத்திற்கும் சேவை செய்கிறது. எங்கள் திட்டங்கள் சமூகத்தால் வழிநடத்தப்படுகின்றன: நாங்கள் சேவை செய்யும் பெண்களின் வாழ்க்கை அனுபவத்தைப் புரிந்துகொள்பவர்களால் வடிவமைக்கப்பட்டு வழங்கப்படுகின்றன — 3 மாகாணங்களில் 6 அணுகல் தளங்கள், 9 பங்காளர் மருத்துவமனைகளுடன்.",
   },
 
   about_history_title: { en: "Our Story", si: "අපගේ කථාව", ta: "எங்கள் கதை" },
   about_history: {
-    en: "CSDF was founded in 2002 by a small group of community members who saw that the women most in need of health services were the least likely to receive them. What began as informal peer outreach in Kolonnawa has grown into a registered organization working across 10 districts.\n\nOver two decades we have become a frontline partner in Sri Lanka's HIV response, reaching communities that formal health systems often miss. The approach has not changed: confidentiality first, no judgement, and programs shaped by the women they serve.",
-    si: "CSDF 2002 දී ආරම්භ කරන ලද්දේ, සෞඛ්‍ය සේවා වඩාත් අවශ්‍ය කාන්තාවන්ට ඒවා ලැබීමේ ඉඩකඩ අවම බව දුටු කුඩා ප්‍රජා කණ්ඩායමක් විසිනි. කොළොන්නාවේ අවිධිමත් සම-සම්බන්ධතාවක් ලෙස ආරම්භ වූ දේ දිස්ත්‍රික්ක 10ක් පුරා කටයුතු කරන ලියාපදිංචි සංවිධානයක් බවට වර්ධනය වී ඇත.\n\nදශක දෙකකට වැඩි කාලයක් තුළ අපි ශ්‍රී ලංකාවේ HIV ප්‍රතිචාරයේ පෙරමුණේ හවුල්කරුවෙකු බවට පත් වී ඇත. ප්‍රවේශය වෙනස් වී නැත: රහස්‍යභාවය පළමුව, විනිශ්චයක් නැත, සහ සේවය කරන කාන්තාවන් විසින් හැඩගස්වන වැඩසටහන්.",
-    ta: "சுகாதார சேவைகள் மிகவும் தேவைப்படும் பெண்களே அவற்றைப் பெறும் வாய்ப்பு குறைவாக இருப்பதைக் கண்ட ஒரு சிறு சமூகக் குழுவினால் CSDF 2002 இல் நிறுவப்பட்டது. கொலன்னாவையில் முறைசாரா சக அணுகுமுறையாகத் தொடங்கியது இன்று 10 மாவட்டங்களில் செயல்படும் பதிவுசெய்யப்பட்ட அமைப்பாக வளர்ந்துள்ளது.\n\nஇரு தசாப்தங்களுக்கும் மேலாக இலங்கையின் HIV பதிலிறுப்பில் நாங்கள் முன்னணி பங்காளியாக மாறியுள்ளோம். அணுகுமுறை மாறவில்லை: இரகசியம் முதலில், தீர்ப்பு இல்லை, சேவை பெறும் பெண்களால் வடிவமைக்கப்படும் திட்டங்கள்.",
+    en: "TET was founded in 2016 by five peer outreach volunteers operating from a rented room in Colombo. What began as informal night outreach has grown into a registered non-profit with a 24/7 crisis hotline and services across 3 provinces.\n\nOur approach has not changed: confidentiality first, no judgment, and programs shaped by the trans women who use them.",
+    si: "TET 2016 දී කොළඹ කුලියට ගත් කාමරයකින් ක්‍රියාත්මක වූ සම ප්‍රවේශ ස්වේච්ඡා සේවකයින් පස් දෙනෙකු විසින් ආරම්භ කරන ලදී. අවිධිමත් රාත්‍රී ප්‍රවේශයක් ලෙස ආරම්භ වූ දේ පළාත් 3ක් පුරා සේවා සහ 24/7 හදිසි උපකාරක මාර්ගයක් සහිත ලියාපදිංචි ලාභ නොලබන සංවිධානයක් බවට වර්ධනය වී ඇත.\n\nඅපගේ ප්‍රවේශය වෙනස් වී නැත: රහස්‍යභාවය පළමුව, විනිශ්චයක් නැත, සහ එය භාවිතා කරන ට්‍රාන්ස් කාන්තාවන් විසින් හැඩගස්වන වැඩසටහන්.",
+    ta: "கொழும்பில் வாடகைக்கு எடுக்கப்பட்ட ஒரு அறையிலிருந்து செயல்பட்ட ஐந்து சக அணுகல் தன்னார்வலர்களால் TET 2016 இல் நிறுவப்பட்டது. முறைசாரா இரவு அணுகல் பணியாகத் தொடங்கியது 3 மாகாணங்களில் சேவைகள் மற்றும் 24/7 நெருக்கடி உதவி இணைப்புடன் பதிவுசெய்யப்பட்ட இலாப நோக்கற்ற அமைப்பாக வளர்ந்துள்ளது.\n\nஎங்கள் அணுகுமுறை மாறவில்லை: இரகசியம் முதலில், தீர்ப்பு இல்லை, அதைப் பயன்படுத்தும் திருநங்கைகளால் வடிவமைக்கப்படும் திட்டங்கள்.",
   },
-  about_history_image: BLANK,
+  about_history_image: { en: HERO_IMAGE },
 
   about_timeline_title: { en: "Milestones", si: "සන්ධිස්ථාන", ta: "மைல்கற்கள்" },
   about_timeline: {
-    en: "2002 :: CSDF founded in Kolonnawa by a small group of community members to support marginalised women.\n2008 :: Expanded outreach into HIV prevention, testing and health navigation services.\n2015 :: Launched community-based livelihood and small business support programmes.\n2024 :: Serving women across 10 districts with health, legal and economic empowerment services.",
-    si: "2002 :: CSDF ප්‍රජා සාමාජිකයන් කුඩා පිරිසක් විසින් කොළොන්නාවේදී කොන් වූ කාන්තාවන්ට සහාය වීම සඳහා ආරම්භ කරන ලදී.\n2008 :: HIV වැළැක්වීම, පරීක්ෂාව සහ සෞඛ්‍ය මාර්ගෝපදේශන සේවා දක්වා ප්‍රවේශය පුළුල් කරන ලදී.\n2015 :: ප්‍රජා පදනම් කරගත් ජීවනෝපාය සහ කුඩා ව්‍යාපාර සහාය වැඩසටහන් ආරම්භ කරන ලදී.\n2024 :: දිස්ත්‍රික්ක 10ක් පුරා කාන්තාවන්ට සෞඛ්‍ය, නීති සහ ආර්ථික සවිබල ගැන්වීමේ සේවා සපයයි.",
-    ta: "2002 :: கொலன்னாவையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு ஆதரவளிக்க சிறு சமூகக் குழுவினரால் CSDF நிறுவப்பட்டது.\n2008 :: HIV தடுப்பு, பரிசோதனை மற்றும் சுகாதார வழிகாட்டல் சேவைகளுக்கு அணுகலை விரிவுபடுத்தியது.\n2015 :: சமூகம் சார்ந்த வாழ்வாதார மற்றும் சிறு வணிக ஆதரவு திட்டங்களைத் தொடங்கியது.\n2024 :: 10 மாவட்டங்களில் பெண்களுக்கு சுகாதாரம், சட்டம் மற்றும் பொருளாதார அதிகாரமளித்தல் சேவைகளை வழங்குகிறது.",
+    en: "2016 :: Founded by five peer outreach volunteers operating from a rented room in Colombo.\n2019 :: Registered as a non-profit; launched our first mobile health outreach van.\n2022 :: Opened our ID & Legal Clinic in partnership with the Legal Aid Commission.\n2026 :: Serving 3 provinces with 6 outreach sites and a 24/7 crisis hotline.",
+    si: "2016 :: කොළඹ කුලියට ගත් කාමරයකින් ක්‍රියාත්මක වූ සම ප්‍රවේශ ස්වේච්ඡා සේවකයින් පස් දෙනෙකු විසින් ආරම්භ කරන ලදී.\n2019 :: ලාභ නොලබන සංවිධානයක් ලෙස ලියාපදිංචි විය; අපගේ පළමු ජංගම සෞඛ්‍ය ප්‍රවේශ වාහනය දියත් කරන ලදී.\n2022 :: නීති සහාය කොමිසම සමඟ හවුල්කාරිත්වයෙන් අපගේ හැඳුනුම්පත් සහ නීති සායනය විවෘත කරන ලදී.\n2026 :: ප්‍රවේශ ස්ථාන 6ක් සහ 24/7 හදිසි උපකාරක මාර්ගයක් සමඟ පළාත් 3කට සේවා සපයයි.",
+    ta: "2016 :: கொழும்பில் வாடகைக்கு எடுக்கப்பட்ட அறையிலிருந்து செயல்பட்ட ஐந்து சக அணுகல் தன்னார்வலர்களால் நிறுவப்பட்டது.\n2019 :: இலாப நோக்கற்ற அமைப்பாக பதிவுசெய்யப்பட்டது; எங்கள் முதல் நடமாடும் சுகாதார வாகனத்தை தொடங்கியது.\n2022 :: சட்ட உதவி ஆணையத்துடன் இணைந்து எங்கள் அடையாள அட்டை & சட்ட கிளினிக்கைத் திறந்தது.\n2026 :: 6 அணுகல் தளங்கள் மற்றும் 24/7 நெருக்கடி உதவி இணைப்புடன் 3 மாகாணங்களுக்கு சேவை.",
   },
 
   about_team_title: { en: "Our Team", si: "අපගේ කණ්ඩායම", ta: "எங்கள் குழு" },
   about_team: {
-    en: "Programme Coordinator :: Oversees outreach, partnerships and day-to-day operations.\nHealth Outreach Lead :: Coordinates referrals, testing and health navigation support.\nCommunity Liaison :: Builds trust and relationships with the women we serve.\nPeer Support Team :: Community members providing accompaniment and peer counselling.",
-    si: "වැඩසටහන් සම්බන්ධීකාරක :: ප්‍රවේශ, හවුල්කාරිත්ව සහ දෛනික මෙහෙයුම් අධීක්ෂණය කරයි.\nසෞඛ්‍ය ප්‍රවේශ ප්‍රධානියා :: යොමු කිරීම්, පරීක්ෂාව සහ සෞඛ්‍ය මාර්ගෝපදේශන සහාය සම්බන්ධීකරණය කරයි.\nප්‍රජා සම්බන්ධීකාරක :: අප සේවය කරන කාන්තාවන් සමඟ විශ්වාසය සහ සම්බන්ධතා ගොඩනඟයි.\nසම-සහායක කණ්ඩායම :: සහාය සහ සම-උපදේශනය සපයන ප්‍රජා සාමාජිකයෝ.",
-    ta: "திட்ட ஒருங்கிணைப்பாளர் :: வெளிச்செல் பணி, கூட்டாண்மைகள் மற்றும் அன்றாட செயல்பாடுகளை மேற்பார்வையிடுகிறார்.\nசுகாதார வெளிச்செல் தலைவர் :: பரிந்துரைகள், பரிசோதனை மற்றும் சுகாதார வழிகாட்டல் ஆதரவை ஒருங்கிணைக்கிறார்.\nசமூக தொடர்பாளர் :: நாங்கள் சேவை செய்யும் பெண்களுடன் நம்பிக்கை மற்றும் உறவுகளை உருவாக்குகிறார்.\nசக ஆதரவு குழு :: துணை மற்றும் சக ஆலோசனை வழங்கும் சமூக உறுப்பினர்கள்.",
+    en: "Programme Director :: Oversees outreach, health partnerships, and organizational strategy.\nHealth Navigation Lead :: Coordinates clinic referrals and testing services.\nLegal Aid Coordinator :: Manages the ID & Legal Clinic and rights defense casework.\nPeer Navigator Team :: Twelve trained peer navigators providing accompaniment and support.",
+    si: "වැඩසටහන් අධ්‍යක්ෂක :: ප්‍රවේශය, සෞඛ්‍ය හවුල්කාරිත්ව සහ සංවිධානාත්මක උපාය මාර්ග අධීක්ෂණය කරයි.\nසෞඛ්‍ය මාර්ගෝපදේශන ප්‍රධානියා :: සායන යොමු කිරීම් සහ පරීක්ෂණ සේවා සම්බන්ධීකරණය කරයි.\nනීති සහාය සම්බන්ධීකාරක :: හැඳුනුම්පත් සහ නීති සායනය සහ අයිතිවාසිකම් ආරක්ෂණ නඩු කටයුතු කළමනාකරණය කරයි.\nසම මාර්ගෝපදේශක කණ්ඩායම :: පුහුණු ලත් සම මාර්ගෝපදේශකයින් දොළහක් සහායක සහ සහාය ලබා දෙයි.",
+    ta: "திட்ட இயக்குநர் :: அணுகல் பணி, சுகாதார கூட்டாண்மைகள் மற்றும் நிறுவன உத்தியை மேற்பார்வையிடுகிறார்.\nசுகாதார வழிகாட்டல் தலைவர் :: கிளினிக் பரிந்துரைகள் மற்றும் பரிசோதனை சேவைகளை ஒருங்கிணைக்கிறார்.\nசட்ட உதவி ஒருங்கிணைப்பாளர் :: அடையாள அட்டை & சட்ட கிளினிக் மற்றும் உரிமை பாதுகாப்பு வழக்குகளை நிர்வகிக்கிறார்.\nசக வழிகாட்டி குழு :: பயிற்சி பெற்ற பன்னிரண்டு சக வழிகாட்டிகள் துணை மற்றும் ஆதரவை வழங்குகின்றனர்.",
   },
 
   about_extra_title: BLANK,
@@ -360,19 +361,23 @@ const content: Record<string, Val> = {
   /* ================================================== Contact page ======== */
   contact_hero_title: CONTACT_US,
   contact_hero_intro: {
-    en: "Reach out to us — all inquiries are treated confidentially.",
-    si: "අප වෙත සම්බන්ධ වන්න — සියලුම විමසීම් රහස්‍යභාවයෙන් යුතුව සලකනු ලැබේ.",
-    ta: "எங்களை அணுகவும் — அனைத்து விசாரணைகளும் இரகசியமாக கையாளப்படும்.",
+    en: "We're here — reach out anytime. Whether you need support, want to volunteer, or have a question, our team responds confidentially and without judgment.",
+    si: "අපි මෙහි සිටිමු — ඕනෑම වේලාවක සම්බන්ධ වන්න. ඔබට සහාය අවශ්‍ය වුවත්, ස්වේච්ඡා සේවය කිරීමට කැමති වුවත්, ප්‍රශ්නයක් තිබුණත්, අපගේ කණ්ඩායම රහස්‍යභාවයෙන් සහ විනිශ්චයෙන් තොරව ප්‍රතිචාර දක්වයි.",
+    ta: "நாங்கள் இங்கே இருக்கிறோம் — எப்போது வேண்டுமானாலும் தொடர்பு கொள்ளுங்கள். உங்களுக்கு ஆதரவு தேவைப்பட்டாலும், தன்னார்வலராக இருக்க விரும்பினாலும், அல்லது கேள்வி இருந்தாலும், எங்கள் குழு இரகசியமாகவும் தீர்ப்பின்றியும் பதிலளிக்கும்.",
   },
   contact_hero_image: BLANK,
 
   show_contact_form: ON,
   contact_form_title: {
-    en: "Send us a message",
+    en: "Send Us a Message",
     si: "අපට පණිවිඩයක් යවන්න",
     ta: "எங்களுக்கு செய்தி அனுப்புங்கள்",
   },
-  contact_form_note: BLANK,
+  contact_form_note: {
+    en: "You can ask us to respond via WhatsApp instead of email.",
+    si: "ඊමේල් වෙනුවට WhatsApp හරහා ප්‍රතිචාර දක්වන ලෙස ඔබට අප වෙතින් ඉල්ලා සිටිය හැක.",
+    ta: "மின்னஞ்சலுக்குப் பதிலாக WhatsApp மூலம் பதிலளிக்குமாறு எங்களிடம் கேட்கலாம்.",
+  },
   contact_success_message: {
     en: "Your message has been sent. We will get back to you soon.",
     si: "ඔබගේ පණිවිඩය යවන ලදී. අපි ඉක්මනින් ඔබ හා සම්බන්ධ වන්නෙමු.",
@@ -381,27 +386,27 @@ const content: Record<string, Val> = {
 
   show_contact_details: ON,
   contact_details_title: {
-    en: "Our details",
+    en: "Our Details",
     si: "අපගේ විස්තර",
     ta: "எங்கள் விவரங்கள்",
   },
   show_contact_map: ON,
 
   /* =================================================== Donate page ======== */
-  donate_hero_title: { en: "Make a Donation", si: "පරිත්‍යාගයක් කරන්න", ta: "நன்கொடை வழங்க" },
+  donate_hero_title: { en: "Support Our Work", si: "අපගේ කාර්යයට සහාය වන්න", ta: "எங்கள் பணிக்கு ஆதரவளியுங்கள்" },
   donate_intro: {
-    en: "Every contribution helps sustain healthcare, outreach, and advocacy programs for the women we serve.",
-    si: "සෑම දායකත්වයක්ම අප සේවය කරන කාන්තාවන් සඳහා සෞඛ්‍ය, ප්‍රජා සම්බන්ධතා සහ අයිතිවාසිකම් වැඩසටහන් පවත්වාගෙන යාමට උපකාරී වේ.",
-    ta: "ஒவ்வொரு பங்களிப்பும் நாங்கள் சேவை செய்யும் பெண்களுக்கான சுகாதாரம், சமூக அணுகல் மற்றும் உரிமைகள் திட்டங்களை நிலைநிறுத்த உதவுகிறது.",
+    en: "Every donation goes directly toward healthcare navigation, legal aid, crisis support, and outreach for trans women in sex work.",
+    si: "සෑම පරිත්‍යාගයක්ම ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන් සඳහා සෞඛ්‍ය මාර්ගෝපදේශනය, නීති සහාය, හදිසි උපකාර සහ ප්‍රජා ප්‍රවේශය සඳහා සෘජුවම යොදවනු ලැබේ.",
+    ta: "ஒவ்வொரு நன்கொடையும் பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கான சுகாதார வழிகாட்டல், சட்ட உதவி, நெருக்கடி ஆதரவு மற்றும் அணுகல் பணிக்கு நேரடியாக செல்கிறது.",
   },
   donate_hero_image: BLANK,
 
   show_donate_online: ON,
   donate_amounts: { en: "1000\n2500\n5000\n10000\n25000" },
   donate_note: {
-    en: "CSDF is a registered non-profit. Donations are processed securely by PayHere; we never see or store your card details.",
-    si: "CSDF ලියාපදිංචි ලාභ නොලබන සංවිධානයකි. පරිත්‍යාග PayHere මගින් ආරක්ෂිතව සකසනු ලැබේ; අපි කිසිදා ඔබගේ කාඩ්පත් විස්තර නොදකිමු හෝ නොගබඩා කරමු.",
-    ta: "CSDF ஒரு பதிவுசெய்யப்பட்ட இலாப நோக்கற்ற அமைப்பு. நன்கொடைகள் PayHere மூலம் பாதுகாப்பாக செயலாக்கப்படுகின்றன; உங்கள் அட்டை விவரங்களை நாங்கள் ஒருபோதும் பார்ப்பதில்லை அல்லது சேமிப்பதில்லை.",
+    en: "TET is a registered non-profit. Donations are processed securely by PayHere; we never see or store your card details. 100% of proceeds stay within community programs.",
+    si: "TET ලියාපදිංචි ලාභ නොලබන සංවිධානයකි. පරිත්‍යාග PayHere මගින් ආරක්ෂිතව සකසනු ලැබේ; අපි කිසිදා ඔබගේ කාඩ්පත් විස්තර නොදකිමු හෝ නොගබඩා කරමු. ආදායමින් 100%ම ප්‍රජා වැඩසටහන් තුළ පවතී.",
+    ta: "TET ஒரு பதிவுசெய்யப்பட்ட இலாப நோக்கற்ற அமைப்பு. நன்கொடைகள் PayHere மூலம் பாதுகாப்பாக செயலாக்கப்படுகின்றன; உங்கள் அட்டை விவரங்களை நாங்கள் ஒருபோதும் பார்ப்பதில்லை அல்லது சேமிப்பதில்லை. வருவாயில் 100% சமூக திட்டங்களுக்குள்ளேயே பயன்படுத்தப்படும்.",
   },
 
   donate_bank_title: {
@@ -410,37 +415,37 @@ const content: Record<string, Val> = {
     ta: "நேரடி வங்கி பரிமாற்றம்",
   },
   bank_details: {
-    en: "Account Name: Community Strength Development Foundation\nBank: (your bank)\nBranch: (your branch)\nAccount No: (your account number)\nSWIFT: (for international transfers)",
+    en: "Account Name: Transgender Empowerment Trust\nBank: (your bank)\nBranch: (your branch)\nAccount No: (your account number)\nSWIFT: (for international transfers)",
   },
 
-  donate_impact_title: SUPPORT_CSDF,
+  donate_impact_title: SUPPORT_TET,
   donate_impact_items: {
-    en: "Where it's needed most :: Flexible funding lets us respond to the most urgent needs first.\nHealth services :: Clinics, testing, treatment linkage and peer accompaniment.\nEducation & awareness :: Peer-led health education and rights training in the community.\nCommunity programs :: Safe spaces, peer leadership and economic opportunity.",
-    si: "වඩාත්ම අවශ්‍ය තැනට :: නම්‍යශීලී අරමුදල් මගින් වඩාත් හදිසි අවශ්‍යතාවලට මුලින්ම ප්‍රතිචාර දැක්විය හැක.\nසෞඛ්‍ය සේවා :: සායන, පරීක්ෂණ, ප්‍රතිකාර සම්බන්ධ කිරීම සහ සම සහාය.\nඅධ්‍යාපනය සහ දැනුවත් කිරීම :: ප්‍රජාව තුළ සම-නායකත්ව සෞඛ්‍ය අධ්‍යාපනය සහ අයිතිවාසිකම් පුහුණුව.\nප්‍රජා වැඩසටහන් :: ආරක්ෂිත අවකාශ, සම නායකත්වය සහ ආර්ථික අවස්ථා.",
-    ta: "மிகவும் தேவையான இடத்திற்கு :: நெகிழ்வான நிதி மிக அவசரமான தேவைகளுக்கு முதலில் பதிலளிக்க உதவுகிறது.\nசுகாதார சேவைகள் :: கிளினிக்குகள், பரிசோதனை, சிகிச்சை இணைப்பு மற்றும் சக ஆதரவு.\nகல்வி & விழிப்புணர்வு :: சமூகத்தில் சக தலைமையிலான சுகாதாரக் கல்வி மற்றும் உரிமைப் பயிற்சி.\nசமூக திட்டங்கள் :: பாதுகாப்பான இடங்கள், சக தலைமைத்துவம் மற்றும் பொருளாதார வாய்ப்பு.",
+    en: "Where it's needed most :: Flexible funding lets us respond to the most urgent needs first — from emergency shelter to crisis calls.\nHealthcare Navigation :: Referrals, screenings, and accompaniment to trans-friendly clinics.\nLegal Aid & Rights Defense :: Support with ID documentation, police harassment, and workplace discrimination.\nCrisis & Outreach :: A 24/7 hotline and night outreach teams bringing supplies and safety information directly to the community.",
+    si: "වඩාත්ම අවශ්‍ය තැනට :: නම්‍යශීලී අරමුදල් හදිසි නවාතැන් සිට හදිසි ඇමතුම් දක්වා වඩාත් හදිසි අවශ්‍යතාවලට මුලින්ම ප්‍රතිචාර දැක්විය හැක.\nසෞඛ්‍ය මාර්ගෝපදේශනය :: ට්‍රාන්ස්-හිතකාමී සායන වෙත යොමු කිරීම්, පරීක්ෂණ සහ සහායක ගමන්.\nනීති සහාය සහ අයිතිවාසිකම් ආරක්ෂණය :: හැඳුනුම්පත් ලේඛන, පොලිස් හිරිහැර සහ රැකියා ස්ථාන වෙනස්කම් සම්බන්ධ සහාය.\nහදිසි උපකාර සහ ප්‍රවේශය :: ප්‍රජාව වෙත සෘජුවම සැපයුම් සහ ආරක්ෂක තොරතුරු ගෙන එන 24/7 උපකාරක මාර්ගය සහ රාත්‍රී ප්‍රවේශ කණ්ඩායම්.",
+    ta: "மிகவும் தேவையான இடத்திற்கு :: நெகிழ்வான நிதி அவசர தங்குமிடம் முதல் நெருக்கடி அழைப்புகள் வரை மிக அவசரமான தேவைகளுக்கு முதலில் பதிலளிக்க உதவுகிறது.\nசுகாதார வழிகாட்டல் :: திருநங்கை-நட்பு கிளினிக்குகளுக்கான பரிந்துரைகள், பரிசோதனைகள் மற்றும் துணை.\nசட்ட உதவி & உரிமை பாதுகாப்பு :: அடையாள ஆவணங்கள், காவல்துறை துன்புறுத்தல் மற்றும் பணியிட பாகுபாடு தொடர்பான ஆதரவு.\nநெருக்கடி & அணுகல் பணி :: சமூகத்திற்கு நேரடியாக பொருட்கள் மற்றும் பாதுகாப்பு தகவல்களைக் கொண்டு வரும் 24/7 உதவி இணைப்பு மற்றும் இரவு அணுகல் குழுக்கள்.",
   },
 
   /* ================================================ Volunteer page ========= */
-  volunteer_hero_title: { en: "Volunteer with CSDF", si: "CSDF සමඟ ස්වේච්ඡා සේවය කරන්න", ta: "CSDF உடன் தன்னார்வமாக பணியாற்றுங்கள்" },
+  volunteer_hero_title: { en: "Volunteer with TET", si: "TET සමඟ ස්වේච්ඡා සේවය කරන්න", ta: "TET உடன் தன்னார்வமாக பணியாற்றுங்கள்" },
   volunteer_hero_intro: {
-    en: "Whether you have a few hours a month or a professional skill to share, there is a place for you in our work supporting marginalised women in Kolonnawa.",
-    si: "ඔබට මසකට පැය කිහිපයක් හෝ බෙදාගැනීමට වෘත්තීය කුසලතාවක් තිබුණත්, කොළොන්නාවේ කොන් වූ කාන්තාවන්ට සහාය වන අපගේ කාර්යයේ ඔබටත් ස්ථානයක් ඇත.",
-    ta: "உங்களிடம் மாதத்திற்கு சில மணிநேரங்கள் அல்லது பகிர்ந்துகொள்ள ஒரு தொழில்முறை திறமை இருந்தாலும், கொலன்னாவையில் ஓரங்கட்டப்பட்ட பெண்களுக்கு ஆதரவளிக்கும் எங்கள் பணியில் உங்களுக்கும் ஒரு இடம் உண்டு.",
+    en: "Whether you have an hour a week or a professional skill to share, there's a place for you in our community supporting trans women in sex work across Sri Lanka.",
+    si: "ඔබට සතියකට පැයක් හෝ බෙදාගැනීමට වෘත්තීය කුසලතාවක් තිබුණත්, ශ්‍රී ලංකාව පුරා ලිංගික සේවා කර්මාන්තයේ නියැලෙන ට්‍රාන්ස් කාන්තාවන්ට සහාය වන අපගේ ප්‍රජාවේ ඔබටත් ස්ථානයක් ඇත.",
+    ta: "உங்களிடம் வாரத்திற்கு ஒரு மணிநேரம் அல்லது பகிர்ந்துகொள்ள ஒரு தொழில்முறை திறமை இருந்தாலும், இலங்கை முழுவதும் பாலியல் தொழிலில் ஈடுபடும் திருநங்கைகளுக்கு ஆதரவளிக்கும் எங்கள் சமூகத்தில் உங்களுக்கும் ஒரு இடம் உண்டு.",
   },
-  volunteer_hero_image: BLANK,
+  volunteer_hero_image: { en: COMMUNITY_IMAGE },
 
   volunteer_opportunities_title: { en: "Ways to Help", si: "සහාය වීමේ ක්‍රම", ta: "உதவும் வழிகள்" },
   volunteer_opportunities: {
-    en: "Outreach Support :: Join community outreach visits sharing health information and support.\nPeer Support Volunteer :: Offer companionship and peer encouragement to women in our programmes.\nAdministrative Support :: Help with office tasks, records and event coordination.\nEvent & Programme Support :: Assist with workshops, health camps and community events.",
-    si: "ප්‍රවේශ සහාය :: සෞඛ්‍ය තොරතුරු සහ සහාය බෙදාගන්නා ප්‍රජා ප්‍රවේශ චාරිකාවලට එක්වන්න.\nසම-සහායක ස්වේච්ඡා සේවක :: අපගේ වැඩසටහන්වල කාන්තාවන්ට සහයෝගය සහ දිරිගැන්වීම ලබා දෙන්න.\nපරිපාලන සහාය :: කාර්යාල කටයුතු, වාර්තා සහ උත්සව සම්බන්ධීකරණයට උදව් කරන්න.\nවැඩසටහන් සහාය :: වැඩමුළු, සෞඛ්‍ය කඳවුරු සහ ප්‍රජා අවස්ථාවලට සහාය වන්න.",
-    ta: "வெளிச்செல் ஆதரவு :: சுகாதார தகவல் மற்றும் ஆதரவைப் பகிரும் சமூக வெளிச்செல் வருகைகளில் இணையுங்கள்.\nசக ஆதரவு தன்னார்வலர் :: எங்கள் திட்டங்களில் உள்ள பெண்களுக்கு துணை மற்றும் ஊக்கத்தை வழங்குங்கள்.\nநிர்வாக ஆதரவு :: அலுவலக பணிகள், பதிவுகள் மற்றும் நிகழ்வு ஒருங்கிணைப்பில் உதவுங்கள்.\nநிகழ்ச்சி ஆதரவு :: பயிலரங்குகள், சுகாதார முகாம்கள் மற்றும் சமூக நிகழ்வுகளுக்கு உதவுங்கள்.",
+    en: "Outreach Volunteer :: Join night outreach teams distributing health supplies and information.\nPeer Counsellor Trainee :: Train to provide one-on-one peer counselling and emotional support.\nLegal Aid Assistant :: Support case intake and documentation for our legal clinic.\nEvent Support :: Help organize health camps, workshops, and community gatherings.",
+    si: "ප්‍රවේශ ස්වේච්ඡා සේවක :: සෞඛ්‍ය සැපයුම් සහ තොරතුරු බෙදා දෙන රාත්‍රී ප්‍රවේශ කණ්ඩායම්වලට එක්වන්න.\nසම උපදේශක පුහුණුකරු :: එකින් එක සම උපදේශනය සහ චිත්තවේගී සහාය ලබා දීමට පුහුණු වන්න.\nනීති සහාය සහායක :: අපගේ නීති සායනය සඳහා නඩු ලබාගැනීම සහ ලේඛන සඳහා සහාය වන්න.\nඅවස්ථා සහාය :: සෞඛ්‍ය කඳවුරු, වැඩමුළු සහ ප්‍රජා රැස්වීම් සංවිධානය කිරීමට උදව් කරන්න.",
+    ta: "அணுகல் தன்னார்வலர் :: சுகாதார பொருட்கள் மற்றும் தகவல்களை வழங்கும் இரவு அணுகல் குழுக்களில் இணையுங்கள்.\nசக ஆலோசகர் பயிற்சியாளர் :: ஒருவருக்கொருவர் சக ஆலோசனை மற்றும் உணர்ச்சி ஆதரவை வழங்க பயிற்சி பெறுங்கள்.\nசட்ட உதவி உதவியாளர் :: எங்கள் சட்ட கிளினிக்கிற்கான வழக்கு உள்வாங்கல் மற்றும் ஆவணப்படுத்தலுக்கு ஆதரவளியுங்கள்.\nநிகழ்வு ஆதரவு :: சுகாதார முகாம்கள், பயிலரங்குகள் மற்றும் சமூக கூட்டங்களை ஏற்பாடு செய்ய உதவுங்கள்.",
   },
 
   volunteer_form_title: { en: "Sign Up to Volunteer", si: "ස්වේච්ඡා සේවයට ලියාපදිංචි වන්න", ta: "தன்னார்வலராக பதிவு செய்யுங்கள்" },
   volunteer_form_note: {
-    en: "Tell us a little about yourself and how you'd like to help — our team will get in touch to arrange orientation.",
-    si: "ඔබ ගැන සහ ඔබ සහාය වීමට කැමති ආකාරය ගැන අපට කරුණාකර දන්වන්න — අභිමුඛකරණය සැලසුම් කිරීමට අපගේ කණ්ඩායම ඔබ හා සම්බන්ධ වනු ඇත.",
-    ta: "உங்களைப் பற்றியும் நீங்கள் எவ்வாறு உதவ விரும்புகிறீர்கள் என்பதையும் எங்களிடம் கூறுங்கள் — நோக்குநிலைப் பயிற்சியை ஏற்பாடு செய்ய எங்கள் குழு உங்களைத் தொடர்பு கொள்ளும்.",
+    en: "Fill out the form and our volunteer coordinator will reach out within a few days. No experience necessary — we provide full training and support.",
+    si: "පෝරමය පුරවන්න, දින කිහිපයක් තුළ අපගේ ස්වේච්ඡා සේවා සම්බන්ධීකාරක ඔබ හා සම්බන්ධ වනු ඇත. පළපුරුද්දක් අවශ්‍ය නොවේ — අපි සම්පූර්ණ පුහුණුව සහ සහාය සපයමු.",
+    ta: "படிவத்தை நிரப்புங்கள், சில நாட்களுக்குள் எங்கள் தன்னார்வலர் ஒருங்கிணைப்பாளர் உங்களைத் தொடர்பு கொள்வார். அனுபவம் தேவையில்லை — நாங்கள் முழு பயிற்சி மற்றும் ஆதரவை வழங்குகிறோம்.",
   },
   volunteer_success_message: {
     en: "Thank you for applying! Our team will contact you soon about next steps.",
@@ -449,26 +454,26 @@ const content: Record<string, Val> = {
   },
 
   /* ============================================= Hall booking page ========= */
-  hall_hero_title: { en: "Community Hall Booking", si: "ප්‍රජා ශාලා වෙන්කිරීම", ta: "சமூக மண்டப முன்பதிவு" },
+  hall_hero_title: { en: "TET Community Hall Booking", si: "TET ප්‍රජා ශාලා වෙන්කිරීම", ta: "TET சமூக மண்டப முன்பதிவு" },
   hall_hero_intro: {
-    en: "Book our community hall in Kolonnawa for meetings, workshops and community events — submit a request and our team will confirm availability.",
-    si: "රැස්වීම්, වැඩමුළු සහ ප්‍රජා අවස්ථා සඳහා කොළොන්නාවේ අපගේ ප්‍රජා ශාලාව වෙන් කරගන්න — ඉල්ලීමක් යොමු කරන්න, අපගේ කණ්ඩායම ලබා ගැනීමේ හැකියාව තහවුරු කරනු ඇත.",
-    ta: "கூட்டங்கள், பயிலரங்குகள் மற்றும் சமூக நிகழ்வுகளுக்காக கொலன்னாவையில் உள்ள எங்கள் சமூக மண்டபத்தை முன்பதிவு செய்யுங்கள் — ஒரு கோரிக்கையை சமர்ப்பிக்கவும், எங்கள் குழு கிடைக்கும் தன்மையை உறுதிப்படுத்தும்.",
+    en: "Book our community hall in Colombo for support-group meetings, workshops, and community events — submit a request and our team will confirm availability.",
+    si: "සහාය කණ්ඩායම් රැස්වීම්, වැඩමුළු සහ ප්‍රජා අවස්ථා සඳහා කොළඹ අපගේ ප්‍රජා ශාලාව වෙන් කරගන්න — ඉල්ලීමක් යොමු කරන්න, අපගේ කණ්ඩායම ලබා ගැනීමේ හැකියාව තහවුරු කරනු ඇත.",
+    ta: "ஆதரவுக் குழு கூட்டங்கள், பயிலரங்குகள் மற்றும் சமூக நிகழ்வுகளுக்காக கொழும்பில் உள்ள எங்கள் சமூக மண்டபத்தை முன்பதிவு செய்யுங்கள் — ஒரு கோரிக்கையை சமர்ப்பிக்கவும், எங்கள் குழு கிடைக்கும் தன்மையை உறுதிப்படுத்தும்.",
   },
-  hall_hero_image: BLANK,
+  hall_hero_image: { en: BANNER_IMAGE },
 
   hall_details_title: { en: "About the Hall", si: "ශාලාව ගැන", ta: "மண்டபத்தைப் பற்றி" },
   hall_details_text: {
-    en: "Our community hall in Kolonnawa is available for meetings, training sessions and small community events. Submit a request below with your preferred date and we will get back to you to confirm availability and rates.",
-    si: "කොළොන්නාවේ අපගේ ප්‍රජා ශාලාව රැස්වීම්, පුහුණු සැසි සහ කුඩා ප්‍රජා අවස්ථා සඳහා ලබා ගත හැක. ඔබ කැමති දිනය සමඟ පහත ඉල්ලීමක් යොමු කරන්න, ලබා ගැනීමේ හැකියාව සහ ගාස්තු තහවුරු කිරීමට අපි ඔබ හා සම්බන්ධ වන්නෙමු.",
-    ta: "கொலன்னாவையில் உள்ள எங்கள் சமூக மண்டபம் கூட்டங்கள், பயிற்சி அமர்வுகள் மற்றும் சிறிய சமூக நிகழ்வுகளுக்கு கிடைக்கிறது. உங்கள் விருப்பமான தேதியுடன் கீழே ஒரு கோரிக்கையை சமர்ப்பிக்கவும், கிடைக்கும் தன்மை மற்றும் கட்டணங்களை உறுதிப்படுத்த நாங்கள் உங்களைத் தொடர்பு கொள்வோம்.",
+    en: "TET Community Hall hosts our own workshops, peer counselling circles, and legal literacy sessions — and is available to partner organizations and community groups for meetings and events. Submit a request below with your preferred date and we will get back to you to confirm availability and rates.",
+    si: "TET ප්‍රජා ශාලාව අපගේම වැඩමුළු, සම උපදේශන කවයන් සහ නීති සාක්ෂරතා සැසි සඳහා ධාරිතාවය සපයන අතර, රැස්වීම් සහ අවස්ථා සඳහා හවුල්කාර සංවිධාන සහ ප්‍රජා කණ්ඩායම් සඳහාද ලබා ගත හැක. ඔබ කැමති දිනය සමඟ පහත ඉල්ලීමක් යොමු කරන්න, ලබා ගැනීමේ හැකියාව සහ ගාස්තු තහවුරු කිරීමට අපි ඔබ හා සම්බන්ධ වන්නෙමු.",
+    ta: "TET சமூக மண்டபம் எங்கள் சொந்த பயிலரங்குகள், சக ஆலோசனை வட்டங்கள் மற்றும் சட்ட எழுத்தறிவு அமர்வுகளை நடத்துகிறது — மேலும் கூட்டங்கள் மற்றும் நிகழ்வுகளுக்கு பங்காளர் அமைப்புகள் மற்றும் சமூக குழுக்களுக்கும் கிடைக்கிறது. உங்கள் விருப்பமான தேதியுடன் கீழே ஒரு கோரிக்கையை சமர்ப்பிக்கவும், கிடைக்கும் தன்மை மற்றும் கட்டணங்களை உறுதிப்படுத்த நாங்கள் உங்களைத் தொடர்பு கொள்வோம்.",
   },
   hall_rates: {
     en: "Half day (up to 4 hours): Rs. 5,000\nFull day (up to 8 hours): Rs. 9,000\nCommunity groups & partner organisations: rates negotiable — ask us.",
   },
-  hall_image1: BLANK,
-  hall_image2: BLANK,
-  hall_image3: BLANK,
+  hall_image1: { en: EVENT_IMAGE },
+  hall_image2: { en: COMMUNITY_IMAGE },
+  hall_image3: { en: BANNER_IMAGE },
 
   hall_form_title: { en: "Request a Booking", si: "වෙන්කිරීමක් ඉල්ලන්න", ta: "முன்பதிவைக் கோருங்கள்" },
   hall_form_note: {
@@ -483,24 +488,24 @@ const content: Record<string, Val> = {
   },
 
   /* =================================================== Other pages ======== */
-  projects_hero_title: { en: "Projects", si: "ව්‍යාපෘති", ta: "திட்டங்கள்" },
+  projects_hero_title: { en: "Our Initiatives", si: "අපගේ මුලපිරීම්", ta: "எங்கள் முயற்சிகள்" },
   projects_hero_intro: {
-    en: "Ongoing and completed work across 10 districts of Sri Lanka.",
-    si: "ශ්‍රී ලංකාවේ දිස්ත්‍රික්ක 10ක් පුරා ක්‍රියාත්මක සහ සම්පූර්ණ කළ කටයුතු.",
-    ta: "இலங்கையின் 10 மாவட்டங்களில் நடைபெறும் மற்றும் நிறைவடைந்த பணிகள்.",
+    en: "Featured programs delivering healthcare, legal aid, and peer support across 3 provinces of Sri Lanka.",
+    si: "ශ්‍රී ලංකාවේ පළාත් 3ක් පුරා සෞඛ්‍ය සේවා, නීති සහාය සහ සම සහාය ලබා දෙන විශේෂ වැඩසටහන්.",
+    ta: "இலங்கையின் 3 மாகாணங்களில் சுகாதாரம், சட்ட உதவி மற்றும் சக ஆதரவை வழங்கும் சிறப்பு திட்டங்கள்.",
   },
   projects_hero_image: BLANK,
   projects_empty_text: {
-    en: "No projects have been published yet. Please check back soon.",
-    si: "තවම ව්‍යාපෘති ප්‍රකාශයට පත් කර නැත. කරුණාකර නැවත පරීක්ෂා කරන්න.",
-    ta: "இன்னும் திட்டங்கள் வெளியிடப்படவில்லை. விரைவில் மீண்டும் பார்க்கவும்.",
+    en: "No initiatives have been published yet. Please check back soon.",
+    si: "තවම මුලපිරීම් ප්‍රකාශයට පත් කර නැත. කරුණාකර නැවත පරීක්ෂා කරන්න.",
+    ta: "இன்னும் முயற்சிகள் வெளியிடப்படவில்லை. விரைவில் மீண்டும் பார்க்கவும்.",
   },
 
   services_hero_title: { en: "Our Services", si: "අපගේ සේවාවන්", ta: "எங்கள் சேவைகள்" },
   services_hero_intro: {
-    en: "Free, confidential and non-judgmental support — open to everyone.",
-    si: "නොමිලේ, රහස්‍ය සහ විනිශ්චයෙන් තොර සහාය — සියල්ලන්ට විවෘතයි.",
-    ta: "இலவச, இரகசிய மற்றும் தீர்ப்பற்ற ஆதரவு — அனைவருக்கும் திறந்தது.",
+    en: "Care that meets you where you are. Every TET service is free, confidential, and delivered by people who understand the realities of trans life and sex work.",
+    si: "ඔබ සිටින තැනටම එන සත්කාරය. සෑම TET සේවාවක්ම නොමිලේ, රහස්‍ය සහ ට්‍රාන්ස් ජීවිතයේ සහ ලිංගික සේවා කර්මාන්තයේ යථාර්ථයන් තේරුම් ගන්නා අය විසින් සපයනු ලැබේ.",
+    ta: "நீங்கள் இருக்கும் இடத்திற்கே வரும் பராமரிப்பு. ஒவ்வொரு TET சேவையும் இலவசம், இரகசியம், திருநங்கை வாழ்க்கை மற்றும் பாலியல் தொழிலின் யதார்த்தங்களைப் புரிந்துகொள்பவர்களால் வழங்கப்படுகிறது.",
   },
   services_hero_image: BLANK,
   services_empty_text: {
@@ -509,24 +514,24 @@ const content: Record<string, Val> = {
     ta: "இன்னும் சேவைகள் வெளியிடப்படவில்லை. விரைவில் மீண்டும் பார்க்கவும்.",
   },
 
-  publications_hero_title: { en: "Publications", si: "ප්‍රකාශන", ta: "வெளியீடுகள்" },
+  publications_hero_title: { en: "Resources", si: "සම්පත්", ta: "வளங்கள்" },
   publications_hero_intro: {
-    en: "Research, reports and annual reviews available to download.",
-    si: "බාගත කිරීමට ඇති පර්යේෂණ, වාර්තා සහ වාර්ෂික සමාලෝචන.",
-    ta: "பதிவிறக்கம் செய்யக் கிடைக்கும் ஆய்வுகள், அறிக்கைகள் மற்றும் வருடாந்த மதிப்பாய்வுகள்.",
+    en: "Guides, hotlines, and information you can trust — practical resources on health, rights, and safety, written with and for our community.",
+    si: "ඔබට විශ්වාස කළ හැකි මාර්ගෝපදේශ, උපකාරක මාර්ග සහ තොරතුරු — අපගේ ප්‍රජාව සමඟ සහ ඔවුන් වෙනුවෙන් ලියන ලද සෞඛ්‍යය, අයිතිවාසිකම් සහ ආරක්ෂාව පිළිබඳ ප්‍රායෝගික සම්පත්.",
+    ta: "நீங்கள் நம்பக்கூடிய வழிகாட்டிகள், உதவி இணைப்புகள் மற்றும் தகவல்கள் — எங்கள் சமூகத்துடன் மற்றும் அதற்காக எழுதப்பட்ட சுகாதாரம், உரிமைகள் மற்றும் பாதுகாப்பு பற்றிய நடைமுறை வளங்கள்.",
   },
   publications_hero_image: BLANK,
   publications_empty_text: {
-    en: "No publications have been added yet. Please check back soon.",
-    si: "තවම ප්‍රකාශන එකතු කර නැත. කරුණාකර නැවත පරීක්ෂා කරන්න.",
-    ta: "இன்னும் வெளியீடுகள் சேர்க்கப்படவில்லை. விரைவில் மீண்டும் பார்க்கவும்.",
+    en: "No resources have been added yet. Please check back soon.",
+    si: "තවම සම්පත් එකතු කර නැත. කරුණාකර නැවත පරීක්ෂා කරන්න.",
+    ta: "இன்னும் வளங்கள் சேர்க்கப்படவில்லை. விரைவில் மீண்டும் பார்க்கவும்.",
   },
 
   news_hero_title: { en: "News", si: "පුවත්", ta: "செய்திகள்" },
   news_hero_intro: {
-    en: "Updates from our programs, partners and the communities we work with.",
-    si: "අපගේ වැඩසටහන්, හවුල්කරුවන් සහ අපි කටයුතු කරන ප්‍රජාවන්ගෙන් යාවත්කාලීන කිරීම්.",
-    ta: "எங்கள் திட்டங்கள், பங்காளர்கள் மற்றும் நாங்கள் பணியாற்றும் சமூகங்களின் புதுப்பிப்புகள்.",
+    en: "Updates from our outreach, partners, and the community we work with.",
+    si: "අපගේ ප්‍රවේශය, හවුල්කරුවන් සහ අප කටයුතු කරන ප්‍රජාවෙන් යාවත්කාලීන කිරීම්.",
+    ta: "எங்கள் அணுகல் பணி, பங்காளர்கள் மற்றும் நாங்கள் பணியாற்றும் சமூகத்தின் புதுப்பிப்புகள்.",
   },
   news_hero_image: BLANK,
   news_empty_text: {
@@ -541,9 +546,9 @@ const content: Record<string, Val> = {
     ta: "நிகழ்வுகள் & படத்தொகுப்பு",
   },
   events_hero_intro: {
-    en: "Clinics, workshops and community gatherings — past and upcoming.",
-    si: "සායන, වැඩමුළු සහ ප්‍රජා රැස්වීම් — පසුගිය සහ ඉදිරි.",
-    ta: "கிளினிக்குகள், பயிலரங்குகள் மற்றும் சமூகக் கூட்டங்கள் — கடந்த மற்றும் வரவிருக்கும்.",
+    en: "Health camps, legal clinics, and community gatherings — all free and open to the community we serve.",
+    si: "සෞඛ්‍ය කඳවුරු, නීති සායන සහ ප්‍රජා රැස්වීම් — සියල්ල නොමිලේ සහ අප සේවය කරන ප්‍රජාවට විවෘතයි.",
+    ta: "சுகாதார முகாம்கள், சட்ட கிளினிக்குகள் மற்றும் சமூகக் கூட்டங்கள் — அனைத்தும் இலவசம், நாங்கள் சேவை செய்யும் சமூகத்திற்கு திறந்தவை.",
   },
   events_hero_image: BLANK,
   events_empty_text: {
@@ -554,11 +559,11 @@ const content: Record<string, Val> = {
   show_gallery: ON,
   gallery_title: { en: "Gallery", si: "ගැලරිය", ta: "படத்தொகுப்பு" },
 
-  business_hero_title: { en: "Community Business", si: "ප්‍රජා ව්‍යාපාර", ta: "சமூக வணிகம்" },
+  business_hero_title: { en: "Solidarity Shop", si: "සහයෝගීතා අලෙවිසැල", ta: "ஒற்றுமை கடை" },
   business_hero_intro: {
-    en: "Products made by the women in our programs. Every order supports a livelihood.",
-    si: "අපගේ වැඩසටහන්වල කාන්තාවන් විසින් සාදන ලද නිෂ්පාදන. සෑම ඇණවුමක්ම ජීවනෝපායකට සහාය වේ.",
-    ta: "எங்கள் திட்டங்களில் உள்ள பெண்களால் தயாரிக்கப்பட்ட பொருட்கள். ஒவ்வொரு ஆர்டரும் ஒரு வாழ்வாதாரத்திற்கு ஆதரவு.",
+    en: "Wear your support. Every purchase directly funds TET healthcare, legal aid, and outreach programs, designed and produced with community members.",
+    si: "ඔබගේ සහාය පළඳින්න. සෑම මිලදී ගැනීමක්ම TET සෞඛ්‍ය සේවා, නීති සහාය සහ ප්‍රවේශ වැඩසටහන් සඳහා සෘජුවම අරමුදල් සපයන අතර, ප්‍රජා සාමාජිකයින් සමඟ නිර්මාණය කර නිෂ්පාදනය කරනු ලැබේ.",
+    ta: "உங்கள் ஆதரவை அணியுங்கள். ஒவ்வொரு வாங்குதலும் TET சுகாதாரம், சட்ட உதவி மற்றும் அணுகல் திட்டங்களுக்கு நேரடியாக நிதியளிக்கிறது, சமூக உறுப்பினர்களுடன் வடிவமைக்கப்பட்டு தயாரிக்கப்படுகிறது.",
   },
   business_hero_image: BLANK,
   business_empty_text: {
@@ -569,9 +574,9 @@ const content: Record<string, Val> = {
 
   suggestions_hero_title: { en: "Suggestions", si: "යෝජනා", ta: "ஆலோசனைகள்" },
   suggestions_hero_intro: {
-    en: "We value your ideas. Share your suggestions to help us improve our services.",
-    si: "ඔබගේ අදහස් අපට වටී. අපගේ සේවාවන් වැඩිදියුණු කිරීමට ඔබගේ යෝජනා බෙදාගන්න.",
-    ta: "உங்கள் கருத்துக்கள் எங்களுக்கு முக்கியம். எங்கள் சேவைகளை மேம்படுத்த உங்கள் ஆலோசனைகளைப் பகிரவும்.",
+    en: "We value your ideas. Share your suggestions — anonymously if you prefer — to help us improve our services.",
+    si: "ඔබගේ අදහස් අපට වටී. අපගේ සේවාවන් වැඩිදියුණු කිරීමට ඔබට කැමති නම් නිර්නාමිකව ඔබගේ යෝජනා බෙදාගන්න.",
+    ta: "உங்கள் கருத்துக்கள் எங்களுக்கு முக்கியம். எங்கள் சேவைகளை மேம்படுத்த உங்கள் ஆலோசனைகளை — விரும்பினால் அநாமதேயமாக — பகிரவும்.",
   },
   suggestions_hero_image: BLANK,
   suggestions_success_message: {

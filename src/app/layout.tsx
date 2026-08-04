@@ -7,7 +7,7 @@ import "./globals.css";
  * `src/app/[locale]/layout.tsx`.
  */
 export const metadata: Metadata = {
-  title: "CSDF",
+  title: "TET",
 };
 
 export const viewport: Viewport = {
