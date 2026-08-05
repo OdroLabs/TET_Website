@@ -89,6 +89,8 @@ const config: Config = {
       backgroundImage: {
         "gradient-brand": "linear-gradient(135deg, #5BCEFA 0%, #F5A9B8 100%)",
         "gradient-brand-deep": "linear-gradient(135deg, #0B5FA5 0%, #A61E4D 100%)",
+        "gradient-cta": "linear-gradient(135deg, #A61E4D 0%, #D6336C 55%, #F5A9B8 100%)",
+        "gradient-cta-hover": "linear-gradient(135deg, #8f1a42 0%, #c22a60 55%, #f090a3 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",

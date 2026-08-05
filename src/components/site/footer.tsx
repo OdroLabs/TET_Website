@@ -53,7 +53,7 @@ export function SiteFooter({
   return (
     <footer id="sec-footer" className="relative bg-navy-950 text-white/90">
       {/* Brand gradient rule */}
-      <div className="h-1 bg-gradient-to-r from-brand-600 via-accent to-destructive" />
+      <div className="h-1 bg-gradient-to-r from-brand-600 via-accent to-pink-deep" />
       {/* Soft cyan glow */}
       <div className="pointer-events-none absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
 
@@ -205,7 +205,7 @@ export function SiteFooter({
             {copyright && (
               <p className="flex flex-wrap items-center justify-center gap-1.5">
                 © {year} {copyright}
-                <Heart className="h-3 w-3 fill-destructive text-destructive" />
+                <Heart className="h-3 w-3 fill-pink-deep text-pink-deep" />
               </p>
             )}
             {credit && <p>{credit}</p>}

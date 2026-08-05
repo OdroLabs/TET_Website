@@ -157,7 +157,8 @@ export function DonationForm({
       <Button
         type="submit"
         size="lg"
-        className="h-13 w-full rounded-full bg-destructive py-6 text-base font-bold shadow-lg shadow-destructive/25 hover:bg-destructive/90"
+        variant="donate"
+        className="h-13 w-full rounded-full py-6 text-base font-bold shadow-lg"
       >
         <Heart className="h-5 w-5 fill-current" />
         {d.donateNow}

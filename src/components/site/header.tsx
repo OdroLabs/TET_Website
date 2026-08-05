@@ -165,20 +165,17 @@ export function SiteHeader({
         </div>
       )}
 
-      {/* Sticky glass nav */}
+      {/* Floating glass nav */}
       <header
         id="sec-header"
-        className={cn(
-          "sticky top-0 z-40 border-b transition-all duration-300",
-          scrolled
-            ? "border-border/80 bg-white/85 shadow-lg shadow-navy-950/[0.06] backdrop-blur-xl supports-[backdrop-filter]:bg-white/75"
-            : "border-transparent bg-white"
-        )}
+        className="sticky top-2 z-40 px-3 transition-all duration-300 sm:top-3 sm:px-4 md:top-4 md:px-6"
       >
         <div
           className={cn(
-            "mx-auto flex max-w-[1400px] items-center justify-between gap-6 px-4 transition-[padding] duration-300 md:px-6",
-            scrolled ? "py-2" : "py-3"
+            "mx-auto flex max-w-[1400px] items-center justify-between gap-6 rounded-full border transition-all duration-300",
+            scrolled
+              ? "border-border/70 bg-white/85 px-4 py-2 shadow-xl shadow-navy-950/10 backdrop-blur-xl supports-[backdrop-filter]:bg-white/75 md:px-5"
+              : "border-border/40 bg-white/90 px-4 py-2.5 shadow-lg shadow-navy-950/[0.07] backdrop-blur-lg md:px-5 md:py-3"
           )}
         >
           <Link href={`/${locale}`} className="group flex shrink-0 items-center gap-2.5">
@@ -284,7 +281,8 @@ export function SiteHeader({
               <Button
                 asChild
                 size="sm"
-                className="hidden rounded-full bg-destructive px-5 font-bold hover:bg-destructive/90 md:inline-flex"
+                variant="donate"
+                className="hidden rounded-full px-5 font-bold md:inline-flex"
               >
                 <Link href={`/${locale}/donate`}>
                   <Heart className="h-4 w-4 fill-current" /> {donateLabel}
@@ -302,19 +300,19 @@ export function SiteHeader({
           </div>
         </div>
 
-        {/* Mobile menu — overlay panel anchored below the sticky bar */}
+        {/* Mobile menu — floating overlay panel anchored below the pill */}
         <div
           className={cn(
             "absolute inset-x-0 top-full lg:hidden",
             open ? "pointer-events-auto" : "pointer-events-none"
           )}
         >
-          {/* Backdrop (starts at the bottom edge of the header) */}
+          {/* Backdrop — full-viewport, independent of the pill's own inset */}
           <div
             aria-hidden
             onClick={() => setOpen(false)}
             className={cn(
-              "absolute inset-x-0 top-0 h-screen bg-navy-950/45 backdrop-blur-sm transition-opacity duration-300",
+              "fixed inset-0 z-40 bg-navy-950/45 backdrop-blur-sm transition-opacity duration-300",
               open ? "opacity-100" : "opacity-0"
             )}
           />
@@ -322,7 +320,7 @@ export function SiteHeader({
           <nav
             aria-label="Mobile"
             className={cn(
-              "relative max-h-[calc(100dvh-4.5rem)] overflow-y-auto rounded-b-3xl border-b border-border bg-white shadow-2xl shadow-navy-950/20 transition-all duration-300 ease-out",
+              "relative z-10 mt-2 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl border border-border bg-white shadow-2xl shadow-navy-950/20 transition-all duration-300 ease-out",
               open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
             )}
           >
@@ -345,7 +343,8 @@ export function SiteHeader({
                     <Button
                       asChild
                       size="sm"
-                      className="rounded-full bg-destructive px-6 font-bold hover:bg-destructive/90"
+                      variant="donate"
+                      className="rounded-full px-6 font-bold"
                     >
                       <Link href={`/${locale}/donate`} onClick={() => setOpen(false)}>
                         <Heart className="h-4 w-4 fill-current" /> {donateLabel}

@@ -535,7 +535,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
             <div className="container relative grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
               <div data-animate>
-                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-to-br from-destructive to-pink-deep p-10 text-center shadow-glow ring-1 ring-white/15">
+                <div className="relative mx-auto w-full max-w-sm overflow-hidden rounded-3xl bg-gradient-cta p-10 text-center shadow-glow ring-1 ring-white/15">
                   <div className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-2xl" />
                   <span className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-white/15 ring-2 ring-white/30">
                     <PhoneCall className="h-6 w-6" />
@@ -575,8 +575,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   </h2>
                 )}
                 <span className="mt-4 flex gap-1.5">
-                  <span className="block h-1 w-8 rounded-full bg-destructive" />
-                  <span className="block h-1 w-4 rounded-full bg-destructive/60" />
+                  <span className="block h-1 w-8 rounded-full bg-pink-deep" />
+                  <span className="block h-1 w-4 rounded-full bg-pink-deep/60" />
                 </span>
                 {contactText && (
                   <p className="mt-6 max-w-xl whitespace-pre-line leading-relaxed text-white/75">
@@ -587,7 +587,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   <Button
                     asChild
                     size="lg"
-                    className="mt-8 rounded-full bg-destructive px-8 font-bold shadow-lg shadow-destructive/30 hover:bg-destructive/90"
+                    variant="donate"
+                    className="mt-8 rounded-full px-8 font-bold shadow-lg shadow-[#A61E4D]/30"
                   >
                     <Link href={`/${locale}/contact`}>
                       {contactButton} <ArrowRight className="h-4 w-4" />
@@ -783,7 +784,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             className="relative grid items-center gap-8 overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-900 via-brand-800 to-brand-600 p-10 text-white shadow-glow md:grid-cols-[1.2fr_auto] md:p-14"
           >
             <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-accent/20 blur-3xl" />
-            <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-destructive/15 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 left-1/3 h-56 w-56 rounded-full bg-pink-deep/15 blur-3xl" />
             <div className="relative">
               {s(settings, "home_donate_eyebrow", locale) && (
                 <p className="flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.18em] text-accent">
@@ -811,7 +812,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     className="rounded-full bg-white px-8 font-bold text-brand-700 shadow-xl shadow-navy-950/20 hover:bg-white/90"
                   >
                     <Link href={`/${locale}/donate`}>
-                      <Heart className="h-4 w-4 fill-destructive text-destructive" /> {donateButton}
+                      <Heart className="h-4 w-4 fill-pink-deep text-pink-deep" /> {donateButton}
                     </Link>
                   </Button>
                 )}
