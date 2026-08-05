@@ -235,12 +235,12 @@ export const settingPages: SettingPage[] = [
           T(
             "site_name",
             "Organisation name",
-            "Full name, e.g. Community Strength Development Foundation."
+            "Full name, e.g. Transgender Empowerment Trust."
           ),
-          P("site_short_name", "Short name / abbreviation", "Shown in the logo, e.g. CSDF."),
+          P("site_short_name", "Short name / abbreviation", "Shown in the logo, e.g. TET."),
           T("site_tagline", "Tagline", "One-line summary used in the footer and About header."),
           IMG("logo_image", "Logo image", "Optional. Replaces the letter mark in header and footer."),
-          P("logo_letter", "Logo letter", "Used when no logo image is uploaded. Default: C"),
+          P("logo_letter", "Logo letter", "Used when no logo image is uploaded. Default: T"),
           IMG("favicon", "Favicon", "Small icon shown in the browser tab."),
         ],
       },
