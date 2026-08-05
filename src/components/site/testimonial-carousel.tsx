@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 export function TestimonialCarousel({
   items,
 }: {
-  items: { quote: string; author: string }[];
+  items: { quote: string; author: string; photo?: string | null }[];
 }) {
   const [index, setIndex] = useState(0);
 
@@ -25,9 +25,17 @@ export function TestimonialCarousel({
 
   return (
     <div className="mx-auto max-w-3xl text-center">
-      <span className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent shadow-lg shadow-accent/20">
-        <Quote className="h-6 w-6 text-white" />
-      </span>
+      {item.photo ? (
+        <div
+          key={`photo-${index}`}
+          className="quote-enter mx-auto mb-5 h-14 w-14 rounded-2xl bg-cover bg-center shadow-lg shadow-accent/20 ring-1 ring-white"
+          style={{ backgroundImage: `url(${item.photo})` }}
+        />
+      ) : (
+        <span className="mx-auto mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-brand-600 to-accent shadow-lg shadow-accent/20">
+          <Quote className="h-6 w-6 text-white" />
+        </span>
+      )}
       {/* key re-mounts on change to replay the crossfade */}
       <div key={index} className="quote-enter">
         <blockquote className="mb-4 text-lg leading-relaxed text-foreground/90 md:text-xl">

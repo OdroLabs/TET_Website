@@ -415,10 +415,17 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               >
                 {/* Top accent that grows on hover */}
                 <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-primary to-accent transition-transform duration-300 group-hover:scale-x-100" />
-                {service.icon && (
-                  <span className="mb-5 grid h-[52px] w-[52px] place-items-center rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100 text-2xl ring-1 ring-brand-100 transition-transform duration-300 group-hover:scale-110">
-                    {service.icon}
-                  </span>
+                {service.image ? (
+                  <div
+                    className="mb-5 h-[52px] w-[52px] rounded-2xl bg-cover bg-center ring-1 ring-brand-100 transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundImage: `url(${service.image})` }}
+                  />
+                ) : (
+                  service.icon && (
+                    <span className="mb-5 grid h-[52px] w-[52px] place-items-center rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100 text-2xl ring-1 ring-brand-100 transition-transform duration-300 group-hover:scale-110">
+                      {service.icon}
+                    </span>
+                  )
                 )}
                 <h3 className="mb-2 text-lg font-bold text-navy-900 transition-colors group-hover:text-primary">
                   {loc(service, "title", locale)}
@@ -625,6 +632,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   items={testimonials.map((t) => ({
                     quote: loc(t, "quote", locale),
                     author: loc(t, "author", locale),
+                    photo: t.photo,
                   }))}
                 />
               </div>

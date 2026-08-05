@@ -377,10 +377,16 @@ export const entities: EntityDef[] = [
     fields: [
       { name: "quote", label: "Quote", type: "textarea", i18n: true, required: true },
       { name: "author", label: "Author / attribution", type: "text", i18n: true, required: true },
+      {
+        name: "photo",
+        label: "Photo (optional — leave blank to keep the person anonymous)",
+        type: "image",
+      },
       { name: "order", label: "Sort order", type: "number" },
       { name: "published", label: "Published", type: "boolean" },
     ],
     listFields: [
+      { name: "photo", label: "", type: "image" },
       { name: "authorEn", label: "Author" },
       { name: "published", label: "Published", type: "boolean" },
     ],
