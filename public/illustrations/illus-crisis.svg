@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
 <defs>
   <linearGradient id="g_illus-crisis" x1="24.999999999999993%" y1="6.698729810778069%" x2="75.0%" y2="93.30127018922192%">
-    <stop offset="0%" stop-color="#A61E4D"/>
+    <stop offset="0%" stop-color="#C22448"/>
     <stop offset="100%" stop-color="#0B5FA5"/>
   </linearGradient>
 </defs>

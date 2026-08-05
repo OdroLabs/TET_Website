@@ -74,9 +74,9 @@ const config: Config = {
           deep: "#0B5FA5",
         },
         pink: {
-          DEFAULT: "#F5A9B8",
-          dark: "#D6336C",
-          deep: "#A61E4D",
+          DEFAULT: "#F7A6C1",
+          dark: "#E63368",
+          deep: "#C22448",
         },
         ink: "#201A2B",
         slate: {
@@ -87,10 +87,10 @@ const config: Config = {
         "bg-lavender": "#F3ECFA",
       },
       backgroundImage: {
-        "gradient-brand": "linear-gradient(135deg, #5BCEFA 0%, #F5A9B8 100%)",
-        "gradient-brand-deep": "linear-gradient(135deg, #0B5FA5 0%, #A61E4D 100%)",
-        "gradient-cta": "linear-gradient(135deg, #A61E4D 0%, #D6336C 55%, #F5A9B8 100%)",
-        "gradient-cta-hover": "linear-gradient(135deg, #8f1a42 0%, #c22a60 55%, #f090a3 100%)",
+        "gradient-brand": "linear-gradient(135deg, #5BCEFA 0%, #F7A6C1 100%)",
+        "gradient-brand-deep": "linear-gradient(135deg, #0B5FA5 0%, #C22448 100%)",
+        "gradient-cta": "linear-gradient(135deg, #C22448 0%, #E63368 45%, #EC4D82 100%)",
+        "gradient-cta-hover": "linear-gradient(135deg, #A81D3E 0%, #C42D5C 45%, #D63D70 100%)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -100,7 +100,7 @@ const config: Config = {
       boxShadow: {
         card: "0 1px 2px rgba(5, 18, 37, 0.04), 0 8px 24px -8px rgba(5, 18, 37, 0.10)",
         "card-hover":
-          "0 2px 4px rgba(5, 18, 37, 0.05), 0 20px 40px -12px rgba(0, 119, 182, 0.22)",
+          "0 2px 4px rgba(5, 18, 37, 0.05), 0 20px 40px -12px rgba(236, 77, 130, 0.22)",
         glow: "0 0 0 1px rgba(255,255,255,0.08), 0 24px 60px -20px rgba(0, 0, 0, 0.5)",
       },
       keyframes: {

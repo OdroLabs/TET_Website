@@ -51,7 +51,7 @@ export default async function DonatePage({
             <div className="absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-brand-50 via-transparent to-pink-deep/5" />
             <div className="relative rounded-3xl border border-border bg-white p-7 shadow-card md:p-9">
               <div className="mb-7 flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-cta text-white shadow-md shadow-[#A61E4D]/25">
+                <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-cta text-white shadow-md shadow-[#C22448]/25">
                   <Heart className="h-5 w-5 fill-current" />
                 </span>
                 <h2 className="text-xl font-extrabold text-navy-900">{dict.donate.donateNow}</h2>

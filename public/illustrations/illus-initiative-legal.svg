@@ -2,7 +2,7 @@
 <defs>
   <linearGradient id="g_illus-initiative-legal" x1="6.698729810778062%" y1="25.000000000000004%" x2="93.30127018922194%" y2="75.0%">
     <stop offset="0%" stop-color="#7C4DBB"/>
-    <stop offset="100%" stop-color="#A61E4D"/>
+    <stop offset="100%" stop-color="#C22448"/>
   </linearGradient>
 </defs>
 <rect width="400" height="300" fill="url(#g_illus-initiative-legal)"/>

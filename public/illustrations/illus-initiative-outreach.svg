@@ -2,7 +2,7 @@
 <defs>
   <linearGradient id="g_illus-initiative-outreach" x1="11.697777844051096%" y1="17.860619515673037%" x2="88.3022221559489%" y2="82.13938048432696%">
     <stop offset="0%" stop-color="#0B5FA5"/>
-    <stop offset="100%" stop-color="#A61E4D"/>
+    <stop offset="100%" stop-color="#C22448"/>
   </linearGradient>
 </defs>
 <rect width="400" height="300" fill="url(#g_illus-initiative-outreach)"/>

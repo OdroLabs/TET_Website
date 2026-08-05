@@ -2,7 +2,7 @@
 <defs>
   <linearGradient id="g_hero-community" x1="9.042397785550413%" y1="21.321178182447696%" x2="90.9576022144496%" y2="78.6788218175523%">
     <stop offset="0%" stop-color="#0B5FA5"/>
-    <stop offset="100%" stop-color="#A61E4D"/>
+    <stop offset="100%" stop-color="#C22448"/>
   </linearGradient>
 </defs>
 <rect width="900" height="1125" fill="url(#g_hero-community)"/>

@@ -16,14 +16,17 @@
     --secondary-foreground: 0 0% 100%;
     --muted: 270 40% 96%;
     --muted-foreground: 259 10% 37%;
-    --accent: 339 67% 52%;
+    --accent: 340 81% 61%;
     --accent-foreground: 0 0% 100%;
-    --destructive: 339 69% 38%;
+    /* Dual-use: brand CTA red as well as genuine error/destructive UI (delete buttons, toasts).
+       Kept in the same warm-red family as the brand accent so it serves both without a
+       dedicated --brand-red split; revisit if the two ever need to diverge. */
+    --destructive: 346 69% 45%;
     --destructive-foreground: 0 0% 98%;
     --border: 272 20% 90%;
     --input: 272 20% 86%;
-    --ring: 207 87% 35%;
-    --radius: 0.75rem;
+    --ring: 340 81% 61%;
+    --radius: 0.875rem;
   }
 }
 
@@ -310,7 +313,7 @@ html.high-contrast body {
 
 /* Blue → pink gradient text */
 .text-gradient {
-  background: linear-gradient(100deg, #5bcefa 0%, #d6336c 60%, #a61e4d 100%);
+  background: linear-gradient(100deg, #5bcefa 0%, #ec4d82 55%, #c22448 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

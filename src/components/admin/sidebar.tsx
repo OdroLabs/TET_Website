@@ -83,7 +83,7 @@ export function AdminSidebar({ role }: { role: string }) {
       className={cn(
         "flex items-center gap-2.5 rounded-md px-3 py-1.5 text-sm transition-colors",
         pathname.startsWith(href)
-          ? "bg-primary text-white"
+          ? "bg-accent text-white"
           : "text-white/70 hover:bg-white/10 hover:text-white"
       )}
     >

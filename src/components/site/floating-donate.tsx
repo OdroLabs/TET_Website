@@ -18,7 +18,7 @@ export function FloatingDonate({ locale, label }: { locale: string; label: strin
       <Link
         href={`/${locale}/donate`}
         aria-label={label}
-        className="group pointer-events-auto relative flex items-center gap-2.5 rounded-full bg-gradient-cta py-3 pl-4 pr-5 text-sm font-bold text-white shadow-xl shadow-[#A61E4D]/35 ring-1 ring-white/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gradient-cta-hover hover:shadow-2xl hover:shadow-[#A61E4D]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white motion-safe:active:scale-95"
+        className="group pointer-events-auto relative flex items-center gap-2.5 rounded-full bg-gradient-cta py-3 pl-4 pr-5 text-sm font-bold text-white shadow-xl shadow-[#C22448]/35 ring-1 ring-white/25 transition-all duration-200 hover:-translate-y-0.5 hover:bg-gradient-cta-hover hover:shadow-2xl hover:shadow-[#C22448]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white motion-safe:active:scale-95"
       >
         <span className="relative grid h-6 w-6 place-items-center">
           <span className="absolute inline-flex h-full w-full rounded-full bg-white/30 motion-safe:animate-ping [animation-duration:2.2s]" />

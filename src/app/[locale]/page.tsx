@@ -588,7 +588,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     asChild
                     size="lg"
                     variant="donate"
-                    className="mt-8 rounded-full px-8 font-bold shadow-lg shadow-[#A61E4D]/30"
+                    className="mt-8 rounded-full px-8 font-bold shadow-lg shadow-[#C22448]/30"
                   >
                     <Link href={`/${locale}/contact`}>
                       {contactButton} <ArrowRight className="h-4 w-4" />
