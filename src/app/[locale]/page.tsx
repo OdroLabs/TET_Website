@@ -21,6 +21,7 @@ import { Badge } from "@/components/ui/badge";
 import { TestimonialCarousel } from "@/components/site/testimonial-carousel";
 import { StatCounter } from "@/components/site/stat-counter";
 import { Curve } from "@/components/site/curve";
+import { LazyBg } from "@/components/site/lazy-bg";
 
 function SectionTag({ children, light }: { children: React.ReactNode; light?: boolean }) {
   return (
@@ -308,10 +309,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-brand-100 via-transparent to-accent/10" />
                 <div className="relative overflow-hidden rounded-3xl shadow-card-hover">
                   <div className="aspect-[4/3] overflow-hidden">
-                    <div
+                    <LazyBg
+                      src={aboutImage}
                       data-parallax="7"
                       className="h-full w-full scale-110 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${aboutImage})` }}
                     />
                   </div>
                   {aboutCaption && (
@@ -338,10 +339,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           <div className="relative overflow-hidden bg-navy-950 py-16 text-white md:py-24">
             {statsImage && (
               <div className="absolute inset-0 overflow-hidden">
-                <div
+                <LazyBg
+                  src={statsImage}
                   data-parallax="10"
                   className="absolute -inset-y-[14%] inset-x-0 scale-110 bg-cover bg-center opacity-15"
-                  style={{ backgroundImage: `url(${statsImage})` }}
                 />
               </div>
             )}
@@ -416,9 +417,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 {/* Top accent that grows on hover */}
                 <span className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-primary to-accent transition-transform duration-300 group-hover:scale-x-100" />
                 {service.image ? (
-                  <div
+                  <LazyBg
+                    src={service.image}
                     className="mb-5 h-[52px] w-[52px] rounded-2xl bg-cover bg-center ring-1 ring-brand-100 transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${service.image})` }}
                   />
                 ) : (
                   service.icon && (
@@ -481,9 +482,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 >
                   {project.image && (
                     <div className="relative aspect-[5/4] overflow-hidden">
-                      <div
+                      <LazyBg
+                        src={project.image}
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110"
-                        style={{ backgroundImage: `url(${project.image})` }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-navy-950/60 via-navy-950/10 to-transparent transition-opacity duration-300 group-hover:opacity-80" />
                       <Badge className="glass-light absolute left-4 top-4 rounded-full border-0 font-semibold capitalize text-navy-900 shadow-sm hover:bg-white/80">
@@ -531,10 +532,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           <div className="relative overflow-hidden bg-navy-950 py-16 text-white md:py-24">
             {contactImage && (
               <div className="absolute inset-0 overflow-hidden">
-                <div
+                <LazyBg
+                  src={contactImage}
                   data-parallax="10"
                   className="absolute -inset-y-[14%] inset-x-0 scale-110 bg-cover bg-center opacity-15"
-                  style={{ backgroundImage: `url(${contactImage})` }}
                 />
               </div>
             )}
@@ -677,9 +678,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     </h3>
                     {item.image && (
                       <div className="mt-4 h-36 w-full overflow-hidden rounded-2xl">
-                        <div
+                        <LazyBg
+                          src={item.image}
                           className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${item.image})` }}
                         />
                       </div>
                     )}
@@ -771,6 +772,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   <img
                     src={partner.logo}
                     alt={partner.name}
+                    loading="lazy"
+                    decoding="async"
                     className="h-10 w-auto object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
                   />
                 ) : (

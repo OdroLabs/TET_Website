@@ -93,7 +93,7 @@ export function AdminSidebar({ role }: { role: string }) {
   );
 
   return (
-    <aside className="flex w-60 shrink-0 flex-col border-r bg-brand-950 text-white">
+    <aside className="flex h-full w-60 shrink-0 flex-col border-r bg-brand-950 text-white">
       <div className="flex items-center gap-2 border-b border-white/10 p-4">
         <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-bold">
           C

@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { flushSync } from "react-dom";
 import { useRouter } from "next/navigation";
 import { Loader2, Save } from "lucide-react";
 import { saveLabels } from "@/lib/actions";
+import { withMinDuration } from "@/lib/min-duration";
 import { useToast } from "./toast";
 import { labelGroups } from "@/lib/labels";
 import type { SettingsMap } from "@/lib/settings";
@@ -26,10 +28,10 @@ export function LabelsForm({ settings }: { settings: SettingsMap }) {
   const router = useRouter();
 
   async function handleSave(fd: FormData) {
-    setSaving(true);
+    flushSync(() => setSaving(true));
     const id = toast({ title: "Saving labels…", variant: "loading" });
     try {
-      const result = await saveLabels(fd);
+      const result = await withMinDuration(saveLabels(fd));
       if (result.ok) {
         update(id, {
           title: "Saved",

@@ -10,10 +10,10 @@ export default async function AdminPanelLayout({ children }: { children: React.R
 
   return (
     <ToastProvider>
-      <div className="flex min-h-screen">
+      <div className="flex h-screen overflow-hidden">
         <AdminSidebar role={admin.role} />
-        <div className="min-w-0 flex-1 bg-muted/40">
-          <header className="flex h-14 items-center justify-between gap-4 border-b bg-white px-6">
+        <div className="flex h-full min-w-0 flex-1 flex-col overflow-hidden bg-muted/40">
+          <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b bg-white px-6">
             <span className="truncate text-sm text-muted-foreground">
               Signed in as <strong>{admin.email}</strong>
             </span>
@@ -21,7 +21,7 @@ export default async function AdminPanelLayout({ children }: { children: React.R
               {ROLE_LABELS[admin.role]}
             </span>
           </header>
-          <main className="p-6">{children}</main>
+          <main className="flex-1 overflow-y-auto p-6">{children}</main>
         </div>
       </div>
     </ToastProvider>

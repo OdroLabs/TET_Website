@@ -56,6 +56,8 @@ export default async function HallBookingPage({ params }: { params: { locale: Lo
                     key={i}
                     src={img}
                     alt=""
+                    loading="lazy"
+                    decoding="async"
                     className={`aspect-[4/3] w-full rounded-2xl object-cover shadow-card ${
                       images.length === 1 ? "aspect-[16/9]" : ""
                     }`}

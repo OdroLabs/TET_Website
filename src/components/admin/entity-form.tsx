@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import { saveEntity } from "@/lib/actions";
+import { withMinDuration } from "@/lib/min-duration";
 import { useToast } from "./toast";
 import type { EntityDef, FieldDef } from "@/lib/admin-config";
 import { Input } from "@/components/ui/input";
@@ -101,13 +103,13 @@ export function EntityForm({
   const router = useRouter();
 
   async function handleSave(fd: FormData) {
-    setSaving(true);
+    flushSync(() => setSaving(true));
     const id = toast({
       title: record ? "Saving changes…" : `Creating ${entity.titleSingular.toLowerCase()}…`,
       variant: "loading",
     });
     try {
-      const result = await saveEntity(entity.slug, record?.id ?? null, fd);
+      const result = await withMinDuration(saveEntity(entity.slug, record?.id ?? null, fd));
       if (result.ok) {
         update(id, {
           title: record ? "Changes saved" : `${entity.titleSingular} created`,
@@ -211,7 +213,13 @@ export function EntityForm({
       <div className="flex gap-3">
         <Button type="submit" disabled={saving}>
           {saving && <Loader2 className="h-4 w-4 animate-spin" />}
-          {record ? "Save Changes" : `Create ${entity.titleSingular}`}
+          {saving
+            ? record
+              ? "Saving…"
+              : "Creating…"
+            : record
+              ? "Save Changes"
+              : `Create ${entity.titleSingular}`}
         </Button>
         <Button asChild variant="outline">
           <Link href={`/admin/content/${entity.slug}`}>Cancel</Link>

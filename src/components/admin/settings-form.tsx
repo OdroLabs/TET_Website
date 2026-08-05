@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { flushSync } from "react-dom";
 import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight, EyeOff, Loader2, Save } from "lucide-react";
 import { saveSettingsPage } from "@/lib/actions";
+import { withMinDuration } from "@/lib/min-duration";
 import { useToast } from "./toast";
 import type { SettingDef, SettingPage, SettingsMap } from "@/lib/settings";
 import { cn } from "@/lib/utils";
@@ -141,13 +143,13 @@ export function SettingsForm({
   const router = useRouter();
 
   async function handleSave(fd: FormData) {
-    setSaving(true);
+    flushSync(() => setSaving(true));
     const id = toast({
       title: `Saving ${page.title}…`,
       variant: "loading",
     });
     try {
-      const result = await saveSettingsPage(page.slug, fd);
+      const result = await withMinDuration(saveSettingsPage(page.slug, fd));
       if (result.ok) {
         update(id, {
           title: "Saved",

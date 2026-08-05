@@ -73,6 +73,11 @@ const OPTIONS: sanitizeHtml.IOptions = {
     h1: "h2",
     h5: "h4",
     h6: "h4",
+    // Editors never set this themselves, so every embedded image lazy-loads.
+    img: (tagName: string, attribs: Record<string, string>) => ({
+      tagName: "img",
+      attribs: { ...attribs, loading: attribs.loading ?? "lazy" },
+    }),
   },
 };
 

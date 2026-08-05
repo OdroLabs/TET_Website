@@ -83,7 +83,13 @@ export default async function AboutPage({ params }: { params: { locale: Locale }
         {image && (
           <div data-animate data-delay="0.12" className="overflow-hidden rounded-3xl shadow-card">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={image} alt={title} className="aspect-[4/3] w-full object-cover" />
+            <img
+              src={image}
+              alt={title}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full object-cover"
+            />
           </div>
         )}
       </section>
@@ -210,6 +216,8 @@ export default async function AboutPage({ params }: { params: { locale: Locale }
                     src={TEAM_AVATARS[i % TEAM_AVATARS.length]}
                     alt=""
                     aria-hidden
+                    loading="lazy"
+                    decoding="async"
                     className="mx-auto mb-4 h-20 w-20 rounded-full object-cover shadow-md"
                   />
                   {member.left && <h3 className="font-bold text-navy-900">{member.left}</h3>}
