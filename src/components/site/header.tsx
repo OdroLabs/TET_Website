@@ -17,7 +17,7 @@ export interface HeaderProps {
   nav: NavConfig;
   /** Full organisation name, shown small under the wordmark. */
   siteName: string;
-  /** Abbreviation used as the wordmark, e.g. CSDF. */
+  /** Abbreviation used as the wordmark, e.g. TET. */
   shortName: string;
   logoImage?: string;
   logoLetter: string;
@@ -77,19 +77,22 @@ export function SiteHeader({
     const full = `/${locale}${href}`;
     return href === "" ? pathname === `/${locale}` : pathname.startsWith(full);
   };
-  const isGroupActive = (group: NavGroup) => group.items.some((i) => isActive(i.href));
+  const isGroupActive = (group: NavGroup) =>
+    group.items.some((i) => isActive(i.href));
 
   const pillClass = (active: boolean) =>
     cn(
       "relative flex items-center gap-1 whitespace-nowrap rounded-full px-3 py-1.5 text-[13px] font-semibold transition-colors duration-200",
-      active ? "bg-brand-50 text-primary" : "text-foreground/70 hover:bg-muted hover:text-primary"
+      active
+        ? "bg-brand-50 text-primary"
+        : "text-foreground/70 hover:bg-muted hover:text-primary",
     );
 
   const pillUnderline = (active: boolean) => (
     <span
       className={cn(
         "absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gradient-to-r from-primary to-accent transition-opacity duration-200",
-        active ? "opacity-100" : "opacity-0"
+        active ? "opacity-100" : "opacity-0",
       )}
     />
   );
@@ -106,7 +109,7 @@ export function SiteHeader({
           "flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors",
           active
             ? "bg-brand-50 text-primary"
-            : "text-foreground/80 hover:bg-muted hover:text-primary"
+            : "text-foreground/80 hover:bg-muted hover:text-primary",
         )}
       >
         {link.label}
@@ -123,7 +126,10 @@ export function SiteHeader({
 
       {/* Announcement bar — hidden when no text is set in the admin */}
       {announceText && (
-        <div id="sec-announce" className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent text-white">
+        <div
+          id="sec-announce"
+          className="bg-gradient-to-r from-brand-700 via-brand-600 to-accent text-white"
+        >
           <div className="mx-auto max-w-[1400px] px-4 py-2 text-center text-xs font-semibold md:px-6">
             {announceLink ? (
               <Link href={announceLink} className="hover:underline">
@@ -175,10 +181,13 @@ export function SiteHeader({
             "mx-auto flex max-w-[1400px] items-center justify-between gap-6 rounded-full border transition-all duration-300",
             scrolled
               ? "border-border/70 bg-white/85 px-4 py-2 shadow-xl shadow-navy-950/10 backdrop-blur-xl supports-[backdrop-filter]:bg-white/75 md:px-5"
-              : "border-border/40 bg-white/90 px-4 py-2.5 shadow-lg shadow-navy-950/[0.07] backdrop-blur-lg md:px-5 md:py-3"
+              : "border-border/40 bg-white/90 px-4 py-2.5 shadow-lg shadow-navy-950/[0.07] backdrop-blur-lg md:px-5 md:py-3",
           )}
         >
-          <Link href={`/${locale}`} className="group flex shrink-0 items-center gap-2.5">
+          <Link
+            href={`/${locale}`}
+            className="group flex shrink-0 items-center gap-2.5"
+          >
             {logoImage ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
@@ -210,7 +219,10 @@ export function SiteHeader({
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Main">
+          <nav
+            className="hidden items-center gap-0.5 lg:flex"
+            aria-label="Main"
+          >
             {primary.map((link) => {
               const active = isActive(link.href);
               return (
@@ -231,7 +243,11 @@ export function SiteHeader({
               const active = isGroupActive(group);
               return (
                 <div key={group.label} className="group/nav relative">
-                  <button type="button" aria-haspopup="true" className={pillClass(active)}>
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    className={pillClass(active)}
+                  >
                     {group.label}
                     <ChevronDown className="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover/nav:rotate-180" />
                     {pillUnderline(active)}
@@ -250,11 +266,13 @@ export function SiteHeader({
                               "flex items-center justify-between rounded-xl px-4 py-2.5 text-[13px] font-semibold transition-colors",
                               itemActive
                                 ? "bg-brand-50 text-primary"
-                                : "text-foreground/75 hover:bg-muted hover:text-primary"
+                                : "text-foreground/75 hover:bg-muted hover:text-primary",
                             )}
                           >
                             {item.label}
-                            {itemActive && <span className="h-1.5 w-1.5 rounded-full bg-accent" />}
+                            {itemActive && (
+                              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+                            )}
                           </Link>
                         );
                       })}
@@ -304,7 +322,7 @@ export function SiteHeader({
         <div
           className={cn(
             "absolute inset-x-0 top-full lg:hidden",
-            open ? "pointer-events-auto" : "pointer-events-none"
+            open ? "pointer-events-auto" : "pointer-events-none",
           )}
         >
           {/* Backdrop — full-viewport, independent of the pill's own inset */}
@@ -313,7 +331,7 @@ export function SiteHeader({
             onClick={() => setOpen(false)}
             className={cn(
               "fixed inset-0 z-40 bg-navy-950/45 backdrop-blur-sm transition-opacity duration-300",
-              open ? "opacity-100" : "opacity-0"
+              open ? "opacity-100" : "opacity-0",
             )}
           />
           {/* Panel */}
@@ -321,18 +339,22 @@ export function SiteHeader({
             aria-label="Mobile"
             className={cn(
               "relative z-10 mt-2 max-h-[calc(100dvh-6rem)] overflow-y-auto rounded-3xl border border-border bg-white shadow-2xl shadow-navy-950/20 transition-all duration-300 ease-out",
-              open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
+              open ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0",
             )}
           >
             <div className="mx-auto max-w-[1400px] px-4 py-4 md:px-6">
-              <div className="grid gap-1 sm:grid-cols-2">{mobileItems.map(mobileLink)}</div>
+              <div className="grid gap-1 sm:grid-cols-2">
+                {mobileItems.map(mobileLink)}
+              </div>
 
               {groups.map((group) => (
                 <div key={group.label} className="mt-3 border-t pt-3">
                   <p className="px-4 pb-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
                     {group.label}
                   </p>
-                  <div className="grid gap-1 sm:grid-cols-2">{group.items.map(mobileLink)}</div>
+                  <div className="grid gap-1 sm:grid-cols-2">
+                    {group.items.map(mobileLink)}
+                  </div>
                 </div>
               ))}
 
@@ -346,7 +368,10 @@ export function SiteHeader({
                       variant="donate"
                       className="rounded-full px-6 font-bold"
                     >
-                      <Link href={`/${locale}/donate`} onClick={() => setOpen(false)}>
+                      <Link
+                        href={`/${locale}/donate`}
+                        onClick={() => setOpen(false)}
+                      >
                         <Heart className="h-4 w-4 fill-current" /> {donateLabel}
                       </Link>
                     </Button>
