@@ -132,6 +132,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
   /* ---------------------- Which sections actually render ------------------ */
   const showHero = Boolean(heroTitle || heroSubtitle || heroBadge);
+  const showHeroVisual = Boolean(heroImage) || heroPoints.length > 0;
   const showAbout = show(settings, "show_home_about", aboutText, aboutImage);
   const showStats = show(settings, "show_home_stats", stats);
   const showServices = show(settings, "show_home_services", services);
@@ -146,13 +147,17 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
   const pointIcons = [ShieldCheck, Heart, Users, HandHeart];
 
+  const heroTitleWords = heroTitle.trim().split(/\s+/).filter(Boolean);
+  const heroTitleEmphasis = heroTitleWords[heroTitleWords.length - 1] ?? "";
+  const heroTitleLead = heroTitleWords.slice(0, -1).join(" ");
+
   return (
     <>
       {/* ------------------------------------------------------------------ */}
       {/* Hero                                                                */}
       {/* ------------------------------------------------------------------ */}
       {showHero && (
-        <section id="sec-hero" className="relative overflow-hidden bg-bg-lavender pb-20 pt-16 text-navy-900 md:pb-28 md:pt-24">
+        <section id="sec-hero" className="relative overflow-hidden bg-bg-lavender pb-20 pt-16 text-navy-900 md:pb-28 md:pt-24 lg:pb-32">
           {/* Soft animated blob shapes, template's lavender hero motif */}
           <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 animate-[pulse_9s_ease-in-out_infinite] rounded-full bg-blue/25 blur-3xl" />
           <div className="pointer-events-none absolute -right-20 top-1/3 h-80 w-80 animate-[pulse_11s_ease-in-out_infinite] rounded-full bg-pink/25 blur-3xl" />
@@ -160,16 +165,16 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
           <div
             className={`container relative z-10 grid items-center gap-12 ${
-              heroImage || heroPoints.length > 0 ? "lg:grid-cols-[1.1fr_0.9fr]" : ""
+              showHeroVisual ? "lg:grid-cols-[1.1fr_0.9fr]" : ""
             }`}
           >
             <div>
               {heroBadge && (
                 <p
                   data-hero
-                  className="flex items-center gap-3 text-xs font-bold uppercase tracking-[0.22em] text-accent"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-accent shadow-sm ring-1 ring-accent/15 backdrop-blur"
                 >
-                  <span className="block h-0.5 w-10 bg-gradient-to-r from-accent to-brand-400" />
+                  <span className="block h-1.5 w-1.5 rounded-full bg-gradient-to-r from-accent to-brand-400" />
                   {heroBadge}
                 </p>
               )}
@@ -178,7 +183,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   data-hero
                   className="mb-6 mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight md:text-6xl"
                 >
-                  {heroTitle}
+                  {heroTitleLead && <>{heroTitleLead} </>}
+                  <span className="text-gradient">{heroTitleEmphasis}</span>
                 </h1>
               )}
               {heroSubtitle && (
@@ -195,7 +201,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-full bg-gradient-brand-deep px-8 font-bold text-white shadow-lg shadow-brand-600/25 hover:opacity-90"
+                      className="rounded-full bg-gradient-brand-deep px-8 font-bold text-white shadow-lg shadow-brand-600/25 transition-transform hover:-translate-y-0.5 hover:opacity-90"
                     >
                       <Link href={link(locale, s(settings, "hero_cta1_link"))}>
                         {heroCta1} <ArrowRight className="h-4 w-4" />
@@ -207,7 +213,7 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                       asChild
                       size="lg"
                       variant="outline"
-                      className="rounded-full border-navy-900/15 bg-white/60 px-8 font-semibold text-navy-900 backdrop-blur hover:bg-white"
+                      className="rounded-full border-navy-900/15 bg-white/60 px-8 font-semibold text-navy-900 backdrop-blur transition-transform hover:-translate-y-0.5 hover:bg-white"
                     >
                       <Link href={link(locale, s(settings, "hero_cta2_link"))}>
                         {heroCta2}
@@ -217,32 +223,16 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </div>
               )}
 
-              {/* Highlight points — small icon grid, template's hero-points row */}
-              {heroPoints.length > 0 && (
-                <div data-hero className="grid gap-4 sm:grid-cols-2">
-                  {heroPoints.map((point, i) => {
-                    const Icon = pointIcons[i % pointIcons.length];
-                    return (
-                      <div key={i} className="flex items-center gap-3">
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-white text-primary shadow-sm ring-1 ring-border">
-                          <Icon className="h-4 w-4" />
-                        </span>
-                        <span className="text-sm font-medium text-navy-900">{point}</span>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
               {heroFootnote && (
                 <p className="mt-6 max-w-md text-sm text-muted-foreground">{heroFootnote}</p>
               )}
             </div>
 
             {/* Visual card — admin photo, falling back to the brand illustration */}
-            {(heroImage || heroPoints.length > 0) && (
-              <div data-hero data-delay="0.15" className="relative">
-                <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue/20 via-transparent to-pink/20" />
-                <div className="relative overflow-hidden rounded-[2rem] shadow-card-hover">
+            {showHeroVisual && (
+              <div data-hero data-delay="0.15" className="relative pb-10 sm:pb-0 lg:pb-16">
+                <div className="absolute -inset-4 rounded-[3rem_3rem_3rem_7.5rem] bg-gradient-to-br from-blue/20 via-transparent to-pink/20" />
+                <div className="relative overflow-hidden rounded-[3rem_3rem_3rem_7rem] shadow-card-hover">
                   {heroImage ? (
                     <div className="aspect-[4/5] w-full overflow-hidden">
                       <div
@@ -261,6 +251,32 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     />
                   )}
                 </div>
+
+                {/* Highlight points — floating glass cards overlapping the image */}
+                {heroPoints.length > 0 && (
+                  <div
+                    data-hero
+                    data-delay="0.25"
+                    className={`relative z-10 -mt-16 mx-4 grid gap-3 lg:absolute lg:inset-x-6 lg:-bottom-10 lg:mx-0 lg:mt-0 ${
+                      heroPoints.length === 1 ? "grid-cols-1" : "grid-cols-2"
+                    }`}
+                  >
+                    {heroPoints.slice(0, 4).map((point, i) => {
+                      const Icon = pointIcons[i % pointIcons.length];
+                      return (
+                        <div
+                          key={i}
+                          className="glass-light flex items-center gap-3 rounded-2xl px-4 py-3.5 shadow-card"
+                        >
+                          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-brand-deep text-white shadow-sm">
+                            <Icon className="h-4 w-4" />
+                          </span>
+                          <span className="text-sm font-semibold text-navy-900">{point}</span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             )}
           </div>
