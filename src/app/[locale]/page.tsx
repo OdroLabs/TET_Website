@@ -23,14 +23,22 @@ import { StatCounter } from "@/components/site/stat-counter";
 import { Curve } from "@/components/site/curve";
 import { LazyBg } from "@/components/site/lazy-bg";
 
-function SectionTag({ children, light }: { children: React.ReactNode; light?: boolean }) {
+function SectionTag({
+  children,
+  light,
+}: {
+  children: React.ReactNode;
+  light?: boolean;
+}) {
   return (
     <p
       className={`flex items-center gap-2.5 text-xs font-bold uppercase tracking-[0.18em] ${
         light ? "text-accent" : "text-primary"
       }`}
     >
-      <span className={`block h-0.5 w-8 rounded-full ${light ? "bg-accent" : "bg-primary"}`} />
+      <span
+        className={`block h-0.5 w-8 rounded-full ${light ? "bg-accent" : "bg-primary"}`}
+      />
       {children}
     </p>
   );
@@ -39,12 +47,20 @@ function SectionTag({ children, light }: { children: React.ReactNode; light?: bo
 /** Turn an admin-entered link into a locale-aware href. */
 function link(locale: string, value: string): string {
   const target = value || "/";
-  if (/^(https?:)?\/\//.test(target) || target.startsWith("mailto:") || target.startsWith("tel:"))
+  if (
+    /^(https?:)?\/\//.test(target) ||
+    target.startsWith("mailto:") ||
+    target.startsWith("tel:")
+  )
     return target;
   return `/${locale}${target.startsWith("/") ? target : `/${target}`}`;
 }
 
-export default async function HomePage({ params }: { params: { locale: Locale } }) {
+export default async function HomePage({
+  params,
+}: {
+  params: { locale: Locale };
+}) {
   const locale = params.locale;
   const settings = await getSettings();
   const dict = getLabels(locale, settings);
@@ -55,31 +71,35 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
   const newsCount = sNum(settings, "home_news_count", 3);
   const eventsCount = sNum(settings, "home_events_count", 2);
 
-  const [stats, services, projects, news, events, testimonials, partners] = await Promise.all([
-    prisma.stat.findMany({ orderBy: { order: "asc" } }),
-    prisma.service.findMany({
-      where: { published: true },
-      orderBy: { order: "asc" },
-      take: servicesCount,
-    }),
-    prisma.project.findMany({
-      where: { published: true },
-      orderBy: { order: "asc" },
-      take: projectsCount,
-    }),
-    prisma.news.findMany({
-      where: { published: true },
-      orderBy: { publishedAt: "desc" },
-      take: newsCount,
-    }),
-    prisma.event.findMany({
-      where: { published: true, startDate: { gte: new Date() } },
-      orderBy: { startDate: "asc" },
-      take: eventsCount,
-    }),
-    prisma.testimonial.findMany({ where: { published: true }, orderBy: { order: "asc" } }),
-    prisma.partner.findMany({ orderBy: { order: "asc" } }),
-  ]);
+  const [stats, services, projects, news, events, testimonials, partners] =
+    await Promise.all([
+      prisma.stat.findMany({ orderBy: { order: "asc" } }),
+      prisma.service.findMany({
+        where: { published: true },
+        orderBy: { order: "asc" },
+        take: servicesCount,
+      }),
+      prisma.project.findMany({
+        where: { published: true },
+        orderBy: { order: "asc" },
+        take: projectsCount,
+      }),
+      prisma.news.findMany({
+        where: { published: true },
+        orderBy: { publishedAt: "desc" },
+        take: newsCount,
+      }),
+      prisma.event.findMany({
+        where: { published: true, startDate: { gte: new Date() } },
+        orderBy: { startDate: "asc" },
+        take: eventsCount,
+      }),
+      prisma.testimonial.findMany({
+        where: { published: true },
+        orderBy: { order: "asc" },
+      }),
+      prisma.partner.findMany({ orderBy: { order: "asc" } }),
+    ]);
 
   /* ------------------------------- Content ------------------------------- */
   const siteName = s(settings, "site_name", locale);
@@ -137,13 +157,29 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
   const showStats = show(settings, "show_home_stats", stats);
   const showServices = show(settings, "show_home_services", services);
   const showProjects = show(settings, "show_home_projects", projects);
-  const showContact = show(settings, "show_home_contact", contactTitle, contactText, phone, email);
-  const showTestimonials = show(settings, "show_home_testimonials", testimonials);
+  const showContact = show(
+    settings,
+    "show_home_contact",
+    contactTitle,
+    contactText,
+    phone,
+    email,
+  );
+  const showTestimonials = show(
+    settings,
+    "show_home_testimonials",
+    testimonials,
+  );
   const showNews = show(settings, "show_home_news", news);
   const showEvents = show(settings, "show_home_events", events);
   const showNewsEvents = showNews || showEvents;
   const showPartners = show(settings, "show_home_partners", partners);
-  const showDonate = show(settings, "show_home_donate", donateTitle, donateText);
+  const showDonate = show(
+    settings,
+    "show_home_donate",
+    donateTitle,
+    donateText,
+  );
 
   const pointIcons = [ShieldCheck, Heart, Users, HandHeart];
 
@@ -157,7 +193,19 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* Hero                                                                */}
       {/* ------------------------------------------------------------------ */}
       {showHero && (
-        <section id="sec-hero" className="relative overflow-hidden bg-bg-lavender pb-20 pt-16 text-navy-900 md:pb-28 md:pt-24 lg:pb-32">
+        <section
+          id="sec-hero"
+          className="relative overflow-hidden bg-bg-lavender pb-20 pt-16 text-navy-900 md:pb-28 md:pt-24 lg:pb-32"
+        >
+          {/* Faded admin photo + brand gradient wash behind the hero content */}
+          {heroImage && (
+            <div
+              className="absolute inset-0 scale-110 bg-cover bg-center opacity-10"
+              style={{ backgroundImage: `url(${heroImage})` }}
+            />
+          )}
+          <div className="absolute inset-0 bg-gradient-brand opacity-20" />
+
           {/* Soft animated blob shapes, template's lavender hero motif */}
           <div className="pointer-events-none absolute -left-24 -top-24 h-96 w-96 animate-[pulse_9s_ease-in-out_infinite] rounded-full bg-blue/25 blur-3xl" />
           <div className="pointer-events-none absolute -right-20 top-1/3 h-80 w-80 animate-[pulse_11s_ease-in-out_infinite] rounded-full bg-pink/25 blur-3xl" />
@@ -224,13 +272,19 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               )}
 
               {heroFootnote && (
-                <p className="mt-6 max-w-md text-sm text-muted-foreground">{heroFootnote}</p>
+                <p className="mt-6 max-w-md text-sm text-muted-foreground">
+                  {heroFootnote}
+                </p>
               )}
             </div>
 
             {/* Visual card — admin photo, falling back to the brand illustration */}
             {showHeroVisual && (
-              <div data-hero data-delay="0.15" className="relative pb-10 sm:pb-0 lg:pb-16">
+              <div
+                data-hero
+                data-delay="0.15"
+                className="relative pb-10 sm:pb-0 lg:pb-16"
+              >
                 <div className="absolute -inset-4 rounded-[3rem_3rem_3rem_7.5rem] bg-gradient-to-br from-blue/20 via-transparent to-pink/20" />
                 <div className="relative overflow-hidden rounded-[3rem_3rem_3rem_7rem] shadow-card-hover">
                   {heroImage ? (
@@ -271,7 +325,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                           <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gradient-brand-deep text-white shadow-sm">
                             <Icon className="h-4 w-4" />
                           </span>
-                          <span className="text-sm font-semibold text-navy-900">{point}</span>
+                          <span className="text-sm font-semibold text-navy-900">
+                            {point}
+                          </span>
                         </div>
                       );
                     })}
@@ -298,7 +354,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             <div data-animate>
               <div className="mb-6 space-y-3">
                 {s(settings, "home_about_eyebrow", locale) && (
-                  <SectionTag>{s(settings, "home_about_eyebrow", locale)}</SectionTag>
+                  <SectionTag>
+                    {s(settings, "home_about_eyebrow", locale)}
+                  </SectionTag>
                 )}
                 {aboutTitle && (
                   <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 md:text-4xl">
@@ -336,7 +394,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                       <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-brand-600 to-accent text-white">
                         <Sparkles className="h-5 w-5" />
                       </span>
-                      <p className="text-sm font-bold text-navy-900">{aboutCaption}</p>
+                      <p className="text-sm font-bold text-navy-900">
+                        {aboutCaption}
+                      </p>
                     </div>
                   )}
                 </div>
@@ -367,7 +427,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
 
             <div className="container relative">
               {(statsTitle || s(settings, "home_stats_eyebrow", locale)) && (
-                <div data-animate className="mx-auto mb-12 max-w-2xl space-y-3 text-center">
+                <div
+                  data-animate
+                  className="mx-auto mb-12 max-w-2xl space-y-3 text-center"
+                >
                   {s(settings, "home_stats_eyebrow", locale) && (
                     <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
                       {s(settings, "home_stats_eyebrow", locale)}
@@ -381,7 +444,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   <span className="mx-auto block h-1 w-16 rounded-full bg-gradient-to-r from-accent to-brand-400" />
                 </div>
               )}
-              <div data-stagger className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5">
+              <div
+                data-stagger
+                className="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-5"
+              >
                 {stats.map((stat) => (
                   <div
                     key={stat.id}
@@ -390,7 +456,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     <p className="font-number text-3xl font-extrabold text-gradient md:text-4xl">
                       <StatCounter value={stat.value} />
                     </p>
-                    <p className="mt-2.5 text-sm text-white/70">{loc(stat, "label", locale)}</p>
+                    <p className="mt-2.5 text-sm text-white/70">
+                      {loc(stat, "label", locale)}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -405,8 +473,13 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* ------------------------------------------------------------------ */}
       {showServices && (
         <section id="sec-services" className="container py-16 md:py-24">
-          {(servicesTitle || servicesText || s(settings, "home_services_eyebrow", locale)) && (
-            <div data-animate className="mx-auto mb-12 max-w-2xl space-y-3 text-center">
+          {(servicesTitle ||
+            servicesText ||
+            s(settings, "home_services_eyebrow", locale)) && (
+            <div
+              data-animate
+              className="mx-auto mb-12 max-w-2xl space-y-3 text-center"
+            >
               {s(settings, "home_services_eyebrow", locale) && (
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
                   {s(settings, "home_services_eyebrow", locale)}
@@ -418,12 +491,17 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                 </h2>
               )}
               {servicesText && (
-                <p className="leading-relaxed text-muted-foreground">{servicesText}</p>
+                <p className="leading-relaxed text-muted-foreground">
+                  {servicesText}
+                </p>
               )}
               <span className="mx-auto block h-1 w-16 rounded-full bg-gradient-to-r from-primary to-accent" />
             </div>
           )}
-          <div data-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div
+            data-stagger
+            className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          >
             {services.map((service) => (
               <Link
                 key={service.id}
@@ -459,7 +537,12 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           </div>
           {servicesLinkLabel && (
             <div data-animate className="mt-12 text-center">
-              <Button asChild variant="outline" size="lg" className="rounded-full px-8 font-semibold">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="rounded-full px-8 font-semibold"
+              >
                 <Link href={`/${locale}/services`}>{servicesLinkLabel}</Link>
               </Button>
             </div>
@@ -471,13 +554,20 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* Featured projects                                                   */}
       {/* ------------------------------------------------------------------ */}
       {showProjects && (
-        <section id="sec-projects" className="relative overflow-hidden bg-muted/60 py-16 md:py-24">
+        <section
+          id="sec-projects"
+          className="relative overflow-hidden bg-muted/60 py-16 md:py-24"
+        >
           <div className="pointer-events-none absolute -left-32 top-0 h-72 w-72 rounded-full bg-brand-100/60 blur-3xl" />
           <div className="container relative">
-            {(projectsTitle || projectsText || s(settings, "home_projects_eyebrow", locale)) && (
+            {(projectsTitle ||
+              projectsText ||
+              s(settings, "home_projects_eyebrow", locale)) && (
               <div data-animate className="mb-12 max-w-3xl space-y-3">
                 {s(settings, "home_projects_eyebrow", locale) && (
-                  <SectionTag>{s(settings, "home_projects_eyebrow", locale)}</SectionTag>
+                  <SectionTag>
+                    {s(settings, "home_projects_eyebrow", locale)}
+                  </SectionTag>
                 )}
                 {projectsTitle && (
                   <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 md:text-4xl">
@@ -485,11 +575,16 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                   </h2>
                 )}
                 {projectsText && (
-                  <p className="leading-relaxed text-muted-foreground">{projectsText}</p>
+                  <p className="leading-relaxed text-muted-foreground">
+                    {projectsText}
+                  </p>
                 )}
               </div>
             )}
-            <div data-stagger className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div
+              data-stagger
+              className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
+            >
               {projects.map((project) => (
                 <Link
                   key={project.id}
@@ -544,7 +639,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
       {/* ------------------------------------------------------------------ */}
       {showContact && (
         <section id="sec-contact">
-          <Curve className={`-mb-px text-navy-950 ${showProjects ? "bg-muted/60" : ""}`} />
+          <Curve
+            className={`-mb-px text-navy-950 ${showProjects ? "bg-muted/60" : ""}`}
+          />
           <div className="relative overflow-hidden bg-navy-950 py-16 text-white md:py-24">
             {contactImage && (
               <div className="absolute inset-0 overflow-hidden">
@@ -565,10 +662,16 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     <PhoneCall className="h-6 w-6" />
                   </span>
                   {contactCardTitle && (
-                    <h3 className="text-2xl font-extrabold">{contactCardTitle}</h3>
+                    <h3 className="text-2xl font-extrabold">
+                      {contactCardTitle}
+                    </h3>
                   )}
                   <span className="mx-auto my-4 block h-0.5 w-8 rounded-full bg-white/50" />
-                  {address && <p className="whitespace-pre-line text-sm text-white/90">{address}</p>}
+                  {address && (
+                    <p className="whitespace-pre-line text-sm text-white/90">
+                      {address}
+                    </p>
+                  )}
                   {phone && (
                     <a
                       href={`tel:${phone.replace(/\s/g, "")}`}
@@ -634,7 +737,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
           <div className="grid items-center gap-10 lg:grid-cols-[0.7fr_1.3fr]">
             <div data-animate className="space-y-3">
               {s(settings, "home_testimonials_eyebrow", locale) && (
-                <SectionTag>{s(settings, "home_testimonials_eyebrow", locale)}</SectionTag>
+                <SectionTag>
+                  {s(settings, "home_testimonials_eyebrow", locale)}
+                </SectionTag>
               )}
               {testimonialsTitle && (
                 <h2 className="text-3xl font-extrabold tracking-tight text-navy-900 md:text-4xl">
@@ -671,7 +776,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             <div id="sec-news" data-animate>
               <div className="mb-8 space-y-3">
                 {s(settings, "home_news_eyebrow", locale) && (
-                  <SectionTag>{s(settings, "home_news_eyebrow", locale)}</SectionTag>
+                  <SectionTag>
+                    {s(settings, "home_news_eyebrow", locale)}
+                  </SectionTag>
                 )}
                 {newsTitle && (
                   <h2 className="text-2xl font-extrabold tracking-tight text-navy-900 md:text-3xl">
@@ -709,7 +816,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
             <div id="sec-events" data-animate data-delay="0.12">
               <div className="mb-8 space-y-3">
                 {s(settings, "home_events_eyebrow", locale) && (
-                  <SectionTag>{s(settings, "home_events_eyebrow", locale)}</SectionTag>
+                  <SectionTag>
+                    {s(settings, "home_events_eyebrow", locale)}
+                  </SectionTag>
                 )}
                 {eventsTitle && (
                   <h2 className="text-2xl font-extrabold tracking-tight text-navy-900 md:text-3xl">
@@ -729,7 +838,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                         {new Date(event.startDate).getDate()}
                       </span>
                       <span className="mt-0.5 text-[10px] uppercase">
-                        {new Date(event.startDate).toLocaleString("en", { month: "short" })}
+                        {new Date(event.startDate).toLocaleString("en", {
+                          month: "short",
+                        })}
                       </span>
                     </div>
                     <div>
@@ -738,14 +849,19 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                       </h3>
                       {event.location && (
                         <p className="mt-1.5 flex items-center gap-1 text-xs text-muted-foreground">
-                          <MapPin className="h-3 w-3 text-primary" /> {event.location}
+                          <MapPin className="h-3 w-3 text-primary" />{" "}
+                          {event.location}
                         </p>
                       )}
                     </div>
                   </Link>
                 ))}
                 {eventsLinkLabel && (
-                  <Button asChild variant="outline" className="w-full rounded-full font-semibold">
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full rounded-full font-semibold"
+                  >
                     <Link href={`/${locale}/events`}>
                       <CalendarDays className="h-4 w-4" /> {eventsLinkLabel}
                     </Link>
@@ -777,7 +893,10 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
               <span className="mx-auto mt-3 block h-1 w-12 rounded-full bg-gradient-to-r from-primary to-accent" />
             </div>
           )}
-          <div data-stagger className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+          <div
+            data-stagger
+            className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6"
+          >
             {partners.map((partner) => (
               <div
                 key={partner.id}
@@ -793,7 +912,9 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     className="h-10 w-auto object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
                   />
                 ) : (
-                  <span className="text-sm font-semibold text-navy-800">{partner.name}</span>
+                  <span className="text-sm font-semibold text-navy-800">
+                    {partner.name}
+                  </span>
                 )}
               </div>
             ))}
@@ -839,7 +960,8 @@ export default async function HomePage({ params }: { params: { locale: Locale } 
                     className="rounded-full bg-white px-8 font-bold text-brand-700 shadow-xl shadow-navy-950/20 hover:bg-white/90"
                   >
                     <Link href={`/${locale}/donate`}>
-                      <Heart className="h-4 w-4 fill-pink-deep text-pink-deep" /> {donateButton}
+                      <Heart className="h-4 w-4 fill-pink-deep text-pink-deep" />{" "}
+                      {donateButton}
                     </Link>
                   </Button>
                 )}
